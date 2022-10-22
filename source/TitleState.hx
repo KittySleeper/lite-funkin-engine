@@ -67,8 +67,6 @@ class TitleState extends MusicBeatState
 		polymod.Polymod.init({modRoot: "assets/mods", dirs: CoolUtil.coolTextFile('assets/mods/modList.txt')});
 		#end
 
-		FlxG.game.focusLostFramerate = 60;
-
 		swagShader = new ColorSwap();
 		alphaShader = new BuildingShaders();
 

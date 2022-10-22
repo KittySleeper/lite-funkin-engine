@@ -883,9 +883,9 @@ class PlayState extends MusicBeatState
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		if (PreferencesMenu.getPref('hpcolor'))
-		healthBar.createFilledBar(dad.hpcolor, boyfriend.hpcolor);
+		healthBar.createFilledBar(0xFFFF0000, 0xFF00FF66);//faq u
 		else
-		healthBar.createFilledBar(0xFFFF0000, 0xFF00FF66);
+		healthBar.createFilledBar(dad.hpcolor, boyfriend.hpcolor);
 		// healthBar
 		add(healthBar);
 
@@ -2022,6 +2022,9 @@ class PlayState extends MusicBeatState
 				if (storyDifficulty == 2)
 					difficulty = '-hard';
 
+				if (storyDifficulty == 3)
+					difficulty = '-troll';
+
 				trace('LOADING NEXT SONG');
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
 
@@ -2403,6 +2406,7 @@ class PlayState extends MusicBeatState
 				gf.playAnim('sad');
 			}
 			combo = 0;
+			songMisses += 1;
 
 			if (!practiceMode)
 				songScore -= 10;

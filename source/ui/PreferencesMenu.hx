@@ -1,11 +1,13 @@
 package ui;
 
+import openfl.display.Window;
 import openfl.Lib;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxCamera;
 import flixel.util.FlxColor;
 import haxe.ds.StringMap;
+import flixel.FlxSubState;
 
 class PreferencesMenu extends Page
 {
@@ -30,6 +32,7 @@ class PreferencesMenu extends Page
 		createPrefItem('flashing menu', 'flashing-menu', true);
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
 		createPrefItem('Auto Pause', 'auto-pause', false);
+		createPrefItem('Fps Counter', 'fps', false);
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
 		if (items != null)
 		{
@@ -57,6 +60,7 @@ class PreferencesMenu extends Page
 		preferenceCheck('flashing-menu', true);
 		preferenceCheck('camera-zoom', true);
 		preferenceCheck('auto-pause', false);
+		preferenceCheck('fps', false);
 		preferenceCheck('master-volume', 1);
 		FlxG.autoPause = getPref('auto-pause');
 	}
@@ -118,6 +122,9 @@ class PreferencesMenu extends Page
 			case 'auto-pause':
 				FlxG.autoPause = getPref('auto-pause');
 		}
+
+		FlxG.save.data.settings = preferences;
+		FlxG.save.flush();
 	}
 
 	override function update(elapsed:Float)

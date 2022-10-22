@@ -81,6 +81,12 @@ class MainMenuState extends MusicBeatState
 		{
 			add(magenta);
 		}
+
+		PreferencesMenu.preferences = FlxG.save.data.settings;
+
+		if(PreferencesMenu.getPref('fps') == false){
+			Main.fpsCounter.alpha = 0;
+		}
 		// magenta.scrollFactor.set();
 
 		menuItems = new MainMenuList();
