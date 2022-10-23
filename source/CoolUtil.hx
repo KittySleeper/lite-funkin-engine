@@ -38,7 +38,7 @@ class CoolUtil
 
 	public static function camLerpShit(ratio:Float)
 	{
-		return (1 / Main.fpsCounter.currentFPS) /*FlxG.elapsed*/ / (1 / 60) * ratio;
+		return ((1.0 / Main.fpsCounter.currentFPS) /*FlxG.elapsed*/ / (1.0 / 60.0)) * ratio;
 	}
 
 	public static function coolLerp(a:Float, b:Float, ratio:Float)
