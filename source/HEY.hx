@@ -8,10 +8,9 @@ import flixel.text.FlxText;
 class HEY extends MusicBeatState{
     override function create() {
         var bg = new FlxSprite(null, null, Paths.image('menuDesat'));
-        bg.scrollFactor.x = bg.scrollFactor.x;
-        bg.scrollFactor.y = bg.scrollFactor.y;
-        bg.setGraphicSize(Std.int(bg.width));
+        bg.setGraphicSize(Std.int(1.2));
         bg.updateHitbox();
+        bg.screenCenter();
         bg.x = bg.x;
         bg.y = bg.y;
         bg.visible = false;

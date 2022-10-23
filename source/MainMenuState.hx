@@ -64,7 +64,7 @@ class MainMenuState extends MusicBeatState
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(null, null, Paths.image(''));
+		magenta = new FlxSprite(null, null, Paths.image('menuDesat'));
 		magenta.scrollFactor.x = bg.scrollFactor.x;
 		magenta.scrollFactor.y = bg.scrollFactor.y;
 		magenta.setGraphicSize(Std.int(bg.width));
@@ -73,7 +73,7 @@ class MainMenuState extends MusicBeatState
 		magenta.y = bg.y;
 		magenta.visible = false;
 		magenta.antialiasing = true;
-		magenta.color = 0xFFFDE871;
+		magenta.color = 0xFFFA0BC6;
 		if (PreferencesMenu.preferences.get('flashing-menu'))
 		{
 			add(magenta);
