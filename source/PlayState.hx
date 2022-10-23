@@ -2077,7 +2077,7 @@ class PlayState extends MusicBeatState
 			numScore.velocity.y -= FlxG.random.int(140, 160);
 			numScore.velocity.x = FlxG.random.float(-5, 5);
 
-			if (combo >= 10 || combo == 0)
+			if (combo >= 10)
 				add(numScore);
 
 			if (combo > 10)
