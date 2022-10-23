@@ -1557,7 +1557,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore + " - Misses:" + songMisses + " - Combo:" + combo;
+		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo;
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
