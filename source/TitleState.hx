@@ -55,18 +55,12 @@ class TitleState extends MusicBeatState
 	var swagShader:ColorSwap;
 	var alphaShader:BuildingShaders;
 
-	#if web
 	var video:Video;
 	var netStream:NetStream;
 	var overlay:Sprite;
-	#end
 
 	override public function create():Void
 	{
-		#if polymod
-		polymod.Polymod.init({modRoot: "assets/mods", dirs: CoolUtil.coolTextFile('assets/mods/modList.txt')});
-		#end
-
 		swagShader = new ColorSwap();
 		alphaShader = new BuildingShaders();
 
@@ -127,7 +121,6 @@ class TitleState extends MusicBeatState
 		#end
 	}
 
-	#if web
 	function client_onMetaData(e)
 	{
 		video.attachNetStream(netStream);
@@ -155,7 +148,6 @@ class TitleState extends MusicBeatState
 		netStream.soundTransform.pan = -1;
 		Lib.current.stage.removeChild(overlay);
 	}
-	#end
 
 	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
@@ -178,14 +170,6 @@ class TitleState extends MusicBeatState
 			transIn = FlxTransitionableState.defaultTransIn;
 			transOut = FlxTransitionableState.defaultTransOut;
 
-			// HAD TO MODIFY SOME BACKEND SHIT
-			// IF THIS PR IS HERE IF ITS ACCEPTED UR GOOD TO GO
-			// https://github.com/HaxeFlixel/flixel-addons/pull/348
-
-			// var music:FlxSound = new FlxSound();
-			// music.loadStream(Paths.music('freakyMenu'));
-			// FlxG.sound.list.add(music);
-			// music.play();
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
