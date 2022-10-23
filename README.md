@@ -10,8 +10,6 @@ This project aims to bring v0.2.8 back into Haxe as close as possible to the ori
 
 This means bugs and other issues with v0.2.8 in general are not being fixed.
 
-Any issues regarding these types of bugs (e.g. Cutscenes not working on desktop) will receive a `wontfix` label and be immediately closed.
-
 Any errors on my part though will be fixed as soon as I notice them. If you catch something before I do, [please open an issue regarding the error](../../issues).
 
 # Important notes
@@ -37,7 +35,7 @@ Support the project on the Kickstarter page: https://www.kickstarter.com/project
 - [ninjamuffin99](https://twitter.com/ninja_muffin99) - Programmer
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
-- [AngelDTF (me!)](https://github.com/AngelDTF) - Reverse engineering
+- [AngelDTF](https://github.com/AngelDTF) - Reverse engineering
 
 ## Build instructions
 
