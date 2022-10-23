@@ -1680,8 +1680,6 @@ class PlayState extends MusicBeatState
 			{
 				case 128, 129, 130:
 					vocals.volume = 0;
-					// FlxG.sound.music.stop();
-					// FlxG.switchState(new PlayState());
 			}
 		}
 		// better streaming of shit
@@ -1694,13 +1692,6 @@ class PlayState extends MusicBeatState
 				health = 0;
 				trace("RESET = True");
 			}
-
-			// CHEAT = brandon's a pussy
-			// if (controls.CHEAT)
-			// {
-			// 	health += 1;
-			// 	trace("User is cheating!");
-			// }
 
 			if (health <= 0 && !practiceMode)
 			{
@@ -2154,9 +2145,6 @@ class PlayState extends MusicBeatState
 					camFollow.y = dad.getMidpoint().y - 430;
 					camFollow.x = dad.getMidpoint().x - 100;
 			}
-
-			if (dad.curCharacter == 'mom')
-				vocals.volume = 1;
 
 			if (SONG.song.toLowerCase() == 'tutorial')
 			{
