@@ -1869,9 +1869,7 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		if (SONG.validScore)
 		{
-			#if !switch
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
-			#end
 		}
 
 		if (isStoryMode)
@@ -1969,7 +1967,6 @@ class PlayState extends MusicBeatState
 		var coolText:FlxText = new FlxText(0, 0, 0, placement, 32);
 		coolText.screenCenter();
 		coolText.x = FlxG.width * 0.55;
-		//
 
 		var rating:FlxSprite = new FlxSprite();
 		var score:Int = 350;
@@ -2005,14 +2002,6 @@ class PlayState extends MusicBeatState
 
 		if (!practiceMode)
 			songScore += score;
-
-		/* if (combo > 60)
-				daRating = 'sick';
-			else if (combo > 12)
-				daRating = 'good'
-			else if (combo > 4)
-				daRating = 'bad';
-		 */
 
 		var pixelShitPart1:String = "";
 		var pixelShitPart2:String = '';
@@ -2101,10 +2090,6 @@ class PlayState extends MusicBeatState
 
 			daLoop++;
 		}
-		/* 
-			trace(combo);
-			trace(seperatedScore);
-		 */
 
 		coolText.text = Std.string(seperatedScore);
 		// add(coolText);
@@ -2177,18 +2162,8 @@ class PlayState extends MusicBeatState
 	private function keyShit():Void
 	{
 		var holdingArray:Array<Bool> = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
-		var controlArray:Array<Bool> = [
-			controls.NOTE_LEFT_P,
-			controls.NOTE_DOWN_P,
-			controls.NOTE_UP_P,
-			controls.NOTE_RIGHT_P
-		];
-		var releaseArray:Array<Bool> = [
-			controls.NOTE_LEFT_R,
-			controls.NOTE_DOWN_R,
-			controls.NOTE_UP_R,
-			controls.NOTE_RIGHT_R
-		];
+		var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+		var releaseArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
 
 		// FlxG.watch.addQuick('asdfa', upP);
 		if (holdingArray.contains(true) && generatedMusic)
