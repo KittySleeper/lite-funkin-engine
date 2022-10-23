@@ -34,7 +34,7 @@ class PreferencesMenu extends Page
 
 		createPrefItem('naughtyness', 'censor-naughty', true);
 		createPrefItem('downscroll', 'downscroll', false);
-		createPrefItem('Og hp colors', 'hpcolor', true);
+		createPrefItem('Og ui', 'ui_old', false);
 		createPrefItem('flashing menu', 'flashing-menu', true);
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
 		createPrefItem('Auto Pause', 'auto-pause', false);
@@ -61,7 +61,7 @@ class PreferencesMenu extends Page
 	{
 		preferenceCheck('censor-naughty', true);
 		preferenceCheck('downscroll', false);
-		preferenceCheck('hpcolor', true);
+		preferenceCheck('ui_old', false);
 		preferenceCheck('flashing-menu', true);
 		preferenceCheck('camera-zoom', true);
 		preferenceCheck('auto-pause', false);

@@ -821,7 +821,7 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		if (PreferencesMenu.getPref('hpcolor'))
+		if (PreferencesMenu.getPref('ui_old'))
 			healthBar.createFilledBar(0xFFFF0000, 0xFF00FF66); // faq u
 		else
 			healthBar.createFilledBar(dad.hpcolor, boyfriend.hpcolor);
@@ -836,9 +836,16 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		if(PreferencesMenu.getPref('ui_old')){
+		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		scoreTxt.scrollFactor.set();
+		}
+		else
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 412.5, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
+
 		add(scoreTxt);
 
 		grpNoteSplashes.cameras = [camHUD];
@@ -1557,6 +1564,9 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
+		if(PreferencesMenu.getPref('ui_old'))
+		scoreTxt.text = "Score:" + songScore;
+		else
 		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo;
 
 		if (controls.PAUSE && startedCountdown && canPause)
