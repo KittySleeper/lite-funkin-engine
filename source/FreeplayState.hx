@@ -19,7 +19,6 @@ class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
-	var selector:FlxText;
 	var curSelected:Int = 0;
 	var curDifficulty:Int = 1;
 
@@ -31,28 +30,20 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var coolColors = [0xFF9271FD, 0xFF9271FD, 0xFF223344, 0xFF941653, 0xFFFC96D7, 0xFFA0D1FF, 0xFFFF78BF, 0xFFF6B604];
+	private var coolColors:Array<FlxColor> = [0xFF9271FD, 0xFF9271FD, 0xFF223344, 0xFF941653, 0xFFFC96D7, 0xFFA0D1FF, 0xFFFF78BF, 0xFFF6B604];
 
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
+
+	private var bg_color:BackgroundColor = new BackgroundColor();
 
 	override function create()
 	{
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
 		for (i in 0...initSonglist.length)
-		{
 			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
-		}
-
-		/* 
-			if (FlxG.sound.music != null)
-			{
-				if (!FlxG.sound.music.playing)
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
-			}
-		 */
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -60,9 +51,7 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		if (!FlxG.sound.music.playing)
-		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
-		}
 
 		if (StoryMenuState.weekUnlocked[2])
 			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
@@ -108,10 +97,6 @@ class FreeplayState extends MusicBeatState
 			// using a FlxGroup is too much fuss!
 			iconArray.push(icon);
 			add(icon);
-
-			// songText.x += 40;
-			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
 		}
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
@@ -132,33 +117,6 @@ class FreeplayState extends MusicBeatState
 
 		changeSelection();
 		changeDiff();
-
-		// FlxG.sound.playMusic(Paths.music('title'), 0);
-		// FlxG.sound.music.fadeIn(2, 0, 0.8);
-		selector = new FlxText();
-
-		selector.size = 40;
-		selector.text = ">";
-		// add(selector);
-
-		var swag:Alphabet = new Alphabet(1, 0, "swag");
-
-		// JUST DOIN THIS SHIT FOR TESTING!!!
-		/* 
-			var md:String = Markdown.markdownToHtml(Assets.getText('CHANGELOG.md'));
-
-			var texFel:TextField = new TextField();
-			texFel.width = FlxG.width;
-			texFel.height = FlxG.height;
-			// texFel.
-			texFel.htmlText = md;
-
-			FlxG.stage.addChild(texFel);
-
-			// scoreText.textField.htmlText = md;
-
-			trace(md);
-		 */
 
 		super.create();
 	}
@@ -193,7 +151,13 @@ class FreeplayState extends MusicBeatState
 		}
 
 		lerpScore = CoolUtil.coolLerp(lerpScore, intendedScore, 0.4);
-		bg.color = FlxColor.interpolate(bg.color, coolColors[songs[curSelected].week % coolColors.length], CoolUtil.camLerpShit(0.045));
+
+		// i hate this, but interpolating colors without fps shit being annoying is dumb af anyways so
+		bg_color.redFloat = CoolUtil.coolLerp(bg_color.redFloat, coolColors[songs[curSelected].week % coolColors.length].redFloat, 0.045);
+		bg_color.greenFloat = CoolUtil.coolLerp(bg_color.greenFloat, coolColors[songs[curSelected].week % coolColors.length].greenFloat, 0.045);
+		bg_color.blueFloat = CoolUtil.coolLerp(bg_color.blueFloat, coolColors[songs[curSelected].week % coolColors.length].blueFloat, 0.045);
+
+		bg.color = FlxColor.fromRGB(Std.int(bg_color.redFloat * 255.0), Std.int(bg_color.greenFloat * 255.0), Std.int(bg_color.blueFloat * 255.0));
 
 		scoreText.text = "PERSONAL BEST:" + Math.round(lerpScore);
 		positionHighscore();
@@ -327,4 +291,16 @@ class SongMetadata
 		this.week = week;
 		this.songCharacter = songCharacter;
 	}
+}
+
+/**
+ * because haxe is a bitch ig
+ * @author Leather128
+ */
+class BackgroundColor {
+	public var redFloat:Float = 1.0;
+	public var greenFloat:Float = 1.0;
+	public var blueFloat:Float = 1.0;
+	
+	public function new() {}
 }
