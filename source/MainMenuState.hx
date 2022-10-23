@@ -78,7 +78,9 @@ class MainMenuState extends MusicBeatState
 			add(magenta);
 		}
 
-		PreferencesMenu.preferences = FlxG.save.data.settings;
+		// omfg i am going to kill myself
+		if (FlxG.save.data.settings != null)
+			PreferencesMenu.preferences = FlxG.save.data.settings;
 
 		if(PreferencesMenu.getPref('fps') == false){
 			Main.fpsCounter.alpha = 0;
