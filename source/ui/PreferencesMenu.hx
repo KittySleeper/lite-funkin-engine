@@ -67,7 +67,7 @@ class PreferencesMenu extends Page
 		preferenceCheck('auto-pause', false);
 		preferenceCheck('fps', false);
 		preferenceCheck('master-volume', 1);
-		FlxG.autoPause = getPref('auto-pause');
+		preferenceCheck('auto-pause', false);
 	}
 
 	public static function preferenceCheck(identifier:String, defaultValue:Dynamic)
