@@ -58,7 +58,7 @@ class MainMenuState extends MusicBeatState
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
-		bg.color = 0xFFF4CE5B;
+		bg.color = 0xFFFDD254;
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -191,7 +191,7 @@ class MainMenuState extends MusicBeatState
 
 
 		if(FlxG.keys.justPressed.T)
-			CoolUtil.loadSong('troll', 3, 0);
+			CoolUtil.loadSong('troll', 4, 0);
 	}
 }
 

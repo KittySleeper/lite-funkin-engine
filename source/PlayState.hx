@@ -216,6 +216,10 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'darnell':
+				dialogue = [
+					"dad:ok so ik the charts aint official but everything else is so enjoy p.s ninjamuffin dont kill me lol",
+				];
 		}
 
 		#if desktop
@@ -259,6 +263,8 @@ class PlayState extends MusicBeatState
 			case 2:
 				storyDifficultyText = "Hard";
 			case 3:
+				storyDifficultyText = "Erect";
+			case 4:
 				storyDifficultyText = "Troll";
 		}
 
@@ -598,6 +604,13 @@ class PlayState extends MusicBeatState
 				var tankdude3:BGSprite = new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']);
 				foregroundSprites.add(tankdude3);
 			}
+			case '2hot', 'darnell', 'lit-up':
+			{
+				curStage = 'alley8';
+
+				var bg:BGSprite = new BGSprite('alley', -600, -200, 0.9, 0.9);
+				add(bg);
+			}
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -638,6 +651,8 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-pixel';
 			case 'tank':
 				gfVersion = 'gf-tankmen';
+			case 'alley8':
+				gfVersion = 'nene';
 		}
 
 		if (SONG.song.toLowerCase() == 'stress')
@@ -903,31 +918,33 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
-				case 'senpai' | 'roses' | 'thorns':
-					schoolIntro(doof);
-					// now it looks like I stole this from Psych
-					if (curSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
-				case 'ugh':
-					ughIntro();
-				case 'guns':
-					gunsIntro();
-				case 'stress':
-					stressIntro();
-				default:
-					startCountdown();
+					case 'senpai' | 'roses' | 'thorns' | 'darnell':
+						schoolIntro(doof);
+						// now it looks like I stole this from Psych
+						if (curSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
+				#if web//keep this
+					case 'ugh':
+						ughIntro();
+					case 'guns':
+						gunsIntro();
+					case 'stress':
+						stressIntro();
+				#end
+					default:
+						startCountdown();
+				}
 			}
-		}
-		else
-		{
-			switch (curSong.toLowerCase())
+			else
 			{
-				default:
-					startCountdown();
+				switch (curSong.toLowerCase())
+				{
+					default:
+						startCountdown();
+				}
 			}
+	
+			super.create();
 		}
-
-		super.create();
-	}
 
 	function ughIntro():Void
 	{
@@ -1915,6 +1932,9 @@ class PlayState extends MusicBeatState
 					difficulty = '-hard';
 
 				if (storyDifficulty == 3)
+					difficulty = '-erect';
+
+				if (storyDifficulty == 4)
 					difficulty = '-troll';
 
 				trace('LOADING NEXT SONG');

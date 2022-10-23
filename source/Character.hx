@@ -509,6 +509,34 @@ class Character extends FlxSprite
 				hpcolor = 0xFF201E1E;
 
 				flipX = true;
+
+			case 'darnell':
+				// DAD ANIMATION LOADING CODE
+				frames = Paths.getSparrowAtlas('characters/darnell');
+				quickAnimAdd('idle', 'Darnell idle');
+				quickAnimAdd('singUP', 'Darnell up');
+				quickAnimAdd('singRIGHT', 'Darnell right');
+				quickAnimAdd('singDOWN', 'Darnell down');
+				quickAnimAdd('singLEFT', 'Darnell left');
+				quickAnimAdd('singUP-alt', 'Darnell laugh');
+
+				loadOffsetFile(curCharacter);
+
+				playAnim('idle');
+
+				hpcolor = 0xFF735EB0;
+
+			case 'nene':
+				// nene is funni
+				frames = Paths.getSparrowAtlas('characters/Nene');
+				animation.addByIndices('danceLeft', 'Nene left', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'Nene right', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				loadOffsetFile(curCharacter);
+
+				hpcolor = 0xFFFFFFFF;
+
+				playAnim('danceRight');
 		}
 
 		dance();
@@ -636,7 +664,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-tankmen':
+				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-tankmen' | 'nene':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

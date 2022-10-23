@@ -57,6 +57,8 @@ class Highscore
 		else if (diff == 2)
 			daSong += '-hard';
 		else if (diff == 3)
+			daSong += '-erect';
+		else if (diff == 4)
 			daSong += '-troll';
 
 		return daSong;

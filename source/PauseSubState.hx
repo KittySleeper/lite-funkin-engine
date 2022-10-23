@@ -18,7 +18,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var pauseOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Options', 'Exit to menu'];
-	var difficultyChoices:Array<String> = ['EASY', 'NORMAL', 'HARD', 'BACK'];
+	var difficultyChoices:Array<String> = ['EASY', 'NORMAL', 'HARD', 'ERECT', 'BACK'];
 
 	var menuItems:Array<String> = [];
 	var curSelected:Int = 0;
@@ -158,7 +158,7 @@ class PauseSubState extends MusicBeatSubstate
 					else
 						FlxG.switchState(new FreeplayState());
 				
-				case "EASY" | "NORMAL" | "HARD":
+				case "EASY" | "NORMAL" | "HARD" | "ERECT":
 					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.SONG.song.toLowerCase(), curSelected), PlayState.SONG.song.toLowerCase());
 					PlayState.storyDifficulty = curSelected;
 					FlxG.resetState();
