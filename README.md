@@ -35,7 +35,7 @@ Support the project on the Kickstarter page: https://www.kickstarter.com/project
 - [ninjamuffin99](https://twitter.com/ninja_muffin99) - Programmer
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
-- [AngelDTF (me!)](https://github.com/AngelDTF) - Reverse engineering
+- [AngelDTF](https://github.com/AngelDTF) - Reverse engineering
 
 ## Build instructions
 
