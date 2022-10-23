@@ -29,11 +29,7 @@ class MainMenuState extends MusicBeatState
 {
 	var menuItems:MainMenuList;
 
-	#if !switch
 	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
-	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
-	#end
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -132,9 +128,6 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		#if ng
-		versionShit.text += "(Newgrounds exclusive preview)";
-		#end
 
 		super.create();
 	}
