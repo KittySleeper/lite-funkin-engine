@@ -63,10 +63,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if polymod
-		polymod.Polymod.init({modRoot: "assets/mods", dirs: CoolUtil.coolTextFile('assets/mods/modList.txt')});
-		#end
-
 		swagShader = new ColorSwap();
 		alphaShader = new BuildingShaders();
 
