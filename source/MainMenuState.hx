@@ -79,6 +79,7 @@ class MainMenuState extends MusicBeatState
 		}
 
 		// omfg i am going to kill myself
+		// brandon is a dumbass for not noticing this shit
 		if (FlxG.save.data.settings != null)
 			PreferencesMenu.preferences = FlxG.save.data.settings;
 
