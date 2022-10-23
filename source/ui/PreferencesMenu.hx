@@ -42,7 +42,7 @@ class PreferencesMenu extends Page
 
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
 		if (items != null) camFollow.y = items.members[items.selectedIndex].y;
-		
+
 		menuCamera.follow(camFollow, null, 0.06);
 		menuCamera.deadzone.set(0, 160, menuCamera.width, 40);
 		menuCamera.minScrollY = 0;
@@ -127,7 +127,6 @@ class PreferencesMenu extends Page
 			case 'auto-pause':
 				FlxG.autoPause = getPref('auto-pause');
 			case 'fps':
-				Main.fpsCounter.visible = getPref('fps');
 				Main.fpsCounter.visible = getPref('fps');
 		}
 
