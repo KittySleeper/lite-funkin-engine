@@ -1559,7 +1559,7 @@ class PlayState extends MusicBeatState
 			if (startedCountdown)
 			{
 				Conductor.songPosition += FlxG.elapsed * 1000;
-				
+
 				if (Conductor.songPosition >= 0)
 					startSong();
 			}
@@ -1662,8 +1662,8 @@ class PlayState extends MusicBeatState
 
 		if (camZooming)
 		{
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, 0.95);
-			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
+			FlxG.camera.zoom = CoolUtil.coolLerp(FlxG.camera.zoom, defaultCamZoom, 0.05);
+			camHUD.zoom = CoolUtil.coolLerp(camHUD.zoom, 1, 0.05);
 		}
 
 		FlxG.watch.addQuick("beatShit", curBeat);
