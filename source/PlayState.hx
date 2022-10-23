@@ -823,9 +823,9 @@ class PlayState extends MusicBeatState
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		if (PreferencesMenu.getPref('ui_old'))
-			healthBar.createFilledBar(0xFFFF0000, 0xFF00FF66); // faq u
+			healthBar.createGradientBar([0xFFFF0000], [0xFF00FF66]); // faq u
 		else
-			healthBar.createFilledBar(dad.hpcolor, boyfriend.hpcolor);
+			healthBar.createGradientBar([dad.hpcolor], [boyfriend.hpcolor]);
 		// healthBar
 		add(healthBar);
 
@@ -849,13 +849,13 @@ class PlayState extends MusicBeatState
 
 		add(scoreTxt);
 
-		watermarkTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, healthBarBG.y + 30, 0, 'Lite Funkin - ' + SONG.song.toLowerCase() + ' - ' + storyDifficultyText, 20);
+		watermarkTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, healthBarBG.y + 30, 0, 'Lite Funkin - ' + SONG.song.toUpperCase() + ' - ' + storyDifficultyText, 20);
 		watermarkTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		watermarkTxt.scrollFactor.set();
 		add(watermarkTxt);
 
 		if(PreferencesMenu.getPref('wm') == false)
-			watermarkTxt.text = SONG.song.toLowerCase() + ' - ' + storyDifficultyText;//fuck engines that make it so these go away if watermarks are off
+			watermarkTxt.text = SONG.song.toUpperCase() + ' - ' + storyDifficultyText;//fuck engines that make it so these go away if watermarks are off
 
 		grpNoteSplashes.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
@@ -1334,12 +1334,12 @@ class PlayState extends MusicBeatState
 			switch (curStage)
 			{
 				case 'school' | 'schoolEvil':
+					NoteSplash.notesplashskin = 'pixelsplashes';//toooootaly not just a lower quality image of the normal one
 					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
 					babyArrow.animation.add('purplel', [4]);
-
 					babyArrow.setGraphicSize(Std.int(babyArrow.width * daPixelZoom));
 					babyArrow.updateHitbox();
 					babyArrow.antialiasing = false;
@@ -1369,7 +1369,9 @@ class PlayState extends MusicBeatState
 					}
 
 				default:
-					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+					var noteskin:String = 'NOTE_assets';
+
+					babyArrow.frames = Paths.getSparrowAtlas(noteskin);
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
