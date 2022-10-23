@@ -16,7 +16,7 @@ class Main extends Sprite
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
-	#if !html5
+	#if desktop
 	var framerate:Int = 120; // How many frames per second the game should run at.
 	#else
 	var framerate:Int = 60; // How many frames per second the game should run at.
@@ -59,13 +59,13 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		final stageWidth:Int = Lib.current.stage.stageWidth;
-		final stageHeight:Int = Lib.current.stage.stageHeight;
+		var stageWidth:Int = Lib.current.stage.stageWidth;
+		var stageHeight:Int = Lib.current.stage.stageHeight;
 
 		if (zoom == -1)
 		{
-			final ratioX:Float = stageWidth / gameWidth;
-			final ratioY:Float = stageHeight / gameHeight;
+			var ratioX:Float = stageWidth / gameWidth;
+			var ratioY:Float = stageHeight / gameHeight;
 			zoom = Math.min(ratioX, ratioY);
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
@@ -73,7 +73,9 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
+		#if mobile
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
+		#end
 	}
 }
