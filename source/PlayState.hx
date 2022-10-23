@@ -1837,6 +1837,9 @@ class PlayState extends MusicBeatState
 					if (daNote.tooLate || !daNote.wasGoodHit)
 					{
 						health -= 0.0475;
+						songMisses += 1;
+						songScore -= 20;
+						combo = 0;
 						vocals.volume = 0;
 					}
 
