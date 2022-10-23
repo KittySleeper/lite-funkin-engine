@@ -59,13 +59,13 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
+		final stageWidth:Int = Lib.current.stage.stageWidth;
+		final stageHeight:Int = Lib.current.stage.stageHeight;
 
 		if (zoom == -1)
 		{
-			var ratioX:Float = stageWidth / gameWidth;
-			var ratioY:Float = stageHeight / gameHeight;
+			final ratioX:Float = stageWidth / gameWidth;
+			final ratioY:Float = stageHeight / gameHeight;
 			zoom = Math.min(ratioX, ratioY);
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
@@ -73,9 +73,7 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
-		#if !mobile
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
-		#end
 	}
 }
