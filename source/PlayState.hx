@@ -136,6 +136,7 @@ class PlayState extends MusicBeatState
 	var songAccuracy:Float = 100;
 	var storyDifficultyText:String = "";
 	var scoreTxt:FlxText;
+	var watermarkTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
 
@@ -848,6 +849,14 @@ class PlayState extends MusicBeatState
 
 		add(scoreTxt);
 
+		watermarkTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, healthBarBG.y + 30, 0, 'Lite Funkin - ' + SONG.song.toLowerCase() + ' - ' + storyDifficultyText, 20);
+		watermarkTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+		watermarkTxt.scrollFactor.set();
+		add(watermarkTxt);
+
+		if(PreferencesMenu.getPref('wm') == false)
+			watermarkTxt.text = SONG.song.toLowerCase() + ' - ' + storyDifficultyText;//fuck engines that make it so these go away if watermarks are off
+
 		grpNoteSplashes.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -856,6 +865,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		watermarkTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		startingSong = true;

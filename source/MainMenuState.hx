@@ -191,8 +191,12 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.switchState(new TitleState());
 		}
-
+		
 		super.update(elapsed);
+
+
+		if(FlxG.keys.justPressed.T)
+			CoolUtil.loadSong('troll', 3, 0);
 	}
 }
 

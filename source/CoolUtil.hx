@@ -51,7 +51,7 @@ class CoolUtil
 		PlayState.SONG = Song.loadFromJson(loader, SongName);
 		PlayState.isStoryMode = false;
 		PlayState.storyDifficulty = Diff;
-		PlayState.storyWeek = 1;
+		PlayState.storyWeek = Week;
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
 }

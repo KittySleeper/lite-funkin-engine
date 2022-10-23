@@ -35,6 +35,7 @@ class PreferencesMenu extends Page
 		createPrefItem('naughtyness', 'censor-naughty', true);
 		createPrefItem('downscroll', 'downscroll', false);
 		createPrefItem('Og ui', 'ui_old', false);
+		createPrefItem('watermarks', 'wm', true);
 		createPrefItem('flashing menu', 'flashing-menu', true);
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
 		createPrefItem('Ghost Tapping', 'funnighost', true);
@@ -63,6 +64,7 @@ class PreferencesMenu extends Page
 		preferenceCheck('censor-naughty', true);
 		preferenceCheck('downscroll', false);
 		preferenceCheck('ui_old', false);
+		preferenceCheck('wm', true);
 		preferenceCheck('flashing-menu', true);
 		preferenceCheck('funnighost', true);
 		preferenceCheck('camera-zoom', true);
