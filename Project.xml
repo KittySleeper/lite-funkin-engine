@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="lite funkin engine" file="lite funkin engine" packageName="com.504brandon.lite-funkin-engine" package="com.504brandon.lite-funkin-engine" main="Main" version="0.2.8" company="504brandon" />
+	<app title="Friday Night Funkin' - Lite Funkin Engine" file="lite funkin engine" packageName="com.504brandon.lite-funkin-engine" package="com.504brandon.lite-funkin-engine" main="Main" version="0.2.8" company="504brandon" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
