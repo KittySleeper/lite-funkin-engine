@@ -101,17 +101,21 @@ class TitleState extends MusicBeatState
 			VideoState.seenVideo = FlxG.save.data.seenVideo;
 		}
 
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{
-			startIntro();
+		if (FlxG.save.data.settings != null)
+			PreferencesMenu.preferences = FlxG.save.data.settings;
+
 			if(PreferencesMenu.getPref('fpsshow') != null)
 			Main.fpsCounter.visible = PreferencesMenu.getPref('fpsshow');
 
 			if(PreferencesMenu.getPref('fpsboost'))
-			Main.framerate = 1000;
+			FlxG.stage.frameRate = 1000;
 
 			if(PreferencesMenu.getPref('fpsboost') == false)
-			Main.framerate = 120;
+			FlxG.stage.frameRate = 120;
+
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			startIntro();
 		});
 
 		#if desktop

@@ -58,7 +58,7 @@ class MainMenuState extends MusicBeatState
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
-		bg.color = 0xFFFF00;
+		bg.color = 0xFFF6B104;
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -73,17 +73,11 @@ class MainMenuState extends MusicBeatState
 		magenta.y = bg.y;
 		magenta.visible = false;
 		magenta.antialiasing = true;
-		magenta.color = 0xFFFC96D7;
+		magenta.color = 0xFFFD719B;
 		if (PreferencesMenu.preferences.get('flashing-menu'))
 		{
 			add(magenta);
 		}
-
-		// omfg i am going to kill myself
-		// brandon is a dumbass for not noticing this shit
-		// and yeah, I did know it was the reason it crashed
-		if (FlxG.save.data.settings != null)
-			PreferencesMenu.preferences = FlxG.save.data.settings;
 
 		// magenta.scrollFactor.set();
 
