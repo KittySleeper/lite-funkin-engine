@@ -1370,6 +1370,7 @@ class PlayState extends MusicBeatState
 
 				default:
 					var noteskin:String = 'NOTE_assets';
+					NoteSplash.notesplashskin = 'noteSplashes';
 
 					babyArrow.frames = Paths.getSparrowAtlas(noteskin);
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
