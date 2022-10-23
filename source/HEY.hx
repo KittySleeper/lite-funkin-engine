@@ -11,7 +11,6 @@ class HEY extends MusicBeatState{
         bg.setGraphicSize(Std.int(1.2));
         bg.updateHitbox();
         bg.screenCenter();
-        bg.visible = false;
         bg.antialiasing = true;
         bg.color = 0xFF494848;
         add(bg);
