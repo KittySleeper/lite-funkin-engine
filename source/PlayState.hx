@@ -790,11 +790,7 @@ class PlayState extends MusicBeatState
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 
-		// startCountdown();
-
 		generateSong();
-
-		// add(strumLine);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 
@@ -855,11 +851,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-		// if (SONG.song == 'South')
-		// FlxG.camera.alpha = 0.7;
-		// UI_camera.zoom = 1;
-
-		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 
 		if (isStoryMode && !seenCutscene)
@@ -895,21 +886,16 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
-				case 'senpai':
+				case 'senpai' | 'roses' | 'thorns':
 					schoolIntro(doof);
-				case 'roses':
-					FlxG.sound.play(Paths.sound('ANGRY'));
-					schoolIntro(doof);
-				case 'thorns':
-					schoolIntro(doof);
-				#if web
+					// now it looks like I stole this from Psych
+					if (curSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 				case 'ugh':
 					ughIntro();
 				case 'guns':
 					gunsIntro();
 				case 'stress':
 					stressIntro();
-				#end
 				default:
 					startCountdown();
 			}
@@ -972,15 +958,6 @@ class PlayState extends MusicBeatState
 			startCountdown();
 			cameraMovement();
 		};
-	}
-
-	function initDiscord()
-	{
-		// Angel here.
-		// I have no idea what this function does.
-		// The function is still in the compiled code, but everything inside was ommited since it was compiled for the HTML target.
-		// Just leaving this here in case I ever figure out what it was used for.
-		// If I never find a use for this, sorry, but this is just staying here cause it's a part of v0.2.8's code lol.
 	}
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
@@ -1073,7 +1050,6 @@ class PlayState extends MusicBeatState
 	}
 
 	var startTimer:FlxTimer = new FlxTimer();
-	var perfectMode:Bool = false;
 
 	function startCountdown():Void
 	{
@@ -1133,7 +1109,6 @@ class PlayState extends MusicBeatState
 			}
 
 			switch (swagCounter)
-
 			{
 				case 0:
 					FlxG.sound.play(Paths.sound('intro3' + altSuffix), 0.6);
@@ -1191,11 +1166,9 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
-				case 4:
 			}
 
 			swagCounter += 1;
-			// generateSong('fresh');
 		}, 4);
 	}
 
@@ -1314,9 +1287,6 @@ class PlayState extends MusicBeatState
 			}
 			daBeats += 1;
 		}
-
-		// trace(unspawnNotes.length);
-		// playerCounter += 1;
 
 		unspawnNotes.sort(sortByShit);
 
@@ -1544,10 +1514,6 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		FlxG.camera.followLerp = CoolUtil.camLerpShit(0.04);
-
-		#if !debug
-		perfectMode = false;
-		#end
 
 		if (FlxG.keys.justPressed.NINE)
 		{
@@ -2274,11 +2240,7 @@ class PlayState extends MusicBeatState
 				return Std.int(note1.strumTime - note2.strumTime);
 			});
 
-			if (perfectMode)
-			{
-				goodNoteHit(possibleNotes[0]);
-			}
-			else if (possibleNotes.length > 0)
+			if (possibleNotes.length > 0)
 			{
 				for (i in 0...controlArray.length)
 				{
@@ -2339,8 +2301,6 @@ class PlayState extends MusicBeatState
 				songScore -= 10;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
 
 			boyfriend.stunned = true;
 
@@ -2571,12 +2531,6 @@ class PlayState extends MusicBeatState
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
 				FlxG.log.add('CHANGED BPM!');
 			}
-			// else
-			// Conductor.changeBPM(SONG.bpm);
-
-			// Dad doesnt interupt his own notes
-			// if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
-			// 	dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
@@ -2648,6 +2602,7 @@ class PlayState extends MusicBeatState
 		{
 			case 'tank':
 				tankWatchtower.dance();
+
 			case 'school':
 				bgGirls.dance();
 
