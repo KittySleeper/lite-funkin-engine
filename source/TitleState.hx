@@ -63,10 +63,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if polymod
-		polymod.Polymod.init({modRoot: "assets/mods", dirs: CoolUtil.coolTextFile('assets/mods/modList.txt')});
-		#end
-
 		swagShader = new ColorSwap();
 		alphaShader = new BuildingShaders();
 
@@ -108,10 +104,10 @@ class TitleState extends MusicBeatState
 			Main.fpsCounter.visible = PreferencesMenu.getPref('fpsshow');
 
 			if(PreferencesMenu.getPref('fpsboost'))
-			Main.framerate = 1000;
+				flixel.FlxG.stage.frameRate = 1000;
 
 			if(PreferencesMenu.getPref('fpsboost') == false)
-			Main.framerate = 120;
+				flixel.FlxG.stage.frameRate = 120;
 		});
 
 		#if desktop
