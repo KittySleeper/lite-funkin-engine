@@ -22,7 +22,6 @@ class Character extends FlxSprite
 	public var animationNotes:Array<Dynamic> = [];
 	public var hpcolor:FlxColor;
 
-
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
