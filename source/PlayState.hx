@@ -1596,7 +1596,7 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		iconP1.scale.x = FlxMath.lerp(iconP1.scale.x, 1.0, elapsed * 9);
+		iconP1.scale.x = CoolUtil.coolLerp(iconP1.scale.x, 1.0, 0.15);
 		iconP1.scale.y = iconP1.scale.x;
 
 		iconP2.scale.copyFrom(iconP1.scale);
