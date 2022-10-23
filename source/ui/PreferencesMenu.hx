@@ -23,11 +23,15 @@ class PreferencesMenu extends Page
 	override public function new()
 	{
 		super();
+
 		menuCamera = new FlxCamera();
 		FlxG.cameras.add(menuCamera, false);
+
 		menuCamera.bgColor = FlxColor.TRANSPARENT;
 		camera = menuCamera;
+
 		add(items = new TextMenuList());
+
 		createPrefItem('naughtyness', 'censor-naughty', true);
 		createPrefItem('downscroll', 'downscroll', false);
 		createPrefItem('Og hp colors', 'hpcolor', true);
@@ -35,11 +39,10 @@ class PreferencesMenu extends Page
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
 		createPrefItem('Auto Pause', 'auto-pause', false);
 		createPrefItem('Fps Counter', 'fps', false);
+
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
-		if (items != null)
-		{
-			camFollow.y = items.members[items.selectedIndex].y;
-		}
+		if (items != null) camFollow.y = items.members[items.selectedIndex].y;
+		
 		menuCamera.follow(camFollow, null, 0.06);
 		menuCamera.deadzone.set(0, 160, menuCamera.width, 40);
 		menuCamera.minScrollY = 0;
@@ -122,7 +125,7 @@ class PreferencesMenu extends Page
 		switch (identifier)
 		{
 			case 'auto-pause':
-				FlxG.autoPause = getPref('auto-pause');	
+				FlxG.autoPause = getPref('auto-pause');
 		}
 
 		FlxG.save.data.settings = preferences;
