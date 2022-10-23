@@ -51,19 +51,20 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(null, null, Paths.image('menuBG'));
+		var bg:FlxSprite = new FlxSprite(null, null, Paths.image('menuDesat'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.17;
 		bg.setGraphicSize(Std.int(bg.width * 1.2));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
+		bg.color = 0xEEEE1F;
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(null, null, Paths.image('menuDesat'));
+		magenta = new FlxSprite(null, null, Paths.image(''));
 		magenta.scrollFactor.x = bg.scrollFactor.x;
 		magenta.scrollFactor.y = bg.scrollFactor.y;
 		magenta.setGraphicSize(Std.int(bg.width));
@@ -72,7 +73,7 @@ class MainMenuState extends MusicBeatState
 		magenta.y = bg.y;
 		magenta.visible = false;
 		magenta.antialiasing = true;
-		magenta.color = 0xFFFD719B;
+		magenta.color = 0xFFFDE871;
 		if (PreferencesMenu.preferences.get('flashing-menu'))
 		{
 			add(magenta);
