@@ -18,6 +18,11 @@ class OptionsMenu extends Page
 		{
 			onSwitch.dispatch(PageName.Controls);
 		});
+		createItem('judgepos', function()
+		{
+			FlxG.switchState(new ui.JudgePositionState());
+		});
+		//uh why the hell is donate code here mabe newgrounds login?
 		if (showDonate)
 		{
 			createItem('donate', selectDonate, true);
