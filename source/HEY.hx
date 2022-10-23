@@ -7,13 +7,15 @@ import flixel.text.FlxText;
 
 class HEY extends MusicBeatState{
     override function create() {
-        var bg = new FlxSprite(null, null, Paths.image('menuDesat'));
-        bg.setGraphicSize(Std.int(1.2));
-        bg.updateHitbox();
-        bg.screenCenter();
-        bg.antialiasing = true;
-        bg.color = 0xFF494848;
-        add(bg);
+        var bg:FlxSprite = new FlxSprite(null, null, Paths.image('menuDesat'));
+		bg.scrollFactor.x = 0;
+		bg.scrollFactor.y = 0.17;
+		bg.setGraphicSize(Std.int(bg.width * 1.2));
+		bg.updateHitbox();
+		bg.screenCenter();
+		bg.antialiasing = true;
+		bg.color = 0x1F1F1D;
+		add(bg);
 
         var warn = new FlxText();
 		warn.text = "hey this engine is in github beta and isnt even 1% complete\nthis is supposed what my formor engine 'dike engine' was supposed to be\nthere will be many bugs and it is likely unstable\nif you understand you can press enter to go to title state.\nbut if you want to see my formor engine press escape";
