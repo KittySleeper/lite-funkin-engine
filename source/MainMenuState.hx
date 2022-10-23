@@ -58,7 +58,7 @@ class MainMenuState extends MusicBeatState
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
-		bg.color = 0xFFF6B104;
+		bg.color = 0xFFF4CE5B;
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
