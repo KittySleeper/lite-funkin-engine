@@ -40,7 +40,8 @@ class PreferencesMenu extends Page
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
 		createPrefItem('Ghost Tapping', 'funnighost', true);
 		createPrefItem('Auto Pause', 'auto-pause', false);
-		createPrefItem('Fps Counter', 'fps', false);
+		createPrefItem('Fps Counter', 'fpsshow', false);
+		createPrefItem('Max Fps', 'fpsboost', true);
 
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
 		if (items != null) camFollow.y = items.members[items.selectedIndex].y;
@@ -69,7 +70,8 @@ class PreferencesMenu extends Page
 		preferenceCheck('funnighost', true);
 		preferenceCheck('camera-zoom', true);
 		preferenceCheck('auto-pause', false);
-		preferenceCheck('fps', false);
+		preferenceCheck('fpsshow', false);
+		preferenceCheck('fpsboost', true);
 		preferenceCheck('master-volume', 1);
 		preferenceCheck('auto-pause', false);
 	}
@@ -130,8 +132,14 @@ class PreferencesMenu extends Page
 		{
 			case 'auto-pause':
 				FlxG.autoPause = getPref('auto-pause');
-			case 'fps':
+			case 'fpsshow':
 				Main.fpsCounter.visible = getPref('fps');
+			case 'fpsboost':
+				if(getPref('fpsboost'))
+				Main.framerate = 1000;
+		
+				if(getPref('fpsboost') == false)
+				Main.framerate = 120;
 		}
 
 		FlxG.save.data.settings = preferences;

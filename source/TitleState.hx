@@ -104,8 +104,14 @@ class TitleState extends MusicBeatState
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			startIntro();
-			if(PreferencesMenu.getPref('fps') != null)
-			Main.fpsCounter.visible = PreferencesMenu.getPref('fps');
+			if(PreferencesMenu.getPref('fpsshow') != null)
+			Main.fpsCounter.visible = PreferencesMenu.getPref('fpsshow');
+
+			if(PreferencesMenu.getPref('fpsboost'))
+			Main.framerate = 1000;
+
+			if(PreferencesMenu.getPref('fpsboost') == false)
+			Main.framerate = 120;
 		});
 
 		#if desktop
