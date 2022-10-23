@@ -37,6 +37,7 @@ class PreferencesMenu extends Page
 		createPrefItem('Og ui', 'ui_old', false);
 		createPrefItem('flashing menu', 'flashing-menu', true);
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
+		createPrefItem('Ghost Tapping', 'funnighost', true);
 		createPrefItem('Auto Pause', 'auto-pause', false);
 		createPrefItem('Fps Counter', 'fps', false);
 
@@ -63,6 +64,7 @@ class PreferencesMenu extends Page
 		preferenceCheck('downscroll', false);
 		preferenceCheck('ui_old', false);
 		preferenceCheck('flashing-menu', true);
+		preferenceCheck('funnighost', true);
 		preferenceCheck('camera-zoom', true);
 		preferenceCheck('auto-pause', false);
 		preferenceCheck('fps', false);

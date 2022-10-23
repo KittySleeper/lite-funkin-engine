@@ -2297,6 +2297,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
+		if(PreferencesMenu.getPref('funnighost') == false)
 		if (!boyfriend.stunned)
 		{
 			health -= 0.04;
