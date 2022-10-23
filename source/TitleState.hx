@@ -44,7 +44,7 @@ class TitleState extends MusicBeatState
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
-	var ngSpr:FlxSprite;
+	var tzank_boi_apobz_obv_ur_motr:FlxSprite;
 
 	var curWacky:Array<String> = [];
 
@@ -234,20 +234,20 @@ class TitleState extends MusicBeatState
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
 
-		credTextShit = new Alphabet(0, 0, "ninjamuffin99\nPhantomArcade\nkawaisprite\nevilsk8er", true);
+		credTextShit = new Alphabet(0, 0, "[504]brandon\nLeather128\nMemeHoovy\nInskal", true);
 		credTextShit.screenCenter();
 
 		// credTextShit.alignment = CENTER;
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
-		add(ngSpr);
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
-		ngSpr.updateHitbox();
-		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = true;
+		tzank_boi_apobz_obv_ur_motr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('UrMom'));
+		add(tzank_boi_apobz_obv_ur_motr);
+		tzank_boi_apobz_obv_ur_motr.visible = false;
+		tzank_boi_apobz_obv_ur_motr.setGraphicSize(Std.int(tzank_boi_apobz_obv_ur_motr.width * 0.8));
+		tzank_boi_apobz_obv_ur_motr.updateHitbox();
+		tzank_boi_apobz_obv_ur_motr.screenCenter(X);
+		tzank_boi_apobz_obv_ur_motr.antialiasing = true;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -299,17 +299,12 @@ class TitleState extends MusicBeatState
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
-		if (FlxG.keys.justPressed.F)
+		if (FlxG.keys.justPressed.F)//why f?
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
-
-		if (FlxG.keys.justPressed.FIVE)
-		{
-			FlxG.switchState(new CutsceneAnimTestState());
-		}
 
 		#if mobile
 		for (touch in FlxG.touches.list)
@@ -435,7 +430,7 @@ class TitleState extends MusicBeatState
 				switch (i + 1)
 				{
 					case 1:
-						createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+						createCoolText(['[504]brandon', 'leather128', 'MemeHoovy', 'InsKal']);
 					// credTextShit.visible = true;
 					case 3:
 						addMoreText('present');
@@ -449,12 +444,12 @@ class TitleState extends MusicBeatState
 					case 5:
 						createCoolText(['In association', 'with']);
 					case 7:
-						addMoreText('newgrounds');
-						ngSpr.visible = true;
+						addMoreText('ur mom');
+						tzank_boi_apobz_obv_ur_motr.visible = true;
 					// credTextShit.text += '\nNewgrounds';
 					case 8:
 						deleteCoolText();
-						ngSpr.visible = false;
+						tzank_boi_apobz_obv_ur_motr.visible = false;
 					// credTextShit.visible = false;
 		
 					// credTextShit.text = 'Shoutouts Tom Fulp';
@@ -494,7 +489,7 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
-			remove(ngSpr);
+			remove(tzank_boi_apobz_obv_ur_motr);
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
