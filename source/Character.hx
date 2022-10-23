@@ -507,7 +507,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				hpcolor = 0x201E1E;
+				hpcolor = 0xFF201E1E;
 
 				flipX = true;
 		}

@@ -1,5 +1,7 @@
 package ui;
 
+import flixel.FlxGame;
+import lime.tools.Command;
 import openfl.display.Window;
 import openfl.Lib;
 import flixel.FlxG;
@@ -120,7 +122,7 @@ class PreferencesMenu extends Page
 		switch (identifier)
 		{
 			case 'auto-pause':
-				FlxG.autoPause = getPref('auto-pause');
+				FlxG.autoPause = getPref('auto-pause');	
 		}
 
 		FlxG.save.data.settings = preferences;
