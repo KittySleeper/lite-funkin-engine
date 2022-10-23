@@ -1668,9 +1668,6 @@ class PlayState extends MusicBeatState
 					gfSpeed = 2;
 				case 112:
 					gfSpeed = 1;
-					// case 163:
-					// FlxG.sound.music.stop();
-					// FlxG.switchState(new TitleState());
 			}
 		}
 
