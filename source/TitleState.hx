@@ -104,6 +104,7 @@ class TitleState extends MusicBeatState
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			startIntro();
+			if(PreferencesMenu.getPref('fps') != null)
 			Main.fpsCounter.visible = PreferencesMenu.getPref('fps');
 		});
 
