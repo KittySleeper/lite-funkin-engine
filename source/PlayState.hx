@@ -2628,6 +2628,7 @@ class PlayState extends MusicBeatState
 
 				if (FlxG.random.bool(10) && fastCarCanDrive)
 					fastCarDrive();
+
 			case "philly":
 				if (!trainMoving)
 					trainCooldown += 1;
