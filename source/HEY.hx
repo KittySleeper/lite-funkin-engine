@@ -16,7 +16,6 @@ class HEY extends MusicBeatState{
         bg.y = bg.y;
         bg.visible = false;
         bg.antialiasing = true;
-        bg.alpha = 0.7;
         bg.color = 0xFF1B1A1A;
 
         var warn = new FlxText();
