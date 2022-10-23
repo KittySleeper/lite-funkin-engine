@@ -45,4 +45,13 @@ class CoolUtil
 	{
 		return a + camLerpShit(ratio) * (b - a);
 	}
+
+	public static function loadSong(SongName:String, Diff:Int, Week:Int) {
+		var loader = Highscore.formatSong(SongName, Diff);
+		PlayState.SONG = Song.loadFromJson(loader, SongName);
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = Diff;
+		PlayState.storyWeek = 1;
+		LoadingState.loadAndSwitchState(new PlayState());
+	}
 }
