@@ -1215,8 +1215,6 @@ class PlayState extends MusicBeatState
 
 	private function generateSong():Void
 	{
-		// FlxG.log.add(ChartParser.parse());
-
 		var songData = SONG;
 		Conductor.changeBPM(songData.bpm);
 
@@ -1321,7 +1319,6 @@ class PlayState extends MusicBeatState
 	{
 		for (i in 0...4)
 		{
-			// FlxG.log.add(i);
 			var babyArrow:FlxSprite = new FlxSprite(0, strumLine.y);
 			var colorSwap:ColorSwap = new ColorSwap();
 
