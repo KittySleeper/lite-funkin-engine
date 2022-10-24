@@ -2071,8 +2071,8 @@ class PlayState extends MusicBeatState
 		}
 
 		if(curStage == 'alley8'){
-			rating.y -= 1210;
-			comboSpr.y -= 1210;
+			rating.y += 532;
+			comboSpr.y += 532;
 		}
 
 		comboSpr.updateHitbox();
@@ -2159,6 +2159,8 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'senpai-angry':
 					camFollow.y = dad.getMidpoint().y - 430;
 					camFollow.x = dad.getMidpoint().x - 100;
+				case 'darnell':
+					camFollow.y = dad.getMidpoint().y - 328.2;
 			}
 
 			if (SONG.song.toLowerCase() == 'tutorial')
