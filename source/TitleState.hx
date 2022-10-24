@@ -237,7 +237,7 @@ class TitleState extends MusicBeatState
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
 
-		credTextShit = new Alphabet(0, 0, "[504]brandon\nLeather128\nMemeHoovy\nInskal", true);
+		credTextShit = new Alphabet(0, 0, "[504]brandon\nLeather128\nMemeHoovy\nInskal\nFutureDorito", true);
 		credTextShit.screenCenter();
 
 		// credTextShit.alignment = CENTER;
@@ -433,7 +433,7 @@ class TitleState extends MusicBeatState
 				switch (i + 1)
 				{
 					case 1:
-						createCoolText(['[504]brandon', 'leather128', 'MemeHoovy', 'InsKal']);
+						createCoolText(['[504]brandon', 'leather128', 'MemeHoovy', 'InsKal', 'FutureDorito']);
 					// credTextShit.visible = true;
 					case 3:
 						addMoreText('present');

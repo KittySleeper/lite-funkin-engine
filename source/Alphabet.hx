@@ -234,9 +234,9 @@ class Alphabet extends FlxSpriteGroup
 
 class AlphaCharacter extends FlxSprite
 {
-	public static var alphabet:String = "abcdefghijklmnopqrstuvwxyz";
+	public static var alphabet:String = "abcdefghijklmnopqrstuvwxyz2";
 
-	public static var numbers:String = "1234567890";
+	public static var numbers:String = "134567890";
 
 	public static var symbols:String = "|~#$%()*+-:;<=>@[]^_.,'!?";
 
