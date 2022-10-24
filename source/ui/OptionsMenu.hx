@@ -14,11 +14,15 @@ class OptionsMenu extends Page
 		{
 			onSwitch.dispatch(PageName.Preferences);
 		});
+		createItem('unnessesary', function()
+		{
+			onSwitch.dispatch(PageName.Unnessesary);
+		});
 		createItem('controls', function()
 		{
 			onSwitch.dispatch(PageName.Controls);
 		});
-		createItem('judgepos', function()
+		createItem('judgement position', function()
 		{
 			FlxG.switchState(new ui.JudgePositionState());
 		});
