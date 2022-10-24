@@ -1,5 +1,6 @@
 package;
 
+import ui.JudgePositionState;
 import ui.UnnessesaryMenu;
 import animate.FlxAnimate;
 import shaderslmfao.BuildingShaders;
@@ -2035,6 +2036,10 @@ class PlayState extends MusicBeatState
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
 		rating.y -= 60;
+		if(JudgePositionState.SICK.x != null)
+		rating.x = JudgePositionState.SICK.x;
+		if(JudgePositionState.SICK.y != null)
+		rating.y = JudgePositionState.SICK.y;
 		rating.acceleration.y = 550;
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
@@ -2042,6 +2047,10 @@ class PlayState extends MusicBeatState
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
 		comboSpr.x = coolText.x;
+		if(JudgePositionState.COMBO.x != null)
+		comboSpr.x = JudgePositionState.COMBO.x;
+		if(JudgePositionState.COMBO.y != null)
+		comboSpr.y = JudgePositionState.COMBO.y;
 		comboSpr.acceleration.y = 600;
 		comboSpr.velocity.y -= 150;
 

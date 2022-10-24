@@ -16,6 +16,10 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
+	inline function Postcreate(){
+		//this will be before anything
+	}
+
 	override function create()
 	{
 		if (transIn != null)
@@ -34,8 +38,6 @@ class MusicBeatState extends FlxUIState
 
 		if (oldStep != curStep && curStep >= 0)
 			stepHit();
-
-		flixel.FlxG.stage.frameRate = 1000;
 
 		super.update(elapsed);
 	}
