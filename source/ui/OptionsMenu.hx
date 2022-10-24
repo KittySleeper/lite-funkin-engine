@@ -14,10 +14,10 @@ class OptionsMenu extends Page
 		{
 			onSwitch.dispatch(PageName.Preferences);
 		});
-		createItem('unnessesary', function()
+		/*createItem('unnessesary', function()
 		{
 			onSwitch.dispatch(PageName.Unnessesary);
-		});
+		});*/
 		createItem('controls', function()
 		{
 			onSwitch.dispatch(PageName.Controls);

@@ -137,7 +137,7 @@ class PreferencesMenu extends Page
 			case 'fpsboost':
 				if(getPref('fpsboost'))
 				Main.framerate = 1000;
-		
+
 				if(getPref('fpsboost') == false)
 				Main.framerate = 120;
 		}

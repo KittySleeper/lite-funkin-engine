@@ -1,5 +1,6 @@
 package;
 
+import ui.UnnessesaryMenu;
 import animate.FlxAnimate;
 import shaderslmfao.BuildingShaders;
 import ui.PreferencesMenu;
@@ -1580,6 +1581,14 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+
+		/*UnnessesaryMenu.getUnnessesaryinfo('MYEYESWEREDIEINGWHENTESTINGTHIS');{
+			FlxG.camera.angle += 10;
+			FlxG.camera.color.green;
+			FlxG.camera.color.red;
+			FlxG.camera.color.blue;
+			FlxG.camera.color.cyan;
+		}*/
 
 		if(PreferencesMenu.getPref('ui_old'))
 		scoreTxt.text = "Score:" + songScore;

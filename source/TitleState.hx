@@ -1,6 +1,6 @@
 package;
 
-import ui.UnnessesaryMenu.UnnessearyMenu;
+import ui.UnnessesaryMenu;
 import openfl.display.Sprite;
 import openfl.net.NetStream;
 import openfl.media.Video;
@@ -99,8 +99,8 @@ class TitleState extends MusicBeatState
 		if (FlxG.save.data.settings != null)
 			PreferencesMenu.preferences = FlxG.save.data.settings;
 
-		if (FlxG.save.data.unnessearystuffthatsset != null)
-			UnnessearyMenu.unnessearyfunnis = FlxG.save.data.unnessearystuffthatsset;
+		/*if (FlxG.save.data.unnessearystuffthatsset != null)
+			UnnessesaryMenu.dumbassunesesaryandyesispelleditwrongidc = FlxG.save.data.unnessearystuffthatsset;*/
 
 			if(PreferencesMenu.getPref('fpsshow') != null)
 			Main.fpsCounter.visible = PreferencesMenu.getPref('fpsshow');

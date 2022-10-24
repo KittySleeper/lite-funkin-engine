@@ -11,9 +11,9 @@ import flixel.util.FlxColor;
 import haxe.ds.StringMap;
 import flixel.FlxSubState;
 
-class UnnessearyMenu extends Page
+class UnnessesaryMenu extends Page
 {
-	public static var unnessearyfunnis:StringMap<Dynamic> = new StringMap<Dynamic>();
+	public static var dumbassunesesaryandyesispelleditwrongidc:StringMap<Dynamic> = new StringMap<Dynamic>();
 
 	var checkboxes:Array<CheckboxThingie> = [];
 	var menuCamera:FlxCamera;
@@ -32,7 +32,7 @@ class UnnessearyMenu extends Page
 
 		add(items = new TextMenuList());
 
-		unnessearystuffthatgersetssetcreation('siguremode', 'MYEYESWEREDIEINGWHENTESTINGTHIS', true);
+		createunnesesarystupidItem('sigiremode', 'MYEYESWEREDIEINGWHENTESTINGTHIS', false);
 
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
 		if (items != null) camFollow.y = items.members[items.selectedIndex].y;
@@ -46,37 +46,37 @@ class UnnessearyMenu extends Page
 		});
 	}
 
-	public static function getUnnessesaryinfo(unnessesarythinglol:String)
+	public static function getUnnessesaryinfo(fuckyou:String)
 	{
-		return unnessearyfunnis.get(unnessesarythinglol);
+		return dumbassunesesaryandyesispelleditwrongidc.get(fuckyou);
 	}
 
-	public static function initallofthisshit()
+	public static function inituselsessirem()
 	{
-		unnessesaryshitcheck('MYEYESWEREDIEINGWHENTESTINGTHIS', true);
+		dumbasscheck('MYEYESWEREDIEINGWHENTESTINGTHIS', false);
 	}
 
-	public static function unnessesaryshitcheck(identifier:String, defaultValue:Dynamic)
+	public static function dumbasscheck(identifier:String, defaultValue:Dynamic)
 	{
-		if (unnessearyfunnis.get(identifier) == null)
+		if (dumbassunesesaryandyesispelleditwrongidc.get(identifier) == null)
 		{
-			unnessearyfunnis.set(identifier, defaultValue);
+			dumbassunesesaryandyesispelleditwrongidc.set(identifier, defaultValue);
 			trace('set preference!');
 		}
 		else
 		{
-			trace('found preference: ' + Std.string(unnessearyfunnis.get(identifier)));
+			trace('found preference: ' + Std.string(dumbassunesesaryandyesispelleditwrongidc.get(identifier)));
 		}
 	}
 
-	public function unnessearystuffthatgersetssetcreation(label:String, identifier:String, value:Dynamic)
+	public function createunnesesarystupidItem(label:String, identifier:String, value:Dynamic)
 	{
 		items.createItem(120, 120 * items.length + 30, label, Bold, function()
 		{
-			unnessesaryshitcheck(identifier, value);
+			dumbasscheck(identifier, value);
 			if (Type.typeof(value) == TBool)
 			{
-				prefToggle(identifier);
+				dumbassunessesaryToggle(identifier);
 			}
 			else
 			{
@@ -96,24 +96,20 @@ class UnnessearyMenu extends Page
 
 	public function createCheckbox(identifier:String)
 	{
-		var box:CheckboxThingie = new CheckboxThingie(0, 120 * (items.length - 1), unnessearyfunnis.get(identifier));
+		var box:CheckboxThingie = new CheckboxThingie(0, 120 * (items.length - 1), dumbassunesesaryandyesispelleditwrongidc.get(identifier));
 		checkboxes.push(box);
 		add(box);
 	}
 
-	public function prefToggle(identifier:String)
+	public function dumbassunessesaryToggle(identifier:String)
 	{
-		var value:Bool = unnessearyfunnis.get(identifier);
+		var value:Bool = dumbassunesesaryandyesispelleditwrongidc.get(identifier);
 		value = !value;
-		unnessearyfunnis.set(identifier, value);
+		dumbassunesesaryandyesispelleditwrongidc.set(identifier, value);
 		checkboxes[items.selectedIndex].daValue = value;
-		trace('toggled? ' + Std.string(unnessearyfunnis.get(identifier)));
-		switch (identifier)
-		{
-			
-		}
+		trace('toggled? ' + Std.string(dumbassunesesaryandyesispelleditwrongidc.get(identifier)));
 
-		FlxG.save.data.unnessearystuffthatsset = unnessearyfunnis;
+		FlxG.save.data.settings = dumbassunesesaryandyesispelleditwrongidc;
 		FlxG.save.flush();
 	}
 
