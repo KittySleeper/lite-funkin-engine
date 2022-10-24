@@ -1662,10 +1662,11 @@ class PlayState extends MusicBeatState
 		iconP1.animation.curAnim.curFrame = healthBar.percent < 20 ? 1 : 0;
 		iconP2.animation.curAnim.curFrame = healthBar.percent > 80 ? 1 : 0;
 
-		#if debug
-		if (FlxG.keys.justPressed.EIGHT)
+		if (FlxG.keys.justPressed.FIVE)
+			FlxG.switchState(new AnimationDebug(SONG.player1));
+
+		if (FlxG.keys.justPressed.SIX)
 			FlxG.switchState(new AnimationDebug(SONG.player2));
-		#end
 
 		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 		{

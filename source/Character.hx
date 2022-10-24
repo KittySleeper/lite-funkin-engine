@@ -215,10 +215,11 @@ class Character extends FlxSprite
 				quickAnimAdd('singDOWN', 'Pico Down Note0');
 				if (isPlayer)
 				{
-					quickAnimAdd('singLEFT', 'Pico NOTE LEFT0');
-					quickAnimAdd('singRIGHT', 'Pico Note Right0');
+					quickAnimAdd('singRIGHT', 'Pico NOTE LEFT0');
+					quickAnimAdd('singLEFT', 'Pico Note Right0');
 					quickAnimAdd('singRIGHTmiss', 'Pico Note Right Miss');
 					quickAnimAdd('singLEFTmiss', 'Pico NOTE LEFT miss');
+					loadOffsetFile(curCharacter + 'playable');
 				}
 				else
 				{
@@ -227,12 +228,11 @@ class Character extends FlxSprite
 					quickAnimAdd('singRIGHT', 'Pico NOTE LEFT0');
 					quickAnimAdd('singRIGHTmiss', 'Pico NOTE LEFT miss');
 					quickAnimAdd('singLEFTmiss', 'Pico Note Right Miss');
+					loadOffsetFile(curCharacter);
 				}
 
 				quickAnimAdd('singUPmiss', 'pico Up note miss');
 				quickAnimAdd('singDOWNmiss', 'Pico Down Note MISS');
-
-				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
 
