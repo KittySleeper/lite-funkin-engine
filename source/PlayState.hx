@@ -2036,9 +2036,9 @@ class PlayState extends MusicBeatState
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
 		rating.y -= 60;
-		if(JudgePositionState.SICK.x != null)
+		if(FlxG.save.data.sickx != null)
 		rating.x = JudgePositionState.SICK.x;
-		if(JudgePositionState.SICK.y != null)
+		if(FlxG.save.data.sicky != null)
 		rating.y = JudgePositionState.SICK.y;
 		rating.acceleration.y = 550;
 		rating.velocity.y -= FlxG.random.int(140, 175);
@@ -2047,9 +2047,9 @@ class PlayState extends MusicBeatState
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
 		comboSpr.x = coolText.x;
-		if(JudgePositionState.COMBO.x != null)
+		if(FlxG.save.data.combox != null)
 		comboSpr.x = JudgePositionState.COMBO.x;
-		if(JudgePositionState.COMBO.y != null)
+		if(FlxG.save.data.comboy != null)
 		comboSpr.y = JudgePositionState.COMBO.y;
 		comboSpr.acceleration.y = 600;
 		comboSpr.velocity.y -= 150;
@@ -2068,6 +2068,11 @@ class PlayState extends MusicBeatState
 		{
 			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
+		}
+
+		if(curStage == 'alley8'){
+			rating.y -= 1210;
+			comboSpr.y -= 1210;
 		}
 
 		comboSpr.updateHitbox();

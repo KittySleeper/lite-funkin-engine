@@ -62,28 +62,28 @@ class JudgePositionState extends MusicBeatState{
 		FlxG.save.flush();
 
         if(FlxG.keys.justPressed.LEFT){
-            SICK.x -= 2.2;
+            SICK.x -= 2;
         }
         if(FlxG.keys.justPressed.RIGHT){
-            SICK.x += 2.2;
+            SICK.x += 2;
         }
         if(FlxG.keys.justPressed.UP){
-            SICK.y -= 2.2;
+            SICK.y -= 2;
         }
         if(FlxG.keys.justPressed.DOWN){
-            SICK.y += 2.2;
+            SICK.y += 2;
         }
         if(FlxG.keys.justPressed.A){
-            COMBO.x -= 2.2;
+            COMBO.x -= 2;
         }
         if(FlxG.keys.justPressed.D){
-            COMBO.x += 2.2;
+            COMBO.x += 2;
         }
         if(FlxG.keys.justPressed.W){
-            COMBO.y -= 2.2;
+            COMBO.y -= 2;
         }
         if(FlxG.keys.justPressed.S){
-            COMBO.y += 2.2;
+            COMBO.y += 2;
         }
 
         if(FlxG.keys.justPressed.ESCAPE){
