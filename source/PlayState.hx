@@ -130,7 +130,6 @@ class PlayState extends MusicBeatState
 	var gfCutsceneLayer:FlxTypedGroup<FlxAnimate>;
 	var bfTankCutsceneLayer:FlxTypedGroup<FlxAnimate>;
 
-	var talking:Bool = true;
 	var songScore:Int = 0;
 	var songMisses:Int = 0;
 	var songAccuracy:Float = 100;
@@ -1101,7 +1100,6 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		talking = false;
 		startedCountdown = true;
 		Conductor.songPosition = 0;
 		Conductor.songPosition -= Conductor.crochet * 5;
@@ -1917,7 +1915,6 @@ class PlayState extends MusicBeatState
 				else
 					FlxG.switchState(new StoryMenuState());
 
-				// if ()
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
 
 				if (SONG.validScore)
