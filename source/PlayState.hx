@@ -216,10 +216,6 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
-			case 'darnell':
-				dialogue = [
-					"dad:ok so ik the charts aint official but everything else is so enjoy p.s ninjamuffin dont kill me lol",
-				];
 		}
 
 		#if desktop
@@ -608,7 +604,10 @@ class PlayState extends MusicBeatState
 			{
 				curStage = 'alley8';
 
-				var bg:BGSprite = new BGSprite('alley', -600, -200, 0.9, 0.9);
+				defaultCamZoom = 0.8;
+
+				var bg:BGSprite = new BGSprite('alley', -1765.6, 538.2);
+				bg.scale.set(0.6, 0.6);
 				add(bg);
 			}
 			default:
@@ -725,6 +724,8 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case "tankman":
 				dad.y += 180;
+			case "darnell":
+				dad.y += 1896.2;
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
@@ -767,6 +768,12 @@ class PlayState extends MusicBeatState
 					gf.x -= 170;
 					gf.y -= 75;
 				}
+			case 'alley8':
+				boyfriend.y += 1327;
+				boyfriend.x -= 197.8;
+				dad.y += 30.8;
+				gf.y += 1327;
+				gf.x += 43;
 		}
 
 		add(gf);
@@ -918,7 +925,7 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
-					case 'senpai' | 'roses' | 'thorns' | 'darnell':
+					case 'senpai' | 'roses' | 'thorns':
 						schoolIntro(doof);
 						// now it looks like I stole this from Psych
 						if (curSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));

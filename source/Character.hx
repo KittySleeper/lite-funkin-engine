@@ -527,16 +527,15 @@ class Character extends FlxSprite
 				hpcolor = 0xFF735EB0;
 
 			case 'nene':
-				// nene is funni
+				// DAD ANIMATION LOADING CODE
 				frames = Paths.getSparrowAtlas('characters/Nene');
-				animation.addByIndices('danceLeft', 'Nene left', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'Nene right', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				quickAnimAdd('idle', 'Nene Idle');
 
 				loadOffsetFile(curCharacter);
 
-				hpcolor = 0xFFFFFFFF;
+				playAnim('idle');
 
-				playAnim('danceRight');
+				hpcolor = 0xFF000000;
 		}
 
 		dance();
@@ -664,7 +663,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-tankmen' | 'nene':
+				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-tankmen':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

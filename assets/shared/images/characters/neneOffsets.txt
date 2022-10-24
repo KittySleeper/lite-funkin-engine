@@ -1,2 +1,1 @@
-danceLeft 5 -13
-danceRight 5 -13
+idle 5 -13
