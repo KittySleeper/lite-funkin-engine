@@ -1,38 +1,10 @@
-# Friday Night Funkin v0.2.8 (Newgrounds Exclusive)
+# Friday Night Funkin -Lite Engine
 
-This is the repository for Friday Night Funkin' v0.2.8, a game in which lies on a singular web page on the internet with no open-source code.
-
-This project is the result of reverse engineering the transpiled JavaScript code into readable Haxe code, which can now be built upon with ease.
-
-# Our goals
-
-This project aims to bring v0.2.8 back into Haxe as close as possible to the original.
-
-This means bugs and other issues with v0.2.8 in general are not being fixed.
-
-Any errors on my part though will be fixed as soon as I notice them. If you catch something before I do, [please open an issue regarding the error](../../issues).
-
-# Important notes
-
-To not mess with any of the integrations Ninjamuffin had in place, I have decided to completely remove them from the project.
-
-What's missing? Logins, awards, and a check to see if the game is outdated or not. Other than that though, the repo should be mostly accurate to how to game is shown on the website.
-
-If demand is high enough, I may make a separate branch for you to enter in your own Newgrounds API keys and bring these features back. We'll see.
-
-# Support Friday Night Funkin'
-
-Play the Ludum Dare prototype here: https://ninja-muffin24.itch.io/friday-night-funkin
-
-Play the Newgrounds one here: https://www.newgrounds.com/portal/view/770371
-
-Support the project on the itch.io page: https://ninja-muffin24.itch.io/funkin
-
-Support the project on the Kickstarter page: https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game
+this fnf engine is in beta the readme will be updated eventually discord:https://discord.gg/XZjzBBYARC
 
 ## Credits / shoutouts
 
-- [ninjamuffin99](https://twitter.com/ninja_muffin99) - Programmer
+- [ninjamuffin99](https://twitter.com/ninja_muffin99) - Og Game Programmer
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
 - [AngelDTF](https://github.com/AngelDTF) - Reverse engineering
