@@ -41,10 +41,18 @@ class JudgePositionState extends MusicBeatState{
             SICK.screenCenter();
             SICK.x = rateingpostxtplacement.x - 40;
             SICK.y -= 60;
+            if(FlxG.save.data.sicky != null)
+            SICK.y = FlxG.save.data.sicky;
+            if(FlxG.save.data.sickx != null)
+            SICK.x = FlxG.save.data.sickx;
             add(SICK);
 
             COMBO.screenCenter();
             COMBO.x = rateingpostxtplacement.x;
+            if(FlxG.save.data.comboy != null)
+            COMBO.y = FlxG.save.data.comboy;
+            if(FlxG.save.data.combox != null)
+            COMBO.x = FlxG.save.data.combox;
             add(COMBO);
     }
 
