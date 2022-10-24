@@ -1,10 +1,5 @@
 package;
 
-import polymod.PolymodConfig;
-import polymod.Polymod;
-import polymod.backends.PolymodAssetLibrary;
-import polymod.format.CSV;
-import polymod.fs.PolymodFileSystem;
 import openfl.display.Sprite;
 import openfl.net.NetStream;
 import openfl.media.Video;
@@ -66,10 +61,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		//is polymod real
-		PolymodConfig.modPackFile.replace('assets', 'assets/mods');
-		PolymodConfig.rootPath.replace('assets', 'assets/mods');
-		//is it?
 		swagShader = new ColorSwap();
 		alphaShader = new BuildingShaders();
 
