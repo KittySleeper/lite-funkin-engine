@@ -744,7 +744,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'alley8':
 				boyfriend.y += 1327;
-				boyfriend.x -= 197.8;
+				boyfriend.x += 145.4;
 				dad.y += 30.8;
 				gf.y += 1327;
 				gf.x += 43;
@@ -2059,8 +2059,8 @@ class PlayState extends MusicBeatState
 		}
 
 		if(curStage == 'alley8'){
-			rating.y -= 1210;
-			comboSpr.y -= 1210;
+			rating.y += 532;
+			comboSpr.y += 532;
 		}
 
 		comboSpr.updateHitbox();
@@ -2147,6 +2147,8 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'senpai-angry':
 					camFollow.y = dad.getMidpoint().y - 430;
 					camFollow.x = dad.getMidpoint().x - 100;
+				case 'darnell':
+					camFollow.y = dad.getMidpoint().y - 328.2;
 			}
 
 			if (SONG.song.toLowerCase() == 'tutorial')
@@ -2173,6 +2175,11 @@ class PlayState extends MusicBeatState
 					camFollow.y = boyfriend.getMidpoint().y - 200;
 			}
 
+			switch(boyfriend.curCharacter){
+				case 'pico':
+					camFollow.x = boyfriend.getMidpoint().x - 484;
+			}
+
 			if (SONG.song.toLowerCase() == 'tutorial')
 			{
 				FlxTween.tween(FlxG.camera, {zoom: 1}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut});
@@ -2184,9 +2191,7 @@ class PlayState extends MusicBeatState
 	{
 		var holdingArray:Array<Bool> = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
 		var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
-		var releaseArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
 
-		// FlxG.watch.addQuick('asdfa', upP);
 		if (holdingArray.contains(true) && generatedMusic)
 		{
 			notes.forEachAlive(function(daNote:Note)
