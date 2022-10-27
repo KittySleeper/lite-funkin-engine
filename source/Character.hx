@@ -22,6 +22,13 @@ class Character extends FlxSprite
 	public var animationNotes:Array<Dynamic> = [];
 	public var hpcolor:FlxColor;
 
+	//Used for Game Over Properties
+	//cuz I love softcoding things
+	public static var deathChar:String = 'bf-dead';
+	public static var deathSound:String = 'fnf_loss_sfx';
+	public static var deathConfirm:String = 'gameOverEnd';
+	public static var deathMusic:String = 'gameOver';
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
