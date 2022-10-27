@@ -1,8 +1,8 @@
 # Friday Night Funkin -Lite Engine
-
+[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/atK58SwBck)
 ## Credits / shoutouts
 
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/atK58SwBck)
+
 
  FUNKIN CREW -
 - [ninjamuffin99](https://twitter.com/ninja_muffin99) - Og Game Programmer
