@@ -2543,8 +2543,10 @@ class PlayState extends MusicBeatState
 
 		wiggleShit.update(Conductor.crochet);
 
-		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
-			curSection = PlayState.SONG.notes[Std.int(curStep / 16)];
+		if (curStep % 16 == 0 && curSong.toLowerCase() == 'milf')
+		{
+			curSection = Math.floor(curStep / 16);
+		}
 
 		if (PreferencesMenu.getPref('camera-zoom'))
 		{
