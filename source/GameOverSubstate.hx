@@ -26,13 +26,13 @@ class GameOverSubstate extends MusicBeatSubstate
 	// 	[]
 	// ];
 
-	public var defaultProperties:Array<String> = [
-		'bf',
-		'fnf_loss_sfx',
-		'gameOverEnd',
-		'gameOver',
-		// 'stage'
-	];
+	// public var defaultProperties:Array<String> = [
+	// 	'bf',
+	// 	'fnf_loss_sfx',
+	// 	'gameOverEnd',
+	// 	'gameOver',
+	// 	// 'stage'
+	// ];
 	
 	public var daBPM:Int = 100;
 
@@ -41,9 +41,10 @@ class GameOverSubstate extends MusicBeatSubstate
 	public var gameOverChar:String = "";
 
 	function resetVariables(){
-		for (guh in defaultProperties){
-			daBf = guh[0];
-		}
+		// for (guh in defaultProperties){
+		// 	daBf = guh[0];
+		// }
+		daBf = 'bf';
 	}
 
 	public function new(x:Float, y:Float, ?kidsImGoingToMurder:Int = 100)
