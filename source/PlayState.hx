@@ -2577,7 +2577,7 @@ class PlayState extends MusicBeatState
 			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % bumpRate == 0)
 			{
 				FlxG.camera.zoom += 0.015;
-				camHUD.zoom += 0.015 * 2;
+				camHUD.zoom += 0.015;
 			}
 		}
 
