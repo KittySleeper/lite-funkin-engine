@@ -4,7 +4,7 @@ this fnf engine is in beta the readme will be updated eventually discord:https:/
 
 ## Credits / shoutouts
 
-- [ninjamuffin99](https://twitter.com/ninja_muffin99) - Og Game Programmer
+- [ninjamuffin99](https://twitter.com/ninja_muffin99) - OG Game Programmer
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
 - [AngelDTF](https://github.com/AngelDTF) - Reverse engineering
@@ -20,7 +20,7 @@ IF YOU WANT TO COMPILE THE GAME YOURSELF, CONTINUE READING!!!
 ### Installing the Required Programs
 
 First you need to install Haxe and HaxeFlixel. I'm too lazy to write and keep updated with that setup (which is pretty simple). 
-1. [Install Haxe](https://haxe.org/download/) (If you're having issues installing libraries on latest, try using [Haxe 4.1.5](https://haxe.org/download/version/4.1.5/) instead)
+1. [Install Haxe](https://haxe.org/download/)
 2. [Install HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/) after downloading Haxe
 
 Other installations you'd need is the additional libraries, a fully updated list will be in `Project.xml` in the project root. Currently, these are all of the things you need to install:
