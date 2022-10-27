@@ -21,7 +21,7 @@ TEAM 504 -
 - [MEEPERS](https://www.youtube.com/watch?v=N2YRXOD8OSE)
 
 
-## Compile tutorial !!!
+## Compile tutorial !!
 
 
 Step 1. [Install Haxe](https://haxe.org/download/version/4.2.5/) 
