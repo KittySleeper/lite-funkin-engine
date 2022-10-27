@@ -158,6 +158,9 @@ class PlayState extends MusicBeatState
 
 	public var bumpRate:Int = 4;
 
+	public var notesHit:Float = 0;
+	public var funnyThing:Int = 0;
+
 	override public function create()
 	{
 		if (FlxG.sound.music != null)
@@ -942,6 +945,14 @@ class PlayState extends MusicBeatState
 	
 			super.create();
 		}
+
+	// it looks like I stole this from FPS Plus
+	function updateAccuracy(){
+		funnyThing++;
+		accuracy = notesHit / funnyThing * 100; // math is not my fortue
+		if (songAccuracy >= 100)
+			songAccuracy = 100;
+	}
 
 	function ughIntro():Void
 	{
@@ -1994,18 +2005,21 @@ class PlayState extends MusicBeatState
 			daRating = 'shit';
 			score = 50;
 			doSplash = false;
+			notesHit += 1 - 0.9;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.75)
 		{
 			daRating = 'bad';
 			score = 100;
 			doSplash = false;
+			notesHit += 1 - 0.75;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.2)
 		{
 			daRating = 'good';
 			score = 200;
 			doSplash = false;
+			notesHit += 1 - 0.2;
 		}
 
 		if (doSplash)
@@ -2013,6 +2027,7 @@ class PlayState extends MusicBeatState
 			var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 			splash.setupNoteSplash(daNote.x, daNote.y, daNote.noteData);
 			grpNoteSplashes.add(splash);
+			notesHit += 1;
 		}
 
 		if (!practiceMode)
