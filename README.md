@@ -1,30 +1,26 @@
 # Friday Night Funkin -Lite Engine
-![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)(https://discord.gg/XZjzBBYAR)
+
+this fnf engine is in beta the readme will be updated eventually discord:https://discord.gg/XZjzBBYARC
 
 ## Credits / shoutouts
- FUNKIN CREW -
-- [ninjamuffin99](https://twitter.com/ninja_muffin99) - Og Game Programmer
+
+- [ninjamuffin99](https://twitter.com/ninja_muffin99) - OG Game Programmer
 - [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
 - [Kawaisprite](https://twitter.com/kawaisprite) - Musician
 - [AngelDTF](https://github.com/AngelDTF) - Reverse engineering
 
-TEAM 504 -
-//CODERS
-- [504brandon](https://github.com/504brandon)
-- [InsKal](https://github.com/InsKal)
-- [JustARock](https://www.youtube.com/watch?v=N2YRXOD8OSE)
-- [MemeHoovy](https://github.com/MemeHoovy)
-- [FutureDorito](https://www.youtube.com/watch?v=N2YRXOD8OSE)
-- [Leather128](https://github.com/InsKal)
-- [W0CKY](https://github.com/InsKal)
-//ART
-- [MEEPERS](https://www.youtube.com/watch?v=N2YRXOD8OSE)
+## Build instructions
 
+THESE INSTRUCTIONS ARE FOR COMPILING THE GAME'S SOURCE CODE!!!
 
-## Compile tutorial !!!
+IF YOU WANT TO JUST DOWNLOAD AND INSTALL AND PLAY THE GAME NORMALLY, [GO TO THE RELEASES PAGE](../../releases) AND DOWNLOAD PRECOMPILED PACKAGES FROM THERE!
 
+IF YOU WANT TO COMPILE THE GAME YOURSELF, CONTINUE READING!!!
 
-Step 1. [Install Haxe](https://haxe.org/download/version/4.2.5/) 
+### Installing the Required Programs
+
+First you need to install Haxe and HaxeFlixel. I'm too lazy to write and keep updated with that setup (which is pretty simple). 
+1. [Install Haxe](https://haxe.org/download/)
 2. [Install HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/) after downloading Haxe
 
 Other installations you'd need is the additional libraries, a fully updated list will be in `Project.xml` in the project root. Currently, these are all of the things you need to install:
@@ -47,8 +43,6 @@ At the moment, you can optionally fix some bugs regarding the engine:
 - Run `haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons` in the terminal/command-prompt.
 2. A text rendering bug (mainly noticeable in the story menu under tracks)
 - Run `haxelib git openfl https://github.com/openfl/openfl` in the terminal/command-prompt.
-3. If you want Texture Atlas chars, You should use FLXAnimate
-  - Run `haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate`
 
 You should have everything ready for compiling the game! Follow the guide below to continue!
 
