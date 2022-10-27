@@ -40,7 +40,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	function resetVariables(){
 		for (guh in defaultProperties){
-			daBF = guh[0];
+			daBf = guh[0];
 		}
 	}
 
