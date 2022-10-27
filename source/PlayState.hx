@@ -1609,7 +1609,7 @@ class PlayState extends MusicBeatState
 		if(PreferencesMenu.getPref('ui_old'))
 		scoreTxt.text = "Score:" + songScore;
 		else
-		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo + " / Time Left:" + FlxMath.round(Conductor.songPosition / 1000);
+		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo;
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
