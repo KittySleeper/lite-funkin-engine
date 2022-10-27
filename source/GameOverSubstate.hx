@@ -33,6 +33,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		'gameOver',
 		// 'stage'
 	];
+	
+	public var daBPM:Int = 100;
 
 	public var gameOverChar:String = "";
 
@@ -81,7 +83,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		add(camFollow);
 
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
-		Conductor.changeBPM(100);
+		Conductor.changeBPM(daBPM);
 
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;

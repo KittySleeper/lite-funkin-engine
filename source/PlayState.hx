@@ -2144,7 +2144,6 @@ class PlayState extends MusicBeatState
 		if (camFollow.x != dad.getMidpoint().x + 150 && !cameraRightSide)
 		{
 			camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-			// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
 
 			switch (dad.curCharacter)
 			{
