@@ -14,9 +14,9 @@ TEAM 504 -
 - [InsKal](https://github.com/InsKal)
 - [JustARock](https://www.youtube.com/watch?v=N2YRXOD8OSE)
 - [MemeHoovy](https://github.com/MemeHoovy)
-- [FutureDorito](https://www.youtube.com/watch?v=N2YRXOD8OSE)
-- [Leather128](https://github.com/InsKal)
-- [W0CKY](https://github.com/InsKal)
+- [FutureDorito](https://github.com/Futuredorito)
+- [Leather128](https://github.com/Leather128)
+- [W0CKY](https://github.com/Snoni)
 //ART
 - [MEEPERS](https://www.youtube.com/watch?v=N2YRXOD8OSE)
 
