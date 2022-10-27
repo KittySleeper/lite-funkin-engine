@@ -62,4 +62,11 @@ class CoolUtil
 		FlxG.openURL(site);
 		#end
 	}
+
+	public static function changeicon(char:String, player:Int) {//why not make changeing icons more ezz
+		if(player == 1)
+		PlayState.iconP1.changeIcon(char);
+		else
+		PlayState.iconP2.changeIcon(char);
+	}
 }
