@@ -1559,10 +1559,9 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.NINE)
 		{
 			CoolUtil.changeicon('bf-old', 1);
-			
-			if(iconP1.char == 'bf-old')
 
-			CoolUtil.changeicon('bf', 1);
+			if(iconP1.char == 'bf-old')
+				CoolUtil.changeicon('bf', 1);
 		}
 
 		if (startingSong)
