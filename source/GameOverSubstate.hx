@@ -26,9 +26,21 @@ class GameOverSubstate extends MusicBeatSubstate
 	// 	[]
 	// ];
 
-	public var gameOverProperties:Array<String> = [];
+	public var defaultProperties:Array<String> = [
+		'bf',
+		'fnf_loss_sfx',
+		'gameOverEnd',
+		'gameOver',
+		// 'stage'
+	];
 
 	public var gameOverChar:String = "";
+
+	function resetVariables(){
+		for (guh in defaultProperties){
+			daBF = guh[0];
+		}
+	}
 
 	public function new(x:Float, y:Float)
 	{
