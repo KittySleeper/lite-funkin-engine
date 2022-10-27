@@ -590,8 +590,6 @@ class PlayState extends MusicBeatState
 			case 'troll', 'ur mom', 'hehe har har', 'is that leather 128 from friday funk':
 			{
 				defaultCamZoom = 0.7;
-				dad.visible = false;
-				gf.visible = false;
 				
 				var walta_wite = new FlxSprite(0, 0).makeGraphic(10000, 10000, 0xFFFAF6F6);
 				walta_wite.screenCenter();
