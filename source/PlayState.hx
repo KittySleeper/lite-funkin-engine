@@ -838,11 +838,11 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
 		scoreTxt.scrollFactor.set();
 		}
-		else
+		else {
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 412.5, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
-
+		}
 		add(scoreTxt);
 
 		watermarkTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, healthBarBG.y + 30, 0, 'Lite Funkin - ' + SONG.song.toUpperCase() + ' - ' + storyDifficultyText, 20);
@@ -1618,9 +1618,6 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
-		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
-
 		iconP1.scale.x = CoolUtil.coolLerp(iconP1.scale.x, 1.0, 0.15);
 		iconP1.scale.y = iconP1.scale.x;
 
@@ -1829,9 +1826,6 @@ class PlayState extends MusicBeatState
 					daNote.destroy();
 				}
 
-				// WIP interpolation shit? Need to fix the pause issue
-				// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
-
 				var doKill = daNote.y < -daNote.height;
 				if (PreferencesMenu.getPref('downscroll'))
 					doKill = daNote.y > FlxG.height;
@@ -1967,7 +1961,7 @@ class PlayState extends MusicBeatState
 	private function popUpScore(strumtime:Float, daNote:Note):Void
 	{
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
-		// boyfriend.playAnim('hey');
+
 		vocals.volume = 1;
 
 		var placement:String = Std.string(combo);
@@ -2113,7 +2107,6 @@ class PlayState extends MusicBeatState
 		}
 
 		coolText.text = Std.string(seperatedScore);
-		// add(coolText);
 
 		FlxTween.tween(rating, {alpha: 0}, 0.2, {
 			startDelay: Conductor.crochet * 0.001
