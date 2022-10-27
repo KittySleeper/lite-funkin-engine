@@ -2556,7 +2556,7 @@ class PlayState extends MusicBeatState
 				bumpRate = 1;
 			}
 
-			if (curSong.toLowerCase() == 'milf' curSection >= 50)
+			if (curSong.toLowerCase() == 'milf' && curSection >= 50)
 				bumpRate = 4;
 
 			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % bumpRate == 0)
