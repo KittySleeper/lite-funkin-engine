@@ -15,14 +15,14 @@ class FlxSymbol extends FlxSprite
 	public var daFrame:Int;
 	public var nestDepth:Int;
 	public var transformMatrix:Matrix = new Matrix();
-	
+
 	var _skewMatrix = new Matrix();
-	
+
 	public var matrixExposed:Bool;
 	public var coolParse:Parsed;
 
 	public static var nestedShit:Map<Int, Array<FlxSymbol>> = new Map<Int, Array<FlxSymbol>>();
-	
+
 	public function new(x:Float, y:Float, coolParsed:Parsed)
 	{
 		super(x, y);

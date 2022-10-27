@@ -8,6 +8,8 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
+using StringTools;
+
 class GameOverSubstate extends MusicBeatSubstate
 {
 	var bf:Boyfriend;
@@ -18,38 +20,71 @@ class GameOverSubstate extends MusicBeatSubstate
 	var randomGameover:Int = 1;
 	var playingDeathSound:Bool = false;
 
+	// idk, softcoded shit
+	// inspired by https://github.com/ShadowMario/FNF-PsychEngine/pull/11002
+	// public var properties:Map<String,Array<String, Dynamic>> = [
+	// 	[]
+	// ];
+
+	public var defaultProperties:Array<String> = [
+		'bf',
+		'fnf_loss_sfx',
+		'gameOverEnd',
+		'gameOver',
+		// 'stage'
+	];
+	
+	public var daBPM:Int = 100;
+
+	public var gameOverChar:String = "";
+
+	function resetVariables(){
+		for (guh in defaultProperties){
+			daBF = guh[0];
+		}
+	}
+
 	public function new(x:Float, y:Float)
 	{
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
+
+		if (Character.deathChar != '' || Character.deathChar != null && Character.deathChar.length > 0)
+			gameOverChar = Character.deathChar;
+
 		switch (daStage)
 		{
 			case 'school' | 'schoolEvil':
 				stageSuffix = '-pixel';
-				daBf = 'bf-pixel-dead';
+				// daBf = 'bf-pixel-dead';
+				Character.deathChar = 'bf-pixel-dead';
 			default:
-				daBf = 'bf';
+				// daBf = 'bf';
+				Character.deathChar = 'bf';
 		}
 		if (PlayState.SONG.song.toLowerCase() == 'stress')
 		{
-			daBf = 'bf-holding-gf-dead';
+			// daBf = 'bf-holding-gf-dead';
+			Character.deathChar = 'bf-holding-gf-dead';
 		}
+
+		// if (Character.deathChar != '' || Character.deathChar != null && Character.deathChar.length > 0){
+		// 	daBf = Character.deathChar;
+		// }
 
 		super();
 
 		Conductor.songPosition = 0;
 
-		bf = new Boyfriend(x, y, daBf);
+		bf = new Boyfriend(x, y, gameOverChar);
 		add(bf);
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 		add(camFollow);
 
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
-		Conductor.changeBPM(100);
+		Conductor.changeBPM(daBPM);
 
-		// FlxG.camera.followLerp = 1;
-		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 
