@@ -124,14 +124,14 @@ class GameOverSubstate extends MusicBeatSubstate
 				FlxG.switchState(new FreeplayState());
 		}
 
-		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12 && bf.animation.curAnim != null)
+		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12 && bf != null)
 		{
 			FlxG.camera.follow(camFollow, LOCKON, 0.01);
 		}
 
 		if (PlayState.storyWeek == 7)
 		{
-			if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !playingDeathSound)
+			if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !playingDeathSound && bf != null && bf.animation.curAnim != null)
 			{
 				playingDeathSound = true;
 				bf.startedDeath = true;
@@ -142,7 +142,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				});
 			}
 		}
-		else if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
+		else if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && bf != null && bf.animation.curAnim != null)
 		{
 			bf.startedDeath = true;
 			coolStartDeath();
