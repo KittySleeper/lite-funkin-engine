@@ -161,6 +161,8 @@ class PlayState extends MusicBeatState
 	public var notesHit:Float = 0;
 	public var funnyThing:Int = 0;
 
+	public var zoomBeatingZoom:Float = 0.015;
+
 	override public function create()
 	{
 		if (FlxG.sound.music != null)
@@ -2578,8 +2580,8 @@ class PlayState extends MusicBeatState
 
 			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % bumpRate == 0)
 			{
-				FlxG.camera.zoom += 0.015;
-				camHUD.zoom += 0.03;
+				FlxG.camera.zoom += zoomBeatingZoom;
+				camHUD.zoom += zoomBeatingZoom * 2;
 			}
 		}
 
