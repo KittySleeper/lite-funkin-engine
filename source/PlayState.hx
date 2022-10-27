@@ -949,7 +949,7 @@ class PlayState extends MusicBeatState
 	// it looks like I stole this from FPS Plus
 	function updateAccuracy(){
 		funnyThing++;
-		accuracy = notesHit / funnyThing * 100; // math is not my fortue
+		songAccuracy = notesHit / funnyThing * 100; // math is not my fortue
 		if (songAccuracy >= 100)
 			songAccuracy = 100;
 	}
