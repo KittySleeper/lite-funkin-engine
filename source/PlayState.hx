@@ -2135,8 +2135,6 @@ class PlayState extends MusicBeatState
 			},
 			startDelay: Conductor.crochet * 0.001
 		});
-
-		curSection += 1;
 	}
 
 	private function cameraMovement():Void
@@ -2545,14 +2543,21 @@ class PlayState extends MusicBeatState
 
 		wiggleShit.update(Conductor.crochet);
 
+		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
+			curSection = PlayState.SONG.notes[Std.int(curStep / 16)];
+
 		if (PreferencesMenu.getPref('camera-zoom'))
 		{
 			// HARDCODING FOR MILF ZOOMS!
-			if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
+			if (curSong.toLowerCase() == 'milf' && curSection >= 42 && curSection <= 50 && camZooming && FlxG.camera.zoom < 1.35)
 			{
-				FlxG.camera.zoom += 0.015;
-				camHUD.zoom += 0.03;
+				// FlxG.camera.zoom += 0.015;
+				// camHUD.zoom += 0.03;
+				bumpRate = 1;
 			}
+
+			if (curSong.toLowerCase() == 'milf' curSection >= 50)
+				bumpRate = 4;
 
 			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % bumpRate == 0)
 			{
