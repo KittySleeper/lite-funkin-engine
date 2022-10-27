@@ -1,4 +1,4 @@
-package;
+package; //will do random comments so be prepared
 
 import ui.JudgePositionState;
 import ui.UnnessesaryMenu;
