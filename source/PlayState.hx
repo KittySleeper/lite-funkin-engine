@@ -245,6 +245,8 @@ class PlayState extends MusicBeatState
 				storyDifficultyText = "Erect";
 			case 4:
 				storyDifficultyText = "Troll";
+			default:
+				storyDifficultyText = "Lol u got null";
 		}
 
 		switch (SONG.song.toLowerCase())
@@ -584,6 +586,20 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('alley', -1765.6, 538.2);
 				bg.scale.set(0.6, 0.6);
 				add(bg);
+			}
+			case 'troll', 'ur mom', 'hehe har har', 'is that leather 128 from friday funk':
+			{
+				defaultCamZoom = 0.7;
+				dad.visible = false;
+				gf.visible = false;
+				
+				var walta_wite = new FlxSprite(0, 0).makeGraphic(10000, 10000, 0xFFFAF6F6);
+				walta_wite.screenCenter();
+				add(walta_wite);
+
+				var trollface:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('trolled', 'troll'));
+				trollface.screenCenter();
+				add(trollface);
 			}
 			default:
 			{
@@ -1717,12 +1733,11 @@ class PlayState extends MusicBeatState
 
 		while (unspawnNotes[0] != null)
 		{
-			if (unspawnNotes[0].strumTime - Conductor.songPosition < 1800 / SONG.speed)
+			if (unspawnNotes[0].strumTime - Conductor.songPosition < 1800 / SONG.speed + 0.0000000000001)//yea lets add 0.0000000000001 will reealy help ngl
 			{
 				var dunceNote:Note = unspawnNotes[0];
 				notes.add(dunceNote);
 
-				var index:Int = unspawnNotes.indexOf(dunceNote);
 				unspawnNotes.shift();
 			}
 			else
