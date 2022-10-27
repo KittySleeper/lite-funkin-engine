@@ -36,6 +36,8 @@ class GameOverSubstate extends MusicBeatSubstate
 	
 	public var daBPM:Int = 100;
 
+	var daBf:String = '';
+
 	public var gameOverChar:String = "";
 
 	function resetVariables(){
@@ -47,7 +49,6 @@ class GameOverSubstate extends MusicBeatSubstate
 	public function new(x:Float, y:Float, ?kidsImGoingToMurder:Int = 100)
 	{
 		var daStage = PlayState.curStage;
-		var daBf:String = '';
 
 		if (Character.deathChar != '' || Character.deathChar != null && Character.deathChar.length > 0)
 			gameOverChar = Character.deathChar;
