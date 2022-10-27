@@ -44,7 +44,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 	}
 
-	public function new(x:Float, y:Float)
+	public function new(x:Float, y:Float, ?kidsImGoingToMurder:Int = 100)
 	{
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
@@ -83,7 +83,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		add(camFollow);
 
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
-		Conductor.changeBPM(daBPM);
+
+		if (kidsImGoingToMurder != 100)
+			Conductor.changeBPM(kidsImGoingToMurder);
+		else
+			Conductor.changeBPM(daBPM);
 
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
@@ -120,7 +124,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				FlxG.switchState(new FreeplayState());
 		}
 
-		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
+		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12 && bf.animation.curAnim != null)
 		{
 			FlxG.camera.follow(camFollow, LOCKON, 0.01);
 		}
