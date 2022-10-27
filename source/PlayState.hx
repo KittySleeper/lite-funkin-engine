@@ -1708,8 +1708,6 @@ class PlayState extends MusicBeatState
 
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-				// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-
 				#if desktop
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
@@ -1911,7 +1909,7 @@ class PlayState extends MusicBeatState
 					difficulty = '-hard';
 
 				if (storyDifficulty == 3)
-					difficulty = '-erect';
+					difficulty = '-erect'; // yes
 
 				if (storyDifficulty == 4)
 					difficulty = '-troll';
