@@ -1609,7 +1609,7 @@ class PlayState extends MusicBeatState
 		if(PreferencesMenu.getPref('ui_old'))
 		scoreTxt.text = "Score:" + songScore;
 		else
-		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo + " / Time Elasped:" + FlxMath.roundDecimal(Conductor.songPosition / 1000, 0);
+		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo + " / Time:" + FlxStringUtil.formatTime((FlxG.sound.music.length - FlxMath.bound(Conductor.songPosition, 0)) / 1000, false);
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
@@ -1622,6 +1622,7 @@ class PlayState extends MusicBeatState
 			{
 				// gitaroo man easter egg
 				FlxG.switchState(new GitarooPause());
+				trace('can i get a HOYYYYYYYYYYYYYYYYYYYYYYY AH');
 			}
 			else
 			{
