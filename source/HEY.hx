@@ -31,10 +31,6 @@ class HEY extends MusicBeatState{
             FlxG.switchState(new TitleState());
         }
         if(FlxG.keys.justPressed.ESCAPE)
-        #if linux
-            Sys.command('/usr/bin/xdg-open', ["https://github.com/504brandon/dike-engine/", "&"]);
-        #else
-            FlxG.openURL('https://github.com/504brandon/dike-engine/');
-        #end
+        CoolUtil.browserLoad('https://github.com/504brandon/dike-engine/');
     }
 }

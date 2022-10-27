@@ -54,12 +54,12 @@ class CoolUtil
 		PlayState.storyWeek = Week;
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
-
-	inline public function returnRandomInt(first:Int, second:Int):Int {
-		return FlxG.random.int(first, second); //int bc uhh techically float
+     
+	public static function browserLoad(site:String) {
+		#if linux
+		Sys.command('/usr/bin/xdg-open', [site]);
+		#else
+		FlxG.openURL(site);
+		#end
 	}
-
-	inline public function returnRandomFloat(first:Float, second:Float):Float {
-		return FlxG.random.float(first, second); //float bc uhh techically float
-	}	
 }
