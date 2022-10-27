@@ -53,6 +53,7 @@
 		<library name="week6"    preload="true" />
 		<library name="week7"    preload="true" />
 		<library name="week8"    preload="true" />
+		<library name="troll"    preload="true" />
 	</section>
 	
 	<section if="NO_PRELOAD_ALL">
@@ -67,6 +68,7 @@
 		<library name="week6"    preload="false" />
 		<library name="week7"    preload="false" />
 		<library name="week8"    preload="false" />
+		<library name="troll"    preload="false" />
 	</section>
 	
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
@@ -92,6 +94,9 @@
 	<!--this aint 4chan-->
 	<assets path="assets/week8"    library="week8"    exclude="*.ogg" if="web"/>
 	<assets path="assets/week8"    library="week8"    exclude="*.mp3|*.mp4" unless="web"/>
+	<!--youve been trolled-->
+	<assets path="assets/troll"    library="week8"    exclude="*.ogg" if="web"/>
+	<assets path="assets/troll"    library="week8"    exclude="*.mp3|*.mp4" unless="web"/>
 	
 	<assets path='example_mods' rename='assets/mods' embed='false'/>
 	<!-- <template path='mods' /> -->
