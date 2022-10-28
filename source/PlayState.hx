@@ -1209,7 +1209,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
 			}
 
-			swagCounter += 1;
+			swagCounter++;
 		}, 4);
 	}
 
@@ -1324,7 +1324,7 @@ class PlayState extends MusicBeatState
 					swagNote.x += FlxG.width / 2; // general offset
 				}
 			}
-			daBeats += 1;
+			daBeats++;
 		}
 
 		unspawnNotes.sort(sortByShit);
@@ -1735,7 +1735,7 @@ class PlayState extends MusicBeatState
 				vocals.stop();
 				FlxG.sound.music.stop();
 
-				deathCounter += 1;
+				deathCounter++;
 
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -2382,7 +2382,7 @@ class PlayState extends MusicBeatState
 			if (!note.isSustainNote)
 			{
 				popUpScore(note.strumTime, note);
-				combo += 1;
+				combo++;
 			}
 
 			if (note.noteData >= 0)
