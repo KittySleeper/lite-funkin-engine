@@ -188,26 +188,10 @@ class Note extends FlxSprite
 			if (willMiss && !tooLate && !wasGoodHit && strumTime < Conductor.songPosition - Conductor.safeZoneOffset && canBeHit)
 			{
 				tooLate = true;
-				// canBeHit = false;
 			}
-			// else
-			// {
-			// 	if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset)
-			// 	{
-			// 		if (strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset)
-			// 			canBeHit = true;
-			// 	}
-			// 	else
-			// 	{
-			// 		willMiss = true;
-			// 		canBeHit = true;
-			// 	}
-			// }
 		}
 		else
 		{
-			// canBeHit = false;
-
 			if (strumTime <= Conductor.songPosition)
 				wasGoodHit = true;
 		}
