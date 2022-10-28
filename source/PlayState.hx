@@ -433,8 +433,6 @@ class PlayState extends MusicBeatState
 			{
 				curStage = 'school';
 
-				// defaultCamZoom = 0.9;
-
 				var bgSky = new FlxSprite().loadGraphic(Paths.image('weeb/weebSky'));
 				bgSky.scrollFactor.set(0.1, 0.1);
 				add(bgSky);
@@ -787,8 +785,6 @@ class PlayState extends MusicBeatState
 		add(foregroundSprites);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
-		// doof.x += 70;
-		// doof.y = FlxG.height * 0.5;
 		doof.scrollFactor.set();
 		doof.finishThing = startCountdown;
 
@@ -821,7 +817,7 @@ class PlayState extends MusicBeatState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04);
-		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
+
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
 
@@ -1238,8 +1234,6 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	var debugNum:Int = 0;
-
 	private function generateSong():Void
 	{
 		var songData = SONG;
@@ -1576,7 +1570,6 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			//Conductor.songPosition = FlxG.sound.music.time + Conductor.offset;
 			Conductor.songPosition += FlxG.elapsed * 1000;
 		}
 
@@ -1593,7 +1586,6 @@ class PlayState extends MusicBeatState
 						trainFrameTiming = 0;
 					}
 				}
-				// phillyCityLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed;
 				lightFadeShader.update(1.5 * (Conductor.crochet / 1000) * FlxG.elapsed);
 			case 'tank':
 				moveTank();
