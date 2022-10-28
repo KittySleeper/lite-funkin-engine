@@ -33,7 +33,7 @@ class Note extends FlxSprite
 	
 	inline function get_canBeHit()
 	{
-		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset - strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset;
+		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset && strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset;
 	}
 
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
