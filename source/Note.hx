@@ -15,7 +15,6 @@ class Note extends FlxSprite
 
 	public var mustPress:Bool = false;
 	public var noteData:Int = 0;
-	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var willMiss:Bool = false;
@@ -29,6 +28,13 @@ class Note extends FlxSprite
 	
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var arrowColors = [1, 1, 1, 1];
+
+	public var canBeHit(get, never):Bool;
+	
+	inline function get_canBeHit()
+	{
+		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset - strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset;
+	}
 
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
 	{
@@ -179,28 +185,28 @@ class Note extends FlxSprite
 
 		if (mustPress)
 		{
-			if (willMiss && !wasGoodHit)
+			if (willMiss && !tooLate && !wasGoodHit && strumTime < Conductor.songPosition - Conductor.safeZoneOffset && canBeHit)
 			{
 				tooLate = true;
-				canBeHit = false;
+				// canBeHit = false;
 			}
-			else
-			{
-				if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset)
-				{
-					if (strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset)
-						canBeHit = true;
-				}
-				else
-				{
-					willMiss = true;
-					canBeHit = true;
-				}
-			}
+			// else
+			// {
+			// 	if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset)
+			// 	{
+			// 		if (strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset)
+			// 			canBeHit = true;
+			// 	}
+			// 	else
+			// 	{
+			// 		willMiss = true;
+			// 		canBeHit = true;
+			// 	}
+			// }
 		}
 		else
 		{
-			canBeHit = false;
+			// canBeHit = false;
 
 			if (strumTime <= Conductor.songPosition)
 				wasGoodHit = true;
