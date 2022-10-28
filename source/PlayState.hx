@@ -1863,7 +1863,7 @@ class PlayState extends MusicBeatState
 					if (daNote.tooLate || !daNote.wasGoodHit)
 					{
 						health -= 0.0475;
-						songMisses += 1;
+						songMisses++;
 						songScore -= 20;
 						combo = 0;
 						vocals.volume = 0;
@@ -2327,7 +2327,7 @@ class PlayState extends MusicBeatState
 				gf.playAnim('sad');
 			}
 			combo = 0;
-			songMisses += 1;
+			songMisses++;
 
 			if (!practiceMode)
 				songScore -= 10;
