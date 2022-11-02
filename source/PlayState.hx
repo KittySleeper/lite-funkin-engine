@@ -137,10 +137,15 @@ class PlayState extends MusicBeatState
 
 	var songScore:Int = 0;
 	var songMisses:Int = 0;
+	var Sick:Int = 0;
+	var Good:Int = 0;
+	var Bad:Int = 0;
+	var Shit:Int = 0;
 	var songtime:Float;
 	var storyDifficultyText:String = "";
 	var scoreTxt:FlxText;
 	var watermarkTxt:FlxText;
+	var rateingTxt:FlxText;
 
 	public static var campaignScore:Int = 0;
 
@@ -161,7 +166,6 @@ class PlayState extends MusicBeatState
 
 	public var bumpRate:Int = 4;
 
-	public var notesHit:Float = 0;
 	public var funnyThing:Int = 0;
 
 	override public function create()
@@ -879,13 +883,19 @@ class PlayState extends MusicBeatState
 		}
 		add(scoreTxt);
 
-		watermarkTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, healthBarBG.y + 30, 0, 'Lite Funkin - ' + SONG.song.toUpperCase() + ' - ' + storyDifficultyText, 20);
+		watermarkTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, healthBarBG.y + 30, 0, 'Lite Funkin - ' + SONG.song.toUpperCase() + ' - ' + storyDifficultyText + ' - Week' + storyWeek, 20);
 		watermarkTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		watermarkTxt.scrollFactor.set();
 		add(watermarkTxt);
 
 		if(PreferencesMenu.getPref('wm') == false)
-			watermarkTxt.text = SONG.song.toUpperCase() + ' - ' + storyDifficultyText;//fuck engines that make it so these go away if watermarks are off
+			watermarkTxt.text = SONG.song.toUpperCase() + ' - ' + storyDifficultyText + ' - Week' + storyWeek;//fuck engines that make it so these go away if watermarks are off
+
+		rateingTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, 321.9, 0, "");
+		rateingTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+		rateingTxt.borderSize = 4;
+		rateingTxt.scrollFactor.set();//comment is funni
+		add(rateingTxt);
 
 		grpNoteSplashes.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
@@ -898,6 +908,7 @@ class PlayState extends MusicBeatState
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		watermarkTxt.cameras = [camHUD];
+		rateingTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		startingSong = true;
@@ -1612,7 +1623,9 @@ class PlayState extends MusicBeatState
 		if(PreferencesMenu.getPref('ui_old'))
 		scoreTxt.text = "Score:" + songScore;
 		else
-		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Combo:" + combo + " / Time:" + FlxStringUtil.formatTime((FlxG.sound.music.length - FlxMath.bound(Conductor.songPosition, 1)) / 1000, false);
+		scoreTxt.text = "Score:" + songScore + " / Misses:" + songMisses + " / Time:" + FlxStringUtil.formatTime((FlxG.sound.music.length - FlxMath.bound(Conductor.songPosition, 1)) / 1000, false);
+
+		rateingTxt.text = "Sicks:" + Sick + "\nGoods:" + Good + "\nBads:" + Bad + "\nShits:" + Shit + "\nCombo:" + combo + "\n";
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
@@ -2007,31 +2020,35 @@ class PlayState extends MusicBeatState
 		if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
 			daRating = 'shit';
+			Shit += 1;
 			score = 50;
 			doSplash = false;
-			notesHit += 1 - 0.9;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.75)
 		{
 			daRating = 'bad';
 			score = 100;
+			Bad += 1;
 			doSplash = false;
-			notesHit += 1 - 0.75;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.2)
 		{
 			daRating = 'good';
 			score = 200;
+			Good += 1;
 			doSplash = false;
-			notesHit += 1 - 0.2;
 		}
 
 		if (doSplash)
 		{
+			if(PreferencesMenu.getPref('sicksplash')){
 			var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 			splash.setupNoteSplash(daNote.x, daNote.y, daNote.noteData);
 			grpNoteSplashes.add(splash);
-			notesHit += 1;
+			}
+
+			Sick += 1;
+			trace('GREAT');
 		}
 
 		if (!practiceMode)
@@ -2050,26 +2067,25 @@ class PlayState extends MusicBeatState
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
 		rating.y -= 60;
-		if(FlxG.save.data.sickx != null)
-		rating.x = JudgePositionState.SICK.x;
-		if(FlxG.save.data.sicky != null)
-		rating.y = JudgePositionState.SICK.y;
 		rating.acceleration.y = 550;
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
+		if(FlxG.save.data.sickx != null)
+		rating.x = JudgePositionState.SICK.x;
+		if(FlxG.save.data.sicky != null)
+		rating.y = JudgePositionState.SICK.y + coolText.y;
+		add(rating);
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
 		comboSpr.x = coolText.x;
+		comboSpr.acceleration.y = 600;
+		comboSpr.velocity.y -= 150;
+		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		if(FlxG.save.data.combox != null)
 		comboSpr.x = JudgePositionState.COMBO.x;
 		if(FlxG.save.data.comboy != null)
 		comboSpr.y = JudgePositionState.COMBO.y;
-		comboSpr.acceleration.y = 600;
-		comboSpr.velocity.y -= 150;
-
-		comboSpr.velocity.x += FlxG.random.int(1, 10);
-		add(rating);
 
 		if (!curStage.startsWith('school'))
 		{
@@ -2082,11 +2098,6 @@ class PlayState extends MusicBeatState
 		{
 			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
-		}
-
-		if(curStage == 'alley8'){
-			rating.y += 532;
-			comboSpr.y += 532;
 		}
 
 		comboSpr.updateHitbox();

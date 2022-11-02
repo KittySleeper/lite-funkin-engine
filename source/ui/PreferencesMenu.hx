@@ -34,6 +34,7 @@ class PreferencesMenu extends Page
 
 		createPrefItem('naughtyness', 'censor-naughty', true);
 		createPrefItem('downscroll', 'downscroll', false);
+		createPrefItem('Note Splashes', 'sicksplash', true);
 		createPrefItem('Og ui', 'ui_old', false);
 		createPrefItem('watermarks', 'wm', true);
 		createPrefItem('flashing menu', 'flashing-menu', true);
@@ -64,6 +65,7 @@ class PreferencesMenu extends Page
 	{
 		preferenceCheck('censor-naughty', true);
 		preferenceCheck('downscroll', false);
+		preferenceCheck('sicksplash', true);
 		preferenceCheck('ui_old', false);
 		preferenceCheck('wm', true);
 		preferenceCheck('flashing-menu', true);
@@ -133,7 +135,7 @@ class PreferencesMenu extends Page
 			case 'auto-pause':
 				FlxG.autoPause = getPref('auto-pause');
 			case 'fpsshow':
-				Main.fpsCounter.visible = getPref('fps');
+				Main.fpsCounter.visible = getPref('fps');//i like how this used to work but doesnt anymore
 			case 'fpsboost':
 				if(getPref('fpsboost'))
 				Main.framerate = 1000;
