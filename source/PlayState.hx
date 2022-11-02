@@ -94,6 +94,9 @@ class PlayState extends MusicBeatState
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
 
+	private var timeBarBG:FlxSprite;
+	private var timeBar:FlxBar;
+
 	private var generatedMusic:Bool = false;
 	private var startingSong:Bool = false;
 
@@ -134,7 +137,7 @@ class PlayState extends MusicBeatState
 
 	var songScore:Int = 0;
 	var songMisses:Int = 0;
-	var songAccuracy:Float = 100;
+	var songtime:Float;
 	var storyDifficultyText:String = "";
 	var scoreTxt:FlxText;
 	var watermarkTxt:FlxText;
@@ -840,6 +843,22 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
+		timeBarBG = new FlxSprite(0, FlxG.height * 0.1).loadGraphic(Paths.image('healthBar'));
+		timeBarBG.y -= 0.3;
+		timeBarBG.scale.set(0.7, 1.5);
+		timeBarBG.screenCenter(X);
+		timeBarBG.scrollFactor.set();
+		add(timeBarBG);
+		if (PreferencesMenu.getPref('downscroll'))
+			timeBarBG.y = FlxG.height * 1;
+
+		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, RIGHT_TO_LEFT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
+			null, 0, 2);
+		timeBar.scale.set(0.7, 1.5);
+		timeBar.scrollFactor.set();
+		timeBar.createFilledBar(0xFF000000,0xFFFFFAFA);
+		add(timeBar);
+
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
@@ -873,6 +892,8 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		timeBar.cameras = [camHUD];
+		timeBarBG.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
@@ -941,14 +962,6 @@ class PlayState extends MusicBeatState
 	
 			super.create();
 		}
-
-	// it looks like I stole this from FPS Plus
-	function updateAccuracy(){
-		funnyThing++;
-		songAccuracy = notesHit / funnyThing * 100; // math is not my fortue
-		if (songAccuracy >= 100)
-			songAccuracy = 100;
-	}
 
 	function ughIntro():Void
 	{
@@ -1211,7 +1224,6 @@ class PlayState extends MusicBeatState
 
 	var previousFrameTime:Int = 0;
 	var lastReportedPlayheadPosition:Int = 0;
-	var songTime:Float = 0;
 
 	function startSong():Void
 	{
@@ -1593,13 +1605,9 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		/*UnnessesaryMenu.getUnnessesaryinfo('MYEYESWEREDIEINGWHENTESTINGTHIS');{
-			FlxG.camera.angle += 10;
-			FlxG.camera.color.green;
-			FlxG.camera.color.red;
-			FlxG.camera.color.blue;
-			FlxG.camera.color.cyan;
-		}*/
+		songtime = Conductor.songPosition;
+
+		timeBar.value = songtime; //thing for the funni
 
 		if(PreferencesMenu.getPref('ui_old'))
 		scoreTxt.text = "Score:" + songScore;
