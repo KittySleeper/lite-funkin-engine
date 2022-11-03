@@ -1132,18 +1132,18 @@ class PlayState extends MusicBeatState
 
 		startTimer.start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
-			if (swagCounter % gfSpeed == 0)
+			if (swagCounter % gfSpeed == 0 && gf.animation.curAnim != null)
 			{
 				gf.dance();
 			}
 			if (swagCounter % 2 == 0)
 			{
-				if (!boyfriend.animation.curAnim.name.startsWith('sing'))
+				if (!boyfriend.animation.curAnim.name.startsWith('sing') && boyfriend.animation.curAnim != null)
 					boyfriend.playAnim('idle');
-				if (!dad.animation.curAnim.name.startsWith('sing'))
+				if (!dad.animation.curAnim.name.startsWith('sing') && dad.animation.curAnim != null)
 					dad.dance();
 			}
-			else if (dad.curCharacter == 'spooky' && !dad.animation.curAnim.name.startsWith('sing'))
+			else if (dad.curCharacter == 'spooky' && !dad.animation.curAnim.name.startsWith('sing') && dad.animation.curAnim != null)
 				dad.dance();
 
 			if (generatedMusic)
@@ -2306,7 +2306,7 @@ class PlayState extends MusicBeatState
 
 		if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && !holdArray.contains(true))
 		{
-			if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
+			if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss') && boyfriend.animation.curAnim != null)
 			{
 				boyfriend.dance();
 			}
@@ -2604,26 +2604,26 @@ class PlayState extends MusicBeatState
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
-		if (curBeat % gfSpeed == 0)
+		if (curBeat % gfSpeed == 0 && gf.animation.curAnim != null)
 		{
 			gf.dance();
 		}
 
 		if (curBeat % 2 == 0)
 		{
-			if (!boyfriend.animation.curAnim.name.startsWith("sing"))
+			if (!boyfriend.animation.curAnim.name.startsWith("sing") && boyfriend.animation.curAnim != null)
 			{
 				boyfriend.playAnim('idle');
 			}
 
-			if (!dad.animation.curAnim.name.startsWith("sing"))
+			if (!dad.animation.curAnim.name.startsWith("sing") && dad.animation.curAnim != null)
 			{
 				dad.dance();
 			}
 		}
 		else if (dad.curCharacter == 'spooky')
 		{
-			if (!dad.animation.curAnim.name.startsWith("sing"))
+			if (!dad.animation.curAnim.name.startsWith("sing") && dad.animation.curAnim != null)
 			{
 				dad.dance();
 			}
@@ -2642,26 +2642,35 @@ class PlayState extends MusicBeatState
 
 		foregroundSprites.forEach(function(spr:BGSprite)
 		{
-			spr.dance();
+			if (spr.animation.curAnim != null)
+				spr.dance();
 		});
 
 		switch (curStage)
 		{
 			case 'tank':
-				tankWatchtower.dance();
+				if (tankWatchtower != null)
+					tankWatchtower.dance();
 
 			case 'school':
-				bgGirls.dance();
+				if (bgGirls != null)
+					bgGirls.dance();
 
 			case 'mall':
-				upperBoppers.animation.play('bop', true);
-				bottomBoppers.animation.play('bop', true);
-				santa.animation.play('idle', true);
+				if (upperBoppers != null)
+					upperBoppers.animation.play('bop', true);
+
+				if (bottomBoppers != null)
+					bottomBoppers.animation.play('bop', true);
+
+				if (santa != null)
+					santa.animation.play('idle', true);
 
 			case 'limo':
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
 				{
-					dancer.dance();
+					if (grpLimoDancers != null)
+						dancer.dance();
 				});
 
 				if (FlxG.random.bool(10) && fastCarCanDrive)
