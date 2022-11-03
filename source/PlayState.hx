@@ -1407,10 +1407,9 @@ class PlayState extends MusicBeatState
 					}
 
 				default:
-					var noteskin:String = 'NOTE_assets';
 					NoteSplash.notesplashskin = 'noteSplashes';
 
-					babyArrow.frames = Paths.getSparrowAtlas(noteskin);
+					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
@@ -1576,9 +1575,6 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.NINE)
 		{
 			CoolUtil.changeicon('bf-old', 1);
-
-			if(iconP1.char == 'bf-old')
-				CoolUtil.changeicon('bf', 1);
 		}
 
 		if (startingSong)
@@ -2014,24 +2010,24 @@ class PlayState extends MusicBeatState
 		var rating:FlxSprite = new FlxSprite();
 		var score:Int = 350;
 
-		var daRating:String = "sick";
+		var daRating:String = 'sick';
 		var doSplash:Bool = true;
-
-		if (noteDiff > Conductor.safeZoneOffset * 0.9)
+		
+		if (noteDiff > Conductor.safeZoneOffset * 0.89)
 		{
 			daRating = 'shit';
 			Shit += 1;
 			score = 50;
 			doSplash = false;
 		}
-		else if (noteDiff > Conductor.safeZoneOffset * 0.75)
+		else if (noteDiff > Conductor.safeZoneOffset * 0.72)
 		{
 			daRating = 'bad';
 			score = 100;
 			Bad += 1;
 			doSplash = false;
 		}
-		else if (noteDiff > Conductor.safeZoneOffset * 0.2)
+		else if (noteDiff > Conductor.safeZoneOffset * 0.43)
 		{
 			daRating = 'good';
 			score = 200;
