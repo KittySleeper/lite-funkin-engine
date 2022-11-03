@@ -88,7 +88,7 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	private var gfSpeed:Int = 1;
-	private var health:Float = 1;
+	private var health(default, set):Float = 1;
 	private var combo:Int = 0;
 
 	private var healthBarBG:FlxSprite;
@@ -167,6 +167,10 @@ class PlayState extends MusicBeatState
 	public var bumpRate:Int = 4;
 
 	public var funnyThing:Int = 0;
+
+	private function set_health(v:Float){
+		return health = v;
+	}
 
 	override public function create()
 	{
