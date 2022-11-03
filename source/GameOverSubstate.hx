@@ -20,20 +20,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	var randomGameover:Int = 1;
 	var playingDeathSound:Bool = false;
 
-	// idk, softcoded shit
-	// inspired by https://github.com/ShadowMario/FNF-PsychEngine/pull/11002
-	// public var properties:Map<String,Array<String, Dynamic>> = [
-	// 	[]
-	// ];
 
-	// public var defaultProperties:Array<String> = [
-	// 	'bf',
-	// 	'fnf_loss_sfx',
-	// 	'gameOverEnd',
-	// 	'gameOver',
-	// 	// 'stage'
-	// ];
-	
 	public var daBPM:Int = 100;
 
 	var daBf:String = '';
