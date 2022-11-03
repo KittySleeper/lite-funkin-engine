@@ -166,8 +166,6 @@ class PlayState extends MusicBeatState
 
 	public var bumpRate:Int = 4;
 
-	public var funnyThing:Int = 0;
-
 	private function set_health(v:Float){
 		return health = v;
 	}
@@ -2020,7 +2018,7 @@ class PlayState extends MusicBeatState
 		if (noteDiff > Conductor.safeZoneOffset * 0.89)
 		{
 			daRating = 'shit';
-			Shit += 1;
+			Shit++;
 			score = 50;
 			doSplash = false;
 		}
@@ -2028,14 +2026,14 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'bad';
 			score = 100;
-			Bad += 1;
+			Bad++;
 			doSplash = false;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.43)
 		{
 			daRating = 'good';
 			score = 200;
-			Good += 1;
+			Good++;
 			doSplash = false;
 		}
 
@@ -2047,7 +2045,7 @@ class PlayState extends MusicBeatState
 			grpNoteSplashes.add(splash);
 			}
 
-			Sick += 1;
+			Sick++;
 			trace('GREAT');
 		}
 
