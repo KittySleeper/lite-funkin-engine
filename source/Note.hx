@@ -184,6 +184,11 @@ class Note extends FlxSprite
 	{
 		super.update(elapsed);
 
+		// removes Psych events
+		if (noteData == -1){
+			this.kill();
+		}
+
 		if (mustPress)
 		{
 			if (willMiss && !tooLate && !wasGoodHit && strumTime < Conductor.songPosition - Conductor.safeZoneOffset && canBeHit)
