@@ -50,10 +50,6 @@ import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
-// hardcoded events
-	var value1:String;
-	var value2:String;
-
 class PlayState extends MusicBeatState
 {
 	public static var curStage:String = '';
@@ -159,6 +155,9 @@ class PlayState extends MusicBeatState
 	public static var daPixelZoom:Float = 6;
 
 	var inCutscene:Bool = false;
+
+	public var value1:String;
+	public var value2:String;
 
 	#if desktop
 	// Discord RPC variables
