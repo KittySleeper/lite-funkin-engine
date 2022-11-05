@@ -50,6 +50,7 @@ import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
+// idk if I want to do anything about this right now, I'm stressed out
 enum abstract Events(String) to String
 {
 	var value1;
