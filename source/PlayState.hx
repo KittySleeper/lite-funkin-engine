@@ -50,9 +50,13 @@ import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
-// hardcoded events
-	var value1:String;
-	var value2:String;
+enum abstract Events(String) to String
+{
+	var value1;
+	var value2;
+
+	var eventName;
+}
 
 class PlayState extends MusicBeatState
 {
