@@ -88,7 +88,7 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	private var gfSpeed:Int = 1;
-	private var health:Float = 1;
+	private var health(default, set):Float = 1;
 	private var combo:Int = 0;
 
 	private var healthBarBG:FlxSprite;
@@ -166,7 +166,9 @@ class PlayState extends MusicBeatState
 
 	public var bumpRate:Int = 4;
 
-	public var funnyThing:Int = 0;
+	private function set_health(v:Float){
+		return health = v;
+	}
 
 	override public function create()
 	{
@@ -1130,18 +1132,18 @@ class PlayState extends MusicBeatState
 
 		startTimer.start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
-			if (swagCounter % gfSpeed == 0)
+			if (swagCounter % gfSpeed == 0 && gf.animation.curAnim != null)
 			{
 				gf.dance();
 			}
 			if (swagCounter % 2 == 0)
 			{
-				if (!boyfriend.animation.curAnim.name.startsWith('sing'))
+				if (!boyfriend.animation.curAnim.name.startsWith('sing') && boyfriend.animation.curAnim != null)
 					boyfriend.playAnim('idle');
-				if (!dad.animation.curAnim.name.startsWith('sing'))
+				if (!dad.animation.curAnim.name.startsWith('sing') && dad.animation.curAnim != null)
 					dad.dance();
 			}
-			else if (dad.curCharacter == 'spooky' && !dad.animation.curAnim.name.startsWith('sing'))
+			else if (dad.curCharacter == 'spooky' && !dad.animation.curAnim.name.startsWith('sing') && dad.animation.curAnim != null)
 				dad.dance();
 
 			if (generatedMusic)
@@ -2016,7 +2018,7 @@ class PlayState extends MusicBeatState
 		if (noteDiff > Conductor.safeZoneOffset * 0.89)
 		{
 			daRating = 'shit';
-			Shit += 1;
+			Shit++;
 			score = 50;
 			doSplash = false;
 		}
@@ -2024,14 +2026,14 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'bad';
 			score = 100;
-			Bad += 1;
+			Bad++;
 			doSplash = false;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.43)
 		{
 			daRating = 'good';
 			score = 200;
-			Good += 1;
+			Good++;
 			doSplash = false;
 		}
 
@@ -2043,7 +2045,7 @@ class PlayState extends MusicBeatState
 			grpNoteSplashes.add(splash);
 			}
 
-			Sick += 1;
+			Sick++;
 			trace('GREAT');
 		}
 
@@ -2304,7 +2306,7 @@ class PlayState extends MusicBeatState
 
 		if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && !holdArray.contains(true))
 		{
-			if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
+			if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss') && boyfriend.animation.curAnim != null)
 			{
 				boyfriend.dance();
 			}
@@ -2483,7 +2485,8 @@ class PlayState extends MusicBeatState
 	function trainStart():Void
 	{
 		trainMoving = true;
-		trainSound.play(true);
+		if (!trainSound.playing)
+			trainSound.play(true);
 	}
 
 	var startedMoving:Bool = false;
@@ -2601,26 +2604,26 @@ class PlayState extends MusicBeatState
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
-		if (curBeat % gfSpeed == 0)
+		if (curBeat % gfSpeed == 0 && gf.animation.curAnim != null)
 		{
 			gf.dance();
 		}
 
 		if (curBeat % 2 == 0)
 		{
-			if (!boyfriend.animation.curAnim.name.startsWith("sing"))
+			if (!boyfriend.animation.curAnim.name.startsWith("sing") && boyfriend.animation.curAnim != null)
 			{
 				boyfriend.playAnim('idle');
 			}
 
-			if (!dad.animation.curAnim.name.startsWith("sing"))
+			if (!dad.animation.curAnim.name.startsWith("sing") && dad.animation.curAnim != null)
 			{
 				dad.dance();
 			}
 		}
 		else if (dad.curCharacter == 'spooky')
 		{
-			if (!dad.animation.curAnim.name.startsWith("sing"))
+			if (!dad.animation.curAnim.name.startsWith("sing") && dad.animation.curAnim != null)
 			{
 				dad.dance();
 			}
@@ -2639,26 +2642,35 @@ class PlayState extends MusicBeatState
 
 		foregroundSprites.forEach(function(spr:BGSprite)
 		{
-			spr.dance();
+			if (spr.animation.curAnim != null)
+				spr.dance();
 		});
 
 		switch (curStage)
 		{
 			case 'tank':
-				tankWatchtower.dance();
+				if (tankWatchtower != null)
+					tankWatchtower.dance();
 
 			case 'school':
-				bgGirls.dance();
+				if (bgGirls != null)
+					bgGirls.dance();
 
 			case 'mall':
-				upperBoppers.animation.play('bop', true);
-				bottomBoppers.animation.play('bop', true);
-				santa.animation.play('idle', true);
+				if (upperBoppers != null)
+					upperBoppers.animation.play('bop', true);
+
+				if (bottomBoppers != null)
+					bottomBoppers.animation.play('bop', true);
+
+				if (santa != null)
+					santa.animation.play('idle', true);
 
 			case 'limo':
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
 				{
-					dancer.dance();
+					if (grpLimoDancers != null)
+						dancer.dance();
 				});
 
 				if (FlxG.random.bool(10) && fastCarCanDrive)
@@ -2682,7 +2694,7 @@ class PlayState extends MusicBeatState
 					phillyCityLights.members[curLight].visible = true;
 				}
 
-				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8)
+				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8 && !trainSound.playing)
 				{
 					trainCooldown = FlxG.random.int(-4, 0);
 					trainStart();
