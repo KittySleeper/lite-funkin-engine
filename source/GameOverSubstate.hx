@@ -20,7 +20,6 @@ class GameOverSubstate extends MusicBeatSubstate
 	var randomGameover:Int = 1;
 	var playingDeathSound:Bool = false;
 
-
 	public var daBPM:Int = 100;
 
 	var daBf:String = '';
