@@ -62,9 +62,11 @@ class Main extends Sprite {
 		final stageHeight:Int = Lib.current.stage.stageHeight;
 
 		#if sys
-		var path:String = '../../../../buildnum.lfebc';
-		buildNumber = Std.parseInt(File.getContent(sys.FileSystem.absolutePath(path)))+1;
-		File.saveContent(sys.FileSystem.absolutePath(path), buildNumber+"");
+		if (Sys.args().contains('-livereload')) {
+			var path:String = '../../../../buildnum.lfebc';
+			buildNumber = Std.parseInt(File.getContent(sys.FileSystem.absolutePath(path)))+1;
+			File.saveContent(sys.FileSystem.absolutePath(path), buildNumber+"");
+		}
 		#end
 
 		if (zoom == -1)

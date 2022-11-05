@@ -47,6 +47,9 @@ class FPS extends TextField
 		defaultTextFormat = new TextFormat("_sans", 13, color, true, false, false, 'https://github.com/504brandon/lite-funkin-engine');
 		text = "FPS: ";
 
+		width = 1280;
+		height = 720;
+
 		cacheCount = 0;
 		currentTime = 0;
 		times = [];
