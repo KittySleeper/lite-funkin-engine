@@ -9,7 +9,9 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+#if sys
 import sys.io.File;
+#end
 
 class Main extends Sprite {
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -59,10 +61,10 @@ class Main extends Sprite {
 		final stageWidth:Int = Lib.current.stage.stageWidth;
 		final stageHeight:Int = Lib.current.stage.stageHeight;
 
-		#if windows
-			var path:String = '${Sys.getCwd()}../../../../buildnum.lfebc';
-			buildNumber = Std.parseInt(File.getContent(path))+1;
-			File.saveContent(path, buildNumber+"");
+		#if sys
+		var path:String = '../../../../buildnum.lfebc';
+		buildNumber = Std.parseInt(File.getContent(sys.FileSystem.absolutePath(path)))+1;
+		File.saveContent(sys.FileSystem.absolutePath(path), buildNumber+"");
 		#end
 
 		if (zoom == -1)

@@ -853,15 +853,14 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		timeBarBG = new FlxSprite(0, FlxG.height * 0.1).loadGraphic(Paths.image('healthBar'));
-		timeBarBG.y -= 0.3;
 		timeBarBG.scale.set(0.7, 1.5);
 		timeBarBG.screenCenter(X);
 		timeBarBG.scrollFactor.set();
 		add(timeBarBG);
 		if (PreferencesMenu.getPref('downscroll'))
-			timeBarBG.y = FlxG.height * 1;
+			timeBarBG.y = FlxG.height * 0.9;
 
-		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, RIGHT_TO_LEFT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), FlxG.sound.music,
+		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), FlxG.sound.music,
 			'time', 0, FlxG.sound.music.length);
 		timeBar.scale.set(0.7, 1.5);
 		timeBar.scrollFactor.set();
