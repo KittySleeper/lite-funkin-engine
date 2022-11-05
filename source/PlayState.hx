@@ -164,9 +164,6 @@ class PlayState extends MusicBeatState
 
 	var inCutscene:Bool = false;
 
-	public var value1:String;
-	public var value2:String;
-
 	#if desktop
 	// Discord RPC variables
 	var iconRPC:String = "";
