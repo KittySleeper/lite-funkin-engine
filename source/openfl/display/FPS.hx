@@ -5,6 +5,8 @@ import haxe.Timer;
 import openfl.events.Event;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
+import openfl.system.System;
+import flixel.math.FlxMath;
 #if gl_stats
 import openfl.display._internal.stats.Context3DStats;
 import openfl.display._internal.stats.DrawCallContext;
@@ -75,11 +77,7 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-        #if desktop
-			text = "FPS: " + currentFPS + "\nBuild Num: " + Main.buildNumber;
-        #else
-            text = "FPS: " + currentFPS;
-        #end
+            text = "Fps: " + currentFPS + "\nBuild Num: " + Main.buildNumber+ "\nMemory: " + Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1)) + "MB";
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
