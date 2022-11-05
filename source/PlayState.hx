@@ -50,6 +50,14 @@ import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
+// hardcoded events
+typedef Events {
+	var value1:String;
+	var value2:String;
+
+	@:optional var customValue:Dynamic;
+}
+
 class PlayState extends MusicBeatState
 {
 	public static var curStage:String = '';
