@@ -29,7 +29,7 @@ class MainMenuState extends MusicBeatState
 {
 	var menuItems:MainMenuList;
 
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -78,8 +78,6 @@ class MainMenuState extends MusicBeatState
 		{
 			add(magenta);
 		}
-
-		// magenta.scrollFactor.set();
 
 		menuItems = new MainMenuList();
 		add(menuItems);
