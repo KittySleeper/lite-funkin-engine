@@ -67,6 +67,11 @@ class StoryMenuState extends MusicBeatState
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
 
+	/**
+	 * TODO: switch this to custom story mode weeks lmfao
+	 */
+	public var dumbDifficulties:Array<String> = ['EASY', 'NORMAL', 'HARD', 'ERECT'];
+
 	override function create()
 	{
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -316,7 +321,8 @@ class StoryMenuState extends MusicBeatState
 					diffic = '-erect';
 			}
 
-			PlayState.storyDifficulty = curDifficulty;
+			PlayState.storyDifficulties = dumbDifficulties;
+			PlayState.storyDifficulty = dumbDifficulties[curDifficulty];
 
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
 			PlayState.storyWeek = curWeek;
@@ -361,7 +367,7 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.y = leftArrow.y - 15;
 
 		#if !switch
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
+		intendedScore = Highscore.getWeekScore(curWeek, dumbDifficulties[curDifficulty]);
 		#end
 
 		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07);
@@ -444,7 +450,7 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.x -= FlxG.width * 0.35;
 
 		#if !switch
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
+		intendedScore = Highscore.getWeekScore(curWeek, dumbDifficulties[curDifficulty]);
 		#end
 	}
 }

@@ -185,7 +185,7 @@ class MainMenuState extends MusicBeatState
 
 
 		if(FlxG.keys.justPressed.T)
-			CoolUtil.loadSong('troll', 4, 0);
+			CoolUtil.loadSong('troll', 'troll', 0);
 	}
 }
 

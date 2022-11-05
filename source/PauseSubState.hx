@@ -18,7 +18,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var pauseOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Options', 'Exit to menu'];
-	var difficultyChoices:Array<String> = ['EASY', 'NORMAL', 'HARD', 'ERECT', 'BACK'];
+	var difficultyChoices:Array<String> = PlayState.storyDifficulties;
 
 	var menuItems:Array<String> = [];
 	var curSelected:Int = 0;
@@ -30,6 +30,11 @@ class PauseSubState extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
+
+		// remove when only 1 difficulty active
+		if (difficultyChoices.length <= 1) pauseOG.remove('Change Difficulty');
+
+		difficultyChoices.push('BACK');
 
 		menuItems = pauseOG;
 
@@ -52,7 +57,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(levelInfo);
 
 		var levelDifficulty:FlxText = new FlxText(20, 15 + 32, 0, "", 32);
-		levelDifficulty.text += CoolUtil.difficultyString();
+		levelDifficulty.text += PlayState.storyDifficulty;
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDifficulty.updateHitbox();
@@ -157,14 +162,16 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.switchState(new StoryMenuState());
 					else
 						FlxG.switchState(new FreeplayState());
-				
-				case "EASY" | "NORMAL" | "HARD" | "ERECT":
-					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.SONG.song.toLowerCase(), curSelected), PlayState.SONG.song.toLowerCase());
-					PlayState.storyDifficulty = curSelected;
-					FlxG.resetState();
 				case "BACK":
 					menuItems = pauseOG;
 					regenMenu();
+				default:
+					// change difficulty lol
+					if (menuItems != difficultyChoices) return;
+
+					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.SONG.song.toLowerCase(), difficultyChoices[curSelected]), PlayState.SONG.song.toLowerCase());
+					PlayState.storyDifficulty = difficultyChoices[curSelected];
+					FlxG.resetState();
 			}
 		}
 	}
