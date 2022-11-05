@@ -50,6 +50,15 @@ import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
+// idk if I want to do anything about this right now, I'm stressed out at the moment
+enum abstract Events(String) to String
+{
+	var value1;
+	var value2;
+
+	var eventName;
+}
+
 class PlayState extends MusicBeatState
 {
 	public static var curStage:String = '';
@@ -155,9 +164,6 @@ class PlayState extends MusicBeatState
 	public static var daPixelZoom:Float = 6;
 
 	var inCutscene:Bool = false;
-
-	public var value1:String;
-	public var value2:String;
 
 	#if desktop
 	// Discord RPC variables
