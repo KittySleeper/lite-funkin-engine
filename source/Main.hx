@@ -60,7 +60,7 @@ class Main extends Sprite {
 		final stageHeight:Int = Lib.current.stage.stageHeight;
 
 		#if windows
-			var path:String = '${Sys.getCwd()}../../../../buildnum.txt';
+			var path:String = '${Sys.getCwd()}../../../../..buildnums/buildnum.txt';
 			buildNumber = Std.parseInt(File.getContent(path))+1;
 			File.saveContent(path, buildNumber+"");
 		#end

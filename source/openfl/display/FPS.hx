@@ -40,9 +40,9 @@ class FPS extends TextField
 		this.y = y;
 
 		currentFPS = 0;
-		selectable = false;
+		selectable = true;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 13, color);
+		defaultTextFormat = new TextFormat("_sans", 13, color, true, false, false, 'https://github.com/504brandon/lite-funkin-engine');
 		text = "FPS: ";
 
 		cacheCount = 0;
