@@ -28,8 +28,6 @@ class CPPWindows
     return 0;
     ')
     public static function returnTwoNumbers():Int64
-    {
         return 0;
-    }
 }
 #end
