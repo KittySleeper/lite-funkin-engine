@@ -799,7 +799,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -5000;
 
-		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
+		strumLine = new FlxSprite(0, 70).makeGraphic(FlxG.width, 10);
 		if (PreferencesMenu.getPref('downscroll'))
 			strumLine.y = FlxG.height - 150;
 		strumLine.scrollFactor.set();
@@ -894,7 +894,7 @@ class PlayState extends MusicBeatState
 			watermarkTxt.text = SONG.song.toUpperCase() + ' - ' + storyDifficultyText + ' - Week' + storyWeek;//fuck engines that make it so these go away if watermarks are off
 
 		rateingTxt = new FlxText(healthBarBG.x + healthBarBG.width - 876.5, 321.9, 0, "");
-		rateingTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+		rateingTxt.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		rateingTxt.borderSize = 4;
 		rateingTxt.scrollFactor.set();//comment is funni
 		add(rateingTxt);
