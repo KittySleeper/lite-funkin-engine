@@ -861,8 +861,8 @@ class PlayState extends MusicBeatState
 		if (PreferencesMenu.getPref('downscroll'))
 			timeBarBG.y = FlxG.height * 1;
 
-		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, RIGHT_TO_LEFT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
-			null, 0, 2);
+		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, RIGHT_TO_LEFT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), FlxG.sound.music,
+			'time', 0, FlxG.sound.music.length);
 		timeBar.scale.set(0.7, 1.5);
 		timeBar.scrollFactor.set();
 		timeBar.createFilledBar(0xFF000000,0xFFFFFAFA);
@@ -2072,9 +2072,9 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
 		if(FlxG.save.data.sickx != null)
-		rating.x = JudgePositionState.SICK.x;
+			rating.x = JudgePositionState.SICK_POSITION.x;
 		if(FlxG.save.data.sicky != null)
-		rating.y = JudgePositionState.SICK.y + coolText.y;
+			rating.y = JudgePositionState.SICK_POSITION.y + coolText.y;
 		add(rating);
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
@@ -2084,9 +2084,9 @@ class PlayState extends MusicBeatState
 		comboSpr.velocity.y -= 150;
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		if(FlxG.save.data.combox != null)
-		comboSpr.x = JudgePositionState.COMBO.x;
+		comboSpr.x = JudgePositionState.COMBO_POSITION.x;
 		if(FlxG.save.data.comboy != null)
-		comboSpr.y = JudgePositionState.COMBO.y;
+		comboSpr.y = JudgePositionState.COMBO_POSITION.y;
 
 		if (!curStage.startsWith('school'))
 		{

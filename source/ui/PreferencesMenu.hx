@@ -135,13 +135,9 @@ class PreferencesMenu extends Page
 			case 'auto-pause':
 				FlxG.autoPause = getPref('auto-pause');
 			case 'fpsshow':
-				Main.fpsCounter.visible = getPref('fps');//i like how this used to work but doesnt anymore
+				Main.fpsCounter.visible = getPref('fpsshow');//i like how this used to work but doesnt anymore
 			case 'fpsboost':
-				if(getPref('fpsboost'))
-				Main.framerate = 1000;
-
-				if(getPref('fpsboost') == false)
-				Main.framerate = 120;
+				Main.framerate = getPref('fpsboost') ? 1000 : 120;
 		}
 
 		FlxG.save.data.settings = preferences;
