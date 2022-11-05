@@ -139,7 +139,7 @@ class MainMenuState extends MusicBeatState
 	
 	function selectDonate()
 	{
-		CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+		CoolUtil.openURl('https://ninja-muffin24.itch.io/funkin');
 	}
 
 	function startExitState(nextState:FlxState)

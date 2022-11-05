@@ -47,7 +47,7 @@ At the moment, you can optionally fix some bugs regarding the engine:
 2. A text rendering bug (mainly noticeable in the story menu under tracks)
 - Run `haxelib git openfl https://github.com/openfl/openfl` in the terminal/command-prompt.
 3. If you want Texture Atlas chars, You should use FLXAnimate
-  - Run `haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate`
+  - Run `haxelib git flxAnimate https://github.com/Dot-Stuff/flxanimate`
 
 You should have everything ready for compiling the game! Follow the guide below to continue!
 

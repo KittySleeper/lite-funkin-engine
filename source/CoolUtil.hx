@@ -55,7 +55,7 @@ class CoolUtil
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
      
-	public static function browserLoad(site:String) {
+	public static function openURl(site:String) {
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [site]);
 		#else
