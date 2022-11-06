@@ -38,6 +38,7 @@ using StringTools;
 
 /**
  * `typedef` to store data about any given event.
+ * Thanks leather for fixing it, I'm such a dumbass -memehoovy
  */
 typedef Event = {
 	var values:Array<String>;
