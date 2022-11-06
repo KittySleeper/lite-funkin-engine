@@ -1,0 +1,14 @@
+{
+    "song": {
+        "events": [
+            {
+                "name": "Play Animation",
+                "values": [
+                    "hey",
+                    "bf",
+                    "true"
+                ]
+            }
+        ]
+    }
+}

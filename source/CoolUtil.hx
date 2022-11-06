@@ -7,13 +7,6 @@ using StringTools;
 
 class CoolUtil
 {
-	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD", "ERECT", "TROLL"];
-
-	public static function difficultyString():String
-	{
-		return difficultyArray[PlayState.storyDifficulty];
-	}
-
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = Assets.getText(path).trim().split('\n');
@@ -46,7 +39,7 @@ class CoolUtil
 		return a + camLerpShit(ratio) * (b - a);
 	}
 
-	public static function loadSong(SongName:String, Diff:Int, Week:Int) {
+	public static function loadSong(SongName:String, Diff:String, Week:Int) {
 		var loader = Highscore.formatSong(SongName, Diff);
 		PlayState.SONG = Song.loadFromJson(loader, SongName);
 		PlayState.isStoryMode = false;
@@ -68,5 +61,29 @@ class CoolUtil
 		PlayState.iconP1.changeIcon(char);
 		else
 		PlayState.iconP2.changeIcon(char);
+	}
+
+	/**
+		Makes the first letter of each word in `s` uppercase.
+		@param s       The string to modify
+		@author swordcube
+	**/
+	public static function firstLetterUppercase(s:String):String
+	{
+		var strArray:Array<String> = s.split(' ');
+		var newArray:Array<String> = [];
+		
+		for (str in strArray)
+			newArray.push(str.charAt(0).toUpperCase()+str.substring(1));
+	
+		return newArray.join(' ');
+	}
+
+	public static function error(message:Null<String> = null, title:Null<String> = 'Lite Funkin Engine'):Void {
+		#if windows
+		lime.app.Application.current.window.alert(message, title);
+		#else
+		trace('[CoolUtil.error] $title - $message');
+		#end
 	}
 }

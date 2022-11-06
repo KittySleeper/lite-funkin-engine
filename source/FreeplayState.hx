@@ -38,13 +38,12 @@ class FreeplayState extends MusicBeatState
 
 	private var bg_color:BackgroundColor = new BackgroundColor();
 
-	override function create()
-	{
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+	/**
+	 * `haxe.xml.Access` that points to the main `songs` node in `data/freeplay-songs.xml`.
+	 */
+	public var freeplay_songs:haxe.xml.Access = new haxe.xml.Access(Xml.parse(Assets.getText(Paths.xml('freeplay-songs')))).node.songs;
 
-		for (i in 0...initSonglist.length)
-			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
-
+	override function create():Void {
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -53,29 +52,13 @@ class FreeplayState extends MusicBeatState
 		if (!FlxG.sound.music.playing)
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
-		if (StoryMenuState.weekUnlocked[2])
-			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
-
-		if (StoryMenuState.weekUnlocked[2])
-			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', 'monster']);
-
-		if (StoryMenuState.weekUnlocked[3])
-			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
-
-		if (StoryMenuState.weekUnlocked[4])
-			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
-
-		if (StoryMenuState.weekUnlocked[5])
-			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
-
-		if (StoryMenuState.weekUnlocked[6])
-			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
-
-		if (StoryMenuState.weekUnlocked[7])
-			addWeek(['Ugh', 'Guns', 'Stress'], 7, ['tankman']);
-
-		if (StoryMenuState.weekUnlocked[8])
-			addWeek(['Darnell', 'Lit-up', '2hot'], 8, ['darnell']);
+		for (song in freeplay_songs.nodes.song) {
+			#if !debug
+			if (song.att.debug.toLowerCase() != 'true') addSong(song.att.name, Std.parseInt(song.att.week), song.att.icon, song.att.diffs.split(','));
+			#else
+			addSong(song.att.name, Std.parseInt(song.att.week), song.att.icon, song.att.diffs.split(','));
+			#end
+		}
 
 		// LOAD MUSIC
 
@@ -124,9 +107,13 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function addSong(songName:String, weekNum:Int, songCharacter:String)
+	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?songDiffs:Array<String>)
 	{
-		songs.push(new SongMetadata(songName, weekNum, songCharacter));
+		var stupidDiffs:Array<String> = [];
+		if (songDiffs != null) { for (diff in songDiffs) { stupidDiffs.push(diff.trim()); } }
+		else stupidDiffs = ['easy', 'normal', 'hard'];
+
+		songs.push(new SongMetadata(songName, weekNum, songCharacter, stupidDiffs));
 	}
 
 	public function addWeek(songs:Array<String>, weekNum:Int, ?songCharacters:Array<String>)
@@ -193,11 +180,10 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{
-			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), PlayState.storyDifficulty);
 
 			PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
@@ -210,17 +196,18 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 3;
-		if (curDifficulty > 3)
+			curDifficulty = songs[curSelected].songDiffs.length - 1;
+		if (curDifficulty > songs[curSelected].songDiffs.length - 1)
 			curDifficulty = 0;
 
-		#if !switch
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
-		#end
-
-		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
+		PlayState.storyDifficulties = songs[curSelected].songDiffs;
+		PlayState.storyDifficulty = PlayState.storyDifficulties[curDifficulty].toUpperCase();
+		diffText.text = '< ' + PlayState.storyDifficulty + ' >';
 		positionHighscore();
+
+		#if !switch
+		intendedScore = Highscore.getScore(songs[curSelected].songName, PlayState.storyDifficulty);
+		#end
 	}
 
 	function changeSelection(change:Int = 0)
@@ -234,17 +221,19 @@ class FreeplayState extends MusicBeatState
 		if (curSelected >= songs.length)
 			curSelected = 0;
 
+		changeDiff();
+
 		// selector.y = (70 * curSelected) + 30;
 
 		#if !switch
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
+		intendedScore = Highscore.getScore(songs[curSelected].songName, PlayState.storyDifficulty);
 		// lerpScore = 0;
 		#end
 
 		#if PRELOAD_ALL
 		// No clue if this was removed or not, but I wanted to keep this as close as possible to the web version, and this is not in there.
 		// Yes, I know it's because the web version doesn't preload everything. If this being gone bothers you so much, then do it yourself lol.
-		//FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 		#end
 
 		var bullShit:Int = 0;
@@ -287,12 +276,14 @@ class SongMetadata
 	public var songName:String = "";
 	public var week:Int = 0;
 	public var songCharacter:String = "";
+	public var songDiffs:Array<String> = ['easy', 'normal', 'hard'];
 
-	public function new(song:String, week:Int, songCharacter:String)
+	public function new(song:String, week:Int, songCharacter:String, ?songDiffs:Array<String>)
 	{
 		this.songName = song;
 		this.week = week;
 		this.songCharacter = songCharacter;
+		if (songDiffs != null) this.songDiffs = songDiffs;
 	}
 }
 

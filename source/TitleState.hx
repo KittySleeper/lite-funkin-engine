@@ -74,6 +74,11 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
+		if (FlxG.save.data.mod != null) modding.ModLoader.init(FlxG.save.data.mod);
+		else FlxG.save.data.mod = '';
+
+		modding.ModLoader.scan();
+
 		PreferencesMenu.initPrefs();
 		PlayerSettings.init();
 		Highscore.load();
@@ -101,13 +106,13 @@ class TitleState extends MusicBeatState
 			PreferencesMenu.preferences = FlxG.save.data.settings;
 
 		if (FlxG.save.data.comboy != null)
-			JudgePositionState.COMBO.y = FlxG.save.data.comboy;
+			JudgePositionState.COMBO_POSITION.y = FlxG.save.data.comboy;
 		if (FlxG.save.data.combox != null)
-			JudgePositionState.COMBO.x = FlxG.save.data.combox;
+			JudgePositionState.COMBO_POSITION.x = FlxG.save.data.combox;
 		if (FlxG.save.data.sicky != null)
-			JudgePositionState.SICK.y = FlxG.save.data.sickyy;
+			JudgePositionState.SICK_POSITION.y = FlxG.save.data.sickyy;
 		if (FlxG.save.data.sickx != null)
-			JudgePositionState.SICK.x = FlxG.save.data.sickx;
+			JudgePositionState.SICK_POSITION.x = FlxG.save.data.sickx;
 
 		/*if (FlxG.save.data.unnessearystuffthatsset != null)
 			UnnessesaryMenu.dumbassunesesaryandyesispelleditwrongidc = FlxG.save.data.unnessearystuffthatsset;*/

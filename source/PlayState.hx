@@ -1,32 +1,24 @@
 package; //will do random comments so be prepared
 
+#if discord_rpc
+import Discord.DiscordClient;
+#end
+
 import ui.JudgePositionState;
-import ui.UnnessesaryMenu;
 import animate.FlxAnimate;
 import shaderslmfao.BuildingShaders;
 import ui.PreferencesMenu;
 import shaderslmfao.ColorSwap;
-#if desktop
-import Discord.DiscordClient;
-#end
 import Section.SwagSection;
 import Song.SwagSong;
-import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import flixel.FlxGame;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.FlxState;
 import flixel.FlxSubState;
-import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.effects.FlxTrail;
-import flixel.addons.effects.FlxTrailArea;
-import flixel.addons.effects.chainable.FlxEffectSprite;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.graphics.atlas.FlxAtlas;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
@@ -36,27 +28,20 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
-import flixel.util.FlxCollision;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
-import haxe.Json;
-import lime.utils.Assets;
-import openfl.display.BlendMode;
-import openfl.display.StageQuality;
-import openfl.filters.ShaderFilter;
 import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
 
-// idk if I want to do anything about this right now, I'm stressed out at the moment
-enum abstract Events(String) to String
-{
-	var value1;
-	var value2;
-
-	var eventName;
+/**
+ * `typedef` to store data about any given event.
+ */
+typedef Event = {
+	var values:Array<String>;
+	var name:String;
 }
 
 class PlayState extends MusicBeatState
@@ -66,13 +51,18 @@ class PlayState extends MusicBeatState
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
-	public static var storyDifficulty:Int = 1;
+	public static var storyDifficulty:String = 'NORMAL';
 	public static var deathCounter:Int = 0;
 	public static var practiceMode:Bool = false;
 	public static var seenCutscene:Bool = false;
 
+	/**
+	 * Used for the pause menu's change difficulty menu.
+	 */
+	public static var storyDifficulties:Array<String> = ['EASY', 'NORMAL', 'HARD'];
+
 	private var vocals:FlxSound;
-	private var vocalsFinished = false;
+	private var vocalsFinished:Bool = false;
 
 	private var dad:Character;
 	private var gf:Character;
@@ -150,7 +140,6 @@ class PlayState extends MusicBeatState
 	var Good:Int = 0;
 	var Bad:Int = 0;
 	var Shit:Int = 0;
-	var songtime:Float;
 	var storyDifficultyText:String = "";
 	var scoreTxt:FlxText;
 	var watermarkTxt:FlxText;
@@ -184,10 +173,10 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		var instPath = Paths.inst(SONG.song.toLowerCase());
+		var instPath:String = Paths.inst(SONG.song.toLowerCase());
 		if (OpenFlAssets.exists(instPath, SOUND) || OpenFlAssets.exists(instPath, MUSIC))
 			OpenFlAssets.getSound(instPath, true);
-		var vocalsPath = Paths.voices(SONG.song.toLowerCase());
+		var vocalsPath:String = Paths.voices(SONG.song.toLowerCase());
 		if (OpenFlAssets.exists(vocalsPath, SOUND) || OpenFlAssets.exists(vocalsPath, MUSIC))
 			OpenFlAssets.getSound(vocalsPath, true);
 
@@ -256,21 +245,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		// diffs real
-		switch (storyDifficulty)
-		{
-			case 0:
-				storyDifficultyText = "Easy";
-			case 1:
-				storyDifficultyText = "Normal";
-			case 2:
-				storyDifficultyText = "Hard";
-			case 3:
-				storyDifficultyText = "Erect";
-			case 4:
-				storyDifficultyText = "Troll";
-			default:
-				storyDifficultyText = "Lol u got null";
-		}
+		storyDifficultyText = CoolUtil.firstLetterUppercase(storyDifficulty);
 
 		switch (SONG.song.toLowerCase())
 		{
@@ -858,18 +833,17 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-		timeBarBG = new FlxSprite(0, FlxG.height * 0.1).loadGraphic(Paths.image('healthBar'));
-		timeBarBG.y -= 0.3;
-		timeBarBG.scale.set(0.7, 1.5);
+		timeBarBG = new FlxSprite(0, FlxG.height * 0.025).loadGraphic(Paths.image('healthBar'));
+		timeBarBG.scale.set(0.7, 1);
 		timeBarBG.screenCenter(X);
 		timeBarBG.scrollFactor.set();
 		add(timeBarBG);
 		if (PreferencesMenu.getPref('downscroll'))
-			timeBarBG.y = FlxG.height * 1;
+			timeBarBG.y = FlxG.height * 0.975;
 
-		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, RIGHT_TO_LEFT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
-			null, 0, 2);
-		timeBar.scale.set(0.7, 1.5);
+		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), FlxG.sound.music,
+			'time', 0, FlxG.sound.music.length != 0 ? FlxG.sound.music.length : 1);
+		timeBar.scale.set(0.7, 1);
 		timeBar.scrollFactor.set();
 		timeBar.createFilledBar(0xFF000000,0xFFFFFAFA);
 		add(timeBar);
@@ -1357,6 +1331,14 @@ class PlayState extends MusicBeatState
 
 		unspawnNotes.sort(sortByShit);
 
+		// fallback bullshit lmao!!!!!!!!!!!!!!!!!!!!!
+		if (FlxG.sound.music.length == 0) {
+			CoolUtil.error('Error loading ${SONG.song.toLowerCase()}\'s Inst.ogg! Make sure it exists.');
+			FlxG.switchState(new FreeplayState());
+			return;
+		}
+
+		// basically this is false before ^ is called so no crashes i think???
 		generatedMusic = true;
 	}
 
@@ -1622,10 +1604,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
-		songtime = Conductor.songPosition;
-
-		timeBar.value = songtime; //thing for the funni
 
 		if(PreferencesMenu.getPref('ui_old'))
 		scoreTxt.text = "Score:" + songScore;
@@ -1950,19 +1928,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				var difficulty:String = "";
-
-				if (storyDifficulty == 0)
-					difficulty = '-easy';
-
-				if (storyDifficulty == 2)
-					difficulty = '-hard';
-
-				if (storyDifficulty == 3)
-					difficulty = '-erect'; // yes
-
-				if (storyDifficulty == 4)
-					difficulty = '-troll';
+				var difficulty:String = storyDifficulty == 'normal' ? '' : '-${storyDifficulty.toLowerCase()}';
 
 				trace('LOADING NEXT SONG');
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
@@ -2078,9 +2044,9 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
 		if(FlxG.save.data.sickx != null)
-		rating.x = JudgePositionState.SICK.x;
+			rating.x = JudgePositionState.SICK_POSITION.x;
 		if(FlxG.save.data.sicky != null)
-		rating.y = JudgePositionState.SICK.y + coolText.y;
+			rating.y = JudgePositionState.SICK_POSITION.y + coolText.y;
 		add(rating);
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
@@ -2090,9 +2056,9 @@ class PlayState extends MusicBeatState
 		comboSpr.velocity.y -= 150;
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		if(FlxG.save.data.combox != null)
-		comboSpr.x = JudgePositionState.COMBO.x;
+		comboSpr.x = JudgePositionState.COMBO_POSITION.x;
 		if(FlxG.save.data.comboy != null)
-		comboSpr.y = JudgePositionState.COMBO.y;
+		comboSpr.y = JudgePositionState.COMBO_POSITION.y;
 
 		if (!curStage.startsWith('school'))
 		{
@@ -2383,10 +2349,10 @@ class PlayState extends MusicBeatState
 	{
 		// just double pasting this shit cuz fuk u
 		// REDO THIS SYSTEM!
-		var leftP = controls.NOTE_LEFT_P;
-		var downP = controls.NOTE_DOWN_P;
-		var upP = controls.NOTE_UP_P;
-		var rightP = controls.NOTE_RIGHT_P;
+		var leftP:Bool = controls.NOTE_LEFT_P;
+		var downP:Bool = controls.NOTE_DOWN_P;
+		var upP:Bool = controls.NOTE_UP_P;
+		var rightP:Bool = controls.NOTE_RIGHT_P;
 
 		if (leftP)
 			noteMiss(0);
@@ -2404,8 +2370,8 @@ class PlayState extends MusicBeatState
 		{
 			if (!note.isSustainNote)
 			{
-				popUpScore(note.strumTime, note);
 				combo++;
+				popUpScore(note.strumTime, note);
 			}
 
 			if (note.noteData >= 0)

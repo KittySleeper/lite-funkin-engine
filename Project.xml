@@ -92,7 +92,7 @@
 	<assets path="assets/troll"    library="week8"    exclude="*.ogg" if="web"/>
 	<assets path="assets/troll"    library="week8"    exclude="*.mp3|*.mp4" unless="web"/>
 	
-	<assets path='example_mods' rename='assets/mods' embed='false'/>
+	<assets path='mods' embed='false'/>
 	
 	<assets path="CHANGELOG.md" rename='changelog.txt'/>
 
@@ -113,11 +113,11 @@
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
-	<haxelib name="polymod"/>
-	<haxelib name="discord_rpc" if="desktop"/>
+	<haxelib name="polymod" />
+	<haxelib name="discord_rpc" if="desktop" />
 	<define name="hscriptPos" />
 	<haxelib name="flxAnimate" />
-	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
+	<haxelib name="hxcpp-debug-server" if="debug" />
 
 	<!--In case you want to use nape with flixel-->
 	<!--<haxelib name="nape-haxe4" />-->
@@ -145,7 +145,6 @@
 	<!--The Newgrounds version of FNF was built with 'ng' defined, and so will the port!-->
 	<haxedef name="ng" />
 	
-        <!-- Fixes Metal issue on XCode 12 and above (?)-->
-        <dependency name="Metal.framework" if="ios" />
-
+	<!-- Fixes Metal issue on XCode 12 and above (?)-->
+	<dependency name="Metal.framework" if="ios" />
 </project>

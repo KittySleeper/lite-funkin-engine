@@ -1,5 +1,9 @@
 package openfl.display;
 
+// funnies
+import external.fabric.engine.Utilities;
+import external.memory.Memory;
+
 import flixel.addons.effects.chainable.FlxOutlineEffect;
 import haxe.Timer;
 import openfl.events.Event;
@@ -47,6 +51,9 @@ class FPS extends TextField
 		defaultTextFormat = new TextFormat("_sans", 13, color, true, false, false, 'https://github.com/504brandon/lite-funkin-engine');
 		text = "FPS: ";
 
+		width = 1280;
+		height = 720;
+
 		cacheCount = 0;
 		currentTime = 0;
 		times = [];
@@ -77,7 +84,12 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-            text = "Fps: " + currentFPS + "\nBuild Num: " + Main.buildNumber+ "\nMemory: " + Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1)) + "MB";
+			#if debug
+			text = '${currentFPS}fps\n${Utilities.format_bytes(Memory.getCurrentUsage())}\nbuild-${Main.buildNumber} (debug)';
+			#else
+			text = '${currentFPS}fps\n${Utilities.format_bytes(Memory.getCurrentUsage())}\nbuild-${Main.buildNumber}';
+			#end
+            //text = "Fps: " + currentFPS + "\nBuild Num: " + Main.buildNumber+ "\nMemory: " + Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1)) + "MB";
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();

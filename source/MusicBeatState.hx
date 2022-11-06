@@ -38,6 +38,8 @@ class MusicBeatState extends FlxUIState
 		if (oldStep != curStep && curStep >= 0)
 			stepHit();
 
+		FlxG.stage.frameRate = Main.framerate;
+
 		super.update(elapsed);
 	}
 

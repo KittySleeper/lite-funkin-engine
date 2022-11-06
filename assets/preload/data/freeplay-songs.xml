@@ -1,0 +1,48 @@
+<!DOCTYPE lite-freeplay-songs >
+<songs>
+    <song name='Tutorial' icon='gf' week='0' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 1-->
+    <song name='Bopeebo' icon='dad' week='1' diffs='easy,normal,hard' debug='false' />
+    <song name='Fresh' icon='dad' week='1' diffs='easy,normal,hard' debug='false' />
+    <song name='Dadbattle' icon='dad' week='1' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 2 -->
+    <song name='Spookeez' icon='spooky' week='2' diffs='easy,normal,hard' debug='false' />
+    <song name='South' icon='spooky' week='2' diffs='easy,normal,hard' debug='false' />
+    <song name='Monster' icon='monster' week='2' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 3 -->
+    <song name='Pico' icon='pico' week='3' diffs='easy,normal,hard' debug='false' />
+    <song name='Philly' icon='pico' week='3' diffs='easy,normal,hard' debug='false' />
+    <song name='Blammed' icon='pico' week='3' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 4 -->
+    <song name='Satin-Panties' icon='mom' week='4' diffs='easy,normal,hard' debug='false' />
+    <song name='High' icon='mom' week='4' diffs='easy,normal,hard' debug='false' />
+    <song name='Milf' icon='mom' week='4' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 5 -->
+    <song name='Cocoa' icon='parents' week='5' diffs='easy,normal,hard' debug='false' />
+    <song name='Eggnog' icon='parents' week='5' diffs='easy,normal,hard' debug='false' />
+    <song name='Winter-Horrorland' icon='parents' week='5' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 6 -->
+    <song name='Senpai' icon='senpai' week='6' diffs='easy,normal,hard' debug='false' />
+    <song name='Roses' icon='senpai' week='6' diffs='easy,normal,hard' debug='false' />
+    <song name='Thorns' icon='spirit' week='6' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 7 -->
+    <song name='Ugh' icon='tankman' week='7' diffs='easy,normal,hard' debug='false' />
+    <song name='Guns' icon='tankman' week='7' diffs='easy,normal,hard' debug='false' />
+    <song name='Stress' icon='tankman' week='7' diffs='easy,normal,hard' debug='false' />
+
+    <!-- Week 8 -->
+    <song name='Darnell' icon='darnell' week='8' diffs='normal,hard' debug='false' />
+    <song name='Lit-up' icon='darnell' week='8' diffs='normal,hard' debug='false' />
+    <song name='2hot' icon='darnell' week='8' diffs='normal,hard' debug='false' />
+
+    <!-- Debug Songs -->
+    <song name='Test' icon='bf-pixel' week='0' diffs='normal' debug='true' />
+    <song name='Ridge' icon='dad' week='0' diffs='normal' debug='true' />
+</songs>

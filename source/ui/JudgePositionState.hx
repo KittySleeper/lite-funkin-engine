@@ -1,16 +1,24 @@
 package ui;
 
+import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
 class JudgePositionState extends MusicBeatState{
-    public static var SICK:FlxSprite = new FlxSprite().loadGraphic(Paths.image('sick', 'shared'));
-    public static var COMBO:FlxSprite = new FlxSprite().loadGraphic(Paths.image('combo', 'shared'));
+    public static var SICK_POSITION:FlxPoint = new FlxPoint();
+    public static var COMBO_POSITION:FlxPoint = new FlxPoint();
+
+    public var SICK:FlxSprite = new FlxSprite().loadGraphic(Paths.image('sick', 'shared'));
+    public var COMBO:FlxSprite = new FlxSprite().loadGraphic(Paths.image('combo', 'shared'));
 
     override function create() {
             FlxG.mouse.enabled = true;
             FlxG.mouse.visible = true;
+
+            SICK.setPosition(SICK_POSITION.x, SICK_POSITION.y);
+            COMBO.setPosition(COMBO_POSITION.x, COMBO_POSITION.y);
+
             var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback', 'shared'));
             add(bg);
 
@@ -60,13 +68,13 @@ class JudgePositionState extends MusicBeatState{
 
         super.update(elapsed);
 
-        FlxG.save.data.sicky = SICK.y;
+        FlxG.save.data.sicky = SICK_POSITION.y;
 		FlxG.save.flush();
-        FlxG.save.data.sickx = SICK.x;
+        FlxG.save.data.sickx = SICK_POSITION.x;
 		FlxG.save.flush();
-        FlxG.save.data.combox = COMBO.x;
+        FlxG.save.data.combox = COMBO_POSITION.x;
 		FlxG.save.flush();
-        FlxG.save.data.comboy = COMBO.y;
+        FlxG.save.data.comboy = COMBO_POSITION.y;
 		FlxG.save.flush();
 
         if(FlxG.keys.justPressed.LEFT){
@@ -93,6 +101,9 @@ class JudgePositionState extends MusicBeatState{
         if(FlxG.keys.justPressed.S){
             COMBO.y += 2;
         }
+
+        SICK_POSITION.set(SICK.x, SICK.y);
+        COMBO_POSITION.set(COMBO.x, COMBO.y);
 
         if(FlxG.keys.justPressed.ESCAPE){
             FlxG.switchState(new ui.OptionsState());
