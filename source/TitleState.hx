@@ -74,6 +74,11 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
+		if (FlxG.save.data.mod != null) modding.ModLoader.init(FlxG.save.data.mod);
+		else FlxG.save.data.mod = '';
+
+		modding.ModLoader.scan();
+
 		PreferencesMenu.initPrefs();
 		PlayerSettings.init();
 		Highscore.load();

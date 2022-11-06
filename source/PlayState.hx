@@ -1333,7 +1333,7 @@ class PlayState extends MusicBeatState
 
 		// fallback bullshit lmao!!!!!!!!!!!!!!!!!!!!!
 		if (FlxG.sound.music.length == 0) {
-			CoolUtil.error('Error loading ${SONG.song.toLowerCase()}\'s Inst.ogg! Make sure it exists.', 'Lite Funkin Engine');
+			CoolUtil.error('Error loading ${SONG.song.toLowerCase()}\'s Inst.ogg! Make sure it exists.');
 			FlxG.switchState(new FreeplayState());
 			return;
 		}

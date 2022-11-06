@@ -79,7 +79,7 @@ class CoolUtil
 		return newArray.join(' ');
 	}
 
-	public static function error(message:Null<String> = null, title:Null<String> = null):Void {
+	public static function error(message:Null<String> = null, title:Null<String> = 'Lite Funkin Engine'):Void {
 		#if windows
 		lime.app.Application.current.window.alert(message, title);
 		#else
