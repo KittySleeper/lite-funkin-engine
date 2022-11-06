@@ -305,8 +305,6 @@ class PlayState extends MusicBeatState
 				trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
 				FlxG.sound.list.add(trainSound);
 
-				// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
-
 				var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
 				add(street);
 			}
@@ -1335,7 +1333,12 @@ class PlayState extends MusicBeatState
 		// fallback bullshit lmao!!!!!!!!!!!!!!!!!!!!!
 		if (FlxG.sound.music.length == 0) {
 			CoolUtil.error('Error loading ${SONG.song.toLowerCase()}\'s Inst.ogg! Make sure it exists.');
-			FlxG.switchState(new FreeplayState());
+			if (isStoryMode) {
+				FlxG.switchState(new StoryMenuState());
+			}
+			else {
+				FlxG.switchState(new FreeplayState());
+			}
 			return;
 		}
 
