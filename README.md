@@ -14,7 +14,7 @@ TEAM 504 -
 - [InsKal](https://github.com/InsKal)
 - [JustARock](https://www.youtube.com/watch?v=N2YRXOD8OSE)
 - [MemeHoovy](https://github.com/MemeHoovy)
-- [FutureDorito](https://github.com/Futuredorito)
+- [FutureDorito](https://github.com/Futuredorito) - coder and making slight grammar changes
 - [Leather128](https://github.com/Leather128)
 - [W0CKY](https://github.com/Snoni)
 
