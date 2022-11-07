@@ -767,7 +767,7 @@ class PlayState extends MusicBeatState
 		bfTankCutsceneLayer = new FlxTypedGroup<FlxAnimate>();
 		add(bfTankCutsceneLayer);
 
-		// Shitty layering but whatev it works LOL
+		// Shitty layering but whatever it works LOL
 		if (curStage == 'limo')
 			add(limo);
 
