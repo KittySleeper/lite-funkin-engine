@@ -87,7 +87,7 @@ class FPS extends TextField
 			#if debug
 			text = '${currentFPS}fps\n${Utilities.format_bytes(Memory.getCurrentUsage())}\nbuild-${Main.buildNumber} (debug)';
 			#else
-			text = '${currentFPS}fps\n${Utilities.format_bytes(Memory.getCurrentUsage())}\nbuild-${Main.buildNumber}';
+			text = '${currentFPS}fps\n${Utilities.format_bytes(Memory.getCurrentUsage())}';
 			#end
             //text = "Fps: " + currentFPS + "\nBuild Num: " + Main.buildNumber+ "\nMemory: " + Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1)) + "MB";
 
