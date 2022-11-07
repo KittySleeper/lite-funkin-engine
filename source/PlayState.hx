@@ -2351,7 +2351,7 @@ class PlayState extends MusicBeatState
 
 	function badNoteHit()
 	{
-		// just double pasting this shit cuz fuk u
+		// just double pasting this shit cause fuk you
 		// REDO THIS SYSTEM!
 		var leftP:Bool = controls.NOTE_LEFT_P;
 		var downP:Bool = controls.NOTE_DOWN_P;
