@@ -18,8 +18,9 @@ class MusicBeatSubstate extends FlxSubState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	function createPost() {
-		//do this before all the shit
+	function createPost()
+	{
+		// do this before all the shit
 	}
 
 	override function update(elapsed:Float)
@@ -61,6 +62,6 @@ class MusicBeatSubstate extends FlxSubState
 
 	public function beatHit():Void
 	{
-		//do literally nothing dumbass
+		// do literally nothing dumbass
 	}
 }

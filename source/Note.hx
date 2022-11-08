@@ -26,15 +26,16 @@ class Note extends FlxSprite
 	public var noteType:String = '';
 
 	var colorSwap:ColorSwap;
-	
+
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var arrowColors = [1, 1, 1, 1];
 
 	public var canBeHit(get, never):Bool;
-	
+
 	inline function get_canBeHit()
 	{
-		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset && strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset;
+		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset
+			&& strumTime < Conductor.songPosition + 0.5 * Conductor.safeZoneOffset;
 	}
 
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
@@ -185,7 +186,8 @@ class Note extends FlxSprite
 		super.update(elapsed);
 
 		// removes Psych events
-		if (noteData == -1){
+		if (noteData == -1)
+		{
 			this.kill();
 		}
 

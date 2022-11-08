@@ -26,7 +26,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	public var gameOverChar:String = "";
 
-	function resetVariables(){
+	function resetVariables()
+	{
 		// for (guh in defaultProperties){
 		// 	daBf = guh[0];
 		// }
@@ -119,7 +120,11 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (PlayState.storyWeek == 7)
 		{
-			if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !playingDeathSound && bf != null && bf.animation.curAnim != null)
+			if (bf.animation.curAnim.name == 'firstDeath'
+				&& bf.animation.curAnim.finished
+				&& !playingDeathSound
+				&& bf != null
+				&& bf.animation.curAnim != null)
 			{
 				playingDeathSound = true;
 				bf.startedDeath = true;

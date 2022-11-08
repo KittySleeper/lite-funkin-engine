@@ -16,8 +16,9 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	inline function Postcreate(){
-		//this will be before anything
+	inline function Postcreate()
+	{
+		// this will be before anything
 	}
 
 	override function create()
@@ -72,6 +73,6 @@ class MusicBeatState extends FlxUIState
 
 	public function beatHit():Void
 	{
-		//do literally nothing dumbass
+		// do literally nothing dumbass
 	}
 }

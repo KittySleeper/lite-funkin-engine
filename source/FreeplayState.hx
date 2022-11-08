@@ -30,7 +30,17 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var coolColors:Array<FlxColor> = [0xFF9271FD, 0xFF9271FD, 0xFF223344, 0xFF941653, 0xFFFC96D7, 0xFFA0D1FF, 0xFFFF78BF, 0xFFF6B604, 0xFF9271FD];
+	private var coolColors:Array<FlxColor> = [
+		0xFF9271FD,
+		0xFF9271FD,
+		0xFF223344,
+		0xFF941653,
+		0xFFFC96D7,
+		0xFFA0D1FF,
+		0xFFFF78BF,
+		0xFFF6B604,
+		0xFF9271FD
+	];
 
 	private var curPlaying:Bool = false;
 
@@ -43,7 +53,8 @@ class FreeplayState extends MusicBeatState
 	 */
 	public var freeplay_songs:haxe.xml.Access = new haxe.xml.Access(Xml.parse(Assets.getText(Paths.xml('freeplay-songs')))).node.songs;
 
-	override function create():Void {
+	override function create():Void
+	{
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -52,9 +63,11 @@ class FreeplayState extends MusicBeatState
 		if (!FlxG.sound.music.playing)
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
-		for (song in freeplay_songs.nodes.song) {
+		for (song in freeplay_songs.nodes.song)
+		{
 			#if !debug
-			if (song.att.debug.toLowerCase() != 'true') addSong(song.att.name, Std.parseInt(song.att.week), song.att.icon, song.att.diffs.split(','));
+			if (song.att.debug.toLowerCase() != 'true')
+				addSong(song.att.name, Std.parseInt(song.att.week), song.att.icon, song.att.diffs.split(','));
 			#else
 			addSong(song.att.name, Std.parseInt(song.att.week), song.att.icon, song.att.diffs.split(','));
 			#end
@@ -110,8 +123,15 @@ class FreeplayState extends MusicBeatState
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, ?songDiffs:Array<String>)
 	{
 		var stupidDiffs:Array<String> = [];
-		if (songDiffs != null) { for (diff in songDiffs) { stupidDiffs.push(diff.trim()); } }
-		else stupidDiffs = ['easy', 'normal', 'hard'];
+		if (songDiffs != null)
+		{
+			for (diff in songDiffs)
+			{
+				stupidDiffs.push(diff.trim());
+			}
+		}
+		else
+			stupidDiffs = ['easy', 'normal', 'hard'];
 
 		songs.push(new SongMetadata(songName, weekNum, songCharacter, stupidDiffs));
 	}
@@ -283,7 +303,8 @@ class SongMetadata
 		this.songName = song;
 		this.week = week;
 		this.songCharacter = songCharacter;
-		if (songDiffs != null) this.songDiffs = songDiffs;
+		if (songDiffs != null)
+			this.songDiffs = songDiffs;
 	}
 }
 
@@ -291,10 +312,13 @@ class SongMetadata
  * because haxe is a bitch ig
  * @author Leather128
  */
-class BackgroundColor {
+class BackgroundColor
+{
 	public var redFloat:Float = 1.0;
 	public var greenFloat:Float = 1.0;
 	public var blueFloat:Float = 1.0;
-	
-	public function new() {}
+
+	public function new()
+	{
+	}
 }

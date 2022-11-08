@@ -45,7 +45,8 @@ class PreferencesMenu extends Page
 		createPrefItem('Max Fps', 'fpsboost', true);
 
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
-		if (items != null) camFollow.y = items.members[items.selectedIndex].y;
+		if (items != null)
+			camFollow.y = items.members[items.selectedIndex].y;
 
 		menuCamera.follow(camFollow, null, 0.06);
 		menuCamera.deadzone.set(0, 160, menuCamera.width, 40);

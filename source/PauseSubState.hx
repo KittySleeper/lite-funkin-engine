@@ -17,7 +17,14 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var pauseOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Options', 'Exit to menu'];
+	var pauseOG:Array<String> = [
+		'Resume',
+		'Restart Song',
+		'Change Difficulty',
+		'Toggle Practice Mode',
+		'Options',
+		'Exit to menu'
+	];
 	var difficultyChoices:Array<String> = PlayState.storyDifficulties;
 
 	var menuItems:Array<String> = [];
@@ -32,7 +39,8 @@ class PauseSubState extends MusicBeatSubstate
 		super();
 
 		// remove when only 1 difficulty active
-		if (difficultyChoices.length <= 1) pauseOG.remove('Change Difficulty');
+		if (difficultyChoices.length <= 1)
+			pauseOG.remove('Change Difficulty');
 
 		difficultyChoices.push('BACK');
 
@@ -167,9 +175,11 @@ class PauseSubState extends MusicBeatSubstate
 					regenMenu();
 				default:
 					// change difficulty lol
-					if (menuItems != difficultyChoices) return;
+					if (menuItems != difficultyChoices)
+						return;
 
-					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.SONG.song.toLowerCase(), difficultyChoices[curSelected]), PlayState.SONG.song.toLowerCase());
+					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.SONG.song.toLowerCase(), difficultyChoices[curSelected]),
+						PlayState.SONG.song.toLowerCase());
 					PlayState.storyDifficulty = difficultyChoices[curSelected];
 					FlxG.resetState();
 			}

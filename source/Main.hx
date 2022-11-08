@@ -13,14 +13,18 @@ import openfl.events.Event;
 import sys.io.File;
 #end
 
-class Main extends Sprite {
+class Main extends Sprite
+{
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = HEY; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
+
 	static public var framerate:Int = 60; // How many frames per second the game should run at.
+
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
+
 	static public var buildNumber:Int;
 
 	public static var fpsCounter:FPS;
@@ -62,10 +66,11 @@ class Main extends Sprite {
 		final stageHeight:Int = Lib.current.stage.stageHeight;
 
 		#if sys
-		if (Sys.args().contains('-livereload')) {
+		if (Sys.args().contains('-livereload'))
+		{
 			var path:String = '../../../../buildnum.lfebc';
-			buildNumber = Std.parseInt(File.getContent(sys.FileSystem.absolutePath(path)))+1;
-			File.saveContent(sys.FileSystem.absolutePath(path), buildNumber+"");
+			buildNumber = Std.parseInt(File.getContent(sys.FileSystem.absolutePath(path))) + 1;
+			File.saveContent(sys.FileSystem.absolutePath(path), buildNumber + "");
 		}
 		#end
 
