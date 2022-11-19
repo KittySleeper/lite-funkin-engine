@@ -136,7 +136,7 @@ class MainMenuState extends MusicBeatState
 	{
 		camFollow.setPosition(item.getGraphicMidpoint().x, item.getGraphicMidpoint().y);
 	}
-	
+
 	function selectDonate()
 	{
 		CoolUtil.openURl('https://ninja-muffin24.itch.io/funkin');
@@ -149,7 +149,7 @@ class MainMenuState extends MusicBeatState
 		{
 			if (menuItems.selectedIndex != item.ID)
 			{
-				FlxTween.tween(item, { alpha: 0 }, 0.4, { ease: FlxEase.quadOut });
+				FlxTween.tween(item, {alpha: 0}, 0.4, {ease: FlxEase.quadOut});
 			}
 			else
 			{
@@ -180,11 +180,10 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.switchState(new TitleState());
 		}
-		
+
 		super.update(elapsed);
 
-
-		if(FlxG.keys.justPressed.T)
+		if (FlxG.keys.justPressed.T)
 			CoolUtil.loadSong('troll', 'troll', 0);
 	}
 }

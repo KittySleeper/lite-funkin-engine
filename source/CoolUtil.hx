@@ -39,7 +39,8 @@ class CoolUtil
 		return a + camLerpShit(ratio) * (b - a);
 	}
 
-	public static function loadSong(SongName:String, Diff:String, Week:Int) {
+	public static function loadSong(SongName:String, Diff:String, Week:Int)
+	{
 		var loader = Highscore.formatSong(SongName, Diff);
 		PlayState.SONG = Song.loadFromJson(loader, SongName);
 		PlayState.isStoryMode = false;
@@ -47,8 +48,9 @@ class CoolUtil
 		PlayState.storyWeek = Week;
 		LoadingState.loadAndSwitchState(new PlayState());
 	}
-     
-	public static function openURl(site:String) {
+
+	public static function openURl(site:String)
+	{
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [site]);
 		#else
@@ -56,11 +58,12 @@ class CoolUtil
 		#end
 	}
 
-	public static function changeicon(char:String, player:Int) {//why not make changeing icons more ezz
-		if(player == 1)
-		PlayState.iconP1.changeIcon(char);
+	public static function changeicon(char:String, player:Int)
+	{ // why not make changeing icons more ezz
+		if (player == 1)
+			PlayState.iconP1.changeIcon(char);
 		else
-		PlayState.iconP2.changeIcon(char);
+			PlayState.iconP2.changeIcon(char);
 	}
 
 	/**
@@ -72,14 +75,15 @@ class CoolUtil
 	{
 		var strArray:Array<String> = s.split(' ');
 		var newArray:Array<String> = [];
-		
+
 		for (str in strArray)
-			newArray.push(str.charAt(0).toUpperCase()+str.substring(1));
-	
+			newArray.push(str.charAt(0).toUpperCase() + str.substring(1));
+
 		return newArray.join(' ');
 	}
 
-	public static function error(message:Null<String> = null, title:Null<String> = 'Lite Funkin Engine'):Void {
+	public static function error(message:Null<String> = null, title:Null<String> = 'Lite Funkin Engine'):Void
+	{
 		#if windows
 		lime.app.Application.current.window.alert(message, title);
 		#else

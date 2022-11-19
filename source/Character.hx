@@ -18,13 +18,13 @@ class Character extends FlxSprite
 	public var curCharacter:String = 'bf';
 
 	public var holdTimer:Float = 0;
-	
+
 	public var animationNotes:Array<Dynamic> = [];
 	public var hpcolor:FlxColor;
 
-	//Used for Game Over Properties
-	//cuz I love softcoding things
-	//https://github.com/ShadowMario/FNF-PsychEngine/pull/11002
+	// Used for Game Over Properties
+	// cuz I love softcoding things
+	// https://github.com/ShadowMario/FNF-PsychEngine/pull/11002
 	public static var deathChar:String = 'bf';
 	public static var deathSound:String = 'fnf_loss_sfx';
 	public static var deathConfirm:String = 'gameOverEnd';
@@ -89,7 +89,8 @@ class Character extends FlxSprite
 				frames = tex;
 				animation.addByIndices('singUP', 'GF Dancing Beat Hair blowing CAR', [0], "", 24, false);
 				animation.addByIndices('danceLeft', 'GF Dancing Beat Hair blowing CAR', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF Dancing Beat Hair blowing CAR', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat Hair blowing CAR', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24,
+					false);
 				animation.addByIndices('idleHair', 'GF Dancing Beat Hair blowing CAR', [10, 11, 12, 25, 26, 27], "", 24, true);
 
 				loadOffsetFile(curCharacter);
@@ -116,7 +117,7 @@ class Character extends FlxSprite
 				animation.addByIndices('sad', 'GF Crying at Gunpoint', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, true);
 				animation.addByIndices('danceLeft', 'GF Dancing at Gunpoint', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 				animation.addByIndices('danceRight', 'GF Dancing at Gunpoint', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-				
+
 				loadOffsetFile('gf');
 
 				playAnim('danceRight');
@@ -254,7 +255,7 @@ class Character extends FlxSprite
 				quickAnimAdd('shoot2', 'Pico shoot 2');
 				quickAnimAdd('shoot3', 'Pico shoot 3');
 				quickAnimAdd('shoot4', 'Pico shoot 4');
-				
+
 				loadOffsetFile(curCharacter);
 
 				playAnim('shoot1');
@@ -288,7 +289,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 				hpcolor = 0xFF31B0D1;
-				
+
 				loadOffsetFile(curCharacter);
 
 			case 'bf-christmas':
@@ -326,9 +327,9 @@ class Character extends FlxSprite
 				quickAnimAdd('singDOWNmiss', 'BF NOTE DOWN MISS');
 
 				animation.addByIndices('idleHair', 'BF idle dance', [10, 11, 12, 13], '', 24, true);
-				
+
 				loadOffsetFile(curCharacter);
-				
+
 				playAnim('idle');
 
 				hpcolor = 0xFF31B0D1;
@@ -641,7 +642,7 @@ class Character extends FlxSprite
 				holdTimer = 0;
 			}
 		}
-		
+
 		if (curCharacter.endsWith('-car') && !animation.curAnim.name.startsWith('sing') && animation.curAnim.finished)
 		{
 			playAnim('idleHair');
@@ -662,7 +663,7 @@ class Character extends FlxSprite
 						shotDirection = 3;
 					}
 					shotDirection += FlxG.random.int(0, 1);
-					
+
 					playAnim('shoot' + shotDirection, true);
 					animationNotes.shift();
 				}
@@ -697,7 +698,7 @@ class Character extends FlxSprite
 							playAnim('danceLeft');
 					}
 				case 'pico-speaker':
-					// do nothing LOL
+				// do nothing LOL
 				case 'spooky':
 					danced = !danced;
 

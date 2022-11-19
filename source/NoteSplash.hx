@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 class NoteSplash extends FlxSprite
 {
 	public static var notesplashskin:String = 'noteSplashes';
+
 	public function new(x:Float, y:Float, ?notedata:Int = 0)
 	{
 		super(x, y);
@@ -35,7 +36,7 @@ class NoteSplash extends FlxSprite
 	{
 		if (animation.curAnim.finished)
 			kill();
-		
+
 		super.update(elapsed);
 	}
 }

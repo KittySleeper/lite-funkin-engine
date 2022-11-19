@@ -51,7 +51,7 @@ class TitleState extends MusicBeatState
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
-	
+
 	var lastBeat:Int = 0;
 
 	var swagShader:ColorSwap;
@@ -74,8 +74,10 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
-		if (FlxG.save.data.mod != null) modding.ModLoader.init(FlxG.save.data.mod);
-		else FlxG.save.data.mod = '';
+		if (FlxG.save.data.mod != null)
+			modding.ModLoader.init(FlxG.save.data.mod);
+		else
+			FlxG.save.data.mod = '';
 
 		modding.ModLoader.scan();
 
@@ -115,15 +117,15 @@ class TitleState extends MusicBeatState
 			JudgePositionState.SICK_POSITION.x = FlxG.save.data.sickx;
 
 		/*if (FlxG.save.data.unnessearystuffthatsset != null)
-			UnnessesaryMenu.dumbassunesesaryandyesispelleditwrongidc = FlxG.save.data.unnessearystuffthatsset;*/
+			UnnessesaryMenu.dumbassunesesaryandyesispelleditwrongidc = FlxG.save.data.unnessearystuffthatsset; */
 
-			if(PreferencesMenu.getPref('fpsshow') != null)
+		if (PreferencesMenu.getPref('fpsshow') != null)
 			Main.fpsCounter.visible = PreferencesMenu.getPref('fpsshow');
 
-			if(PreferencesMenu.getPref('fpsboost'))
+		if (PreferencesMenu.getPref('fpsboost'))
 			FlxG.stage.frameRate = 1000;
 
-			if(PreferencesMenu.getPref('fpsboost') == false)
+		if (PreferencesMenu.getPref('fpsboost') == false)
 			FlxG.stage.frameRate = 120;
 
 		new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -133,10 +135,11 @@ class TitleState extends MusicBeatState
 
 		#if desktop
 		DiscordClient.initialize();
-		
-		Application.current.onExit.add (function (exitCode) {
+
+		Application.current.onExit.add(function(exitCode)
+		{
 			DiscordClient.shutdown();
-		 });
+		});
 		#end
 	}
 
@@ -294,7 +297,7 @@ class TitleState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (FlxG.keys.justPressed.F)//why f?
+		if (FlxG.keys.justPressed.F) // why f?
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
@@ -439,7 +442,7 @@ class TitleState extends MusicBeatState
 				}
 			}
 		}
-		
+
 		lastBeat = curBeat;
 	}
 

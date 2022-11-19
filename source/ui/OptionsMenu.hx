@@ -15,8 +15,8 @@ class OptionsMenu extends Page
 			onSwitch.dispatch(PageName.Preferences);
 		});
 		/*createItem('unnessesary', function()
-		{
-			onSwitch.dispatch(PageName.Unnessesary);
+			{
+				onSwitch.dispatch(PageName.Unnessesary);
 		});*/
 		createItem('controls', function()
 		{
@@ -26,7 +26,7 @@ class OptionsMenu extends Page
 		{
 			FlxG.switchState(new ui.JudgePositionState());
 		});
-		//uh why the hell is donate code here mabe newgrounds login?
+		// uh why the hell is donate code here mabe newgrounds login?
 		if (showDonate)
 		{
 			createItem('donate', selectDonate, true);
@@ -74,12 +74,10 @@ class OptionsMenu extends Page
 	// {
 	// 	openNgPrompt(NgPrompt.showLogin());
 	// }
-
 	// function selectLogout()
 	// {
 	// 	openNgPrompt(NgPrompt.showLogout());
 	// }
-
 	// function openNgPrompt(prompt:Prompt, ?callback:Dynamic)
 	// {
 	// 	var func:Dynamic = checkLoginStatus();
@@ -93,7 +91,6 @@ class OptionsMenu extends Page
 	// 	}
 	// 	openPrompt(prompt, func);
 	// }
-
 	// function checkLoginStatus()
 	// {
 	// 	var hasLogout:Bool = items.has('logout');

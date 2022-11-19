@@ -10,7 +10,6 @@ class Highscore
 	public static var songScores:Map<String, Int> = new Map<String, Int>();
 	#end
 
-
 	public static function saveScore(song:String, score:Int = 0, ?diff:String = 'EASY'):Void
 	{
 		var daSong:String = formatSong(song, diff);
@@ -48,9 +47,11 @@ class Highscore
 		FlxG.save.flush();
 	}
 
-	public static function formatSong(song:String, diff:String):String {
+	public static function formatSong(song:String, diff:String):String
+	{
 		diff = diff.toLowerCase();
-		if (diff != 'normal') song += '-$diff';
+		if (diff != 'normal')
+			song += '-$diff';
 
 		return song;
 	}

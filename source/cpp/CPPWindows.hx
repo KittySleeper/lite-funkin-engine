@@ -1,18 +1,16 @@
 package cpp;
-#if windows
 
+#if windows
 import cpp.Int64;
 
 // only for windows atm
-
 @:headerCode('
 #include <windows.h>
 #include <iostream>
 ')
-
 class CPPWindows
 {
-    @:functionCode('
+	@:functionCode('
     // https://www.programiz.com/cpp-programming/examples/add-numbers
     int first_number, second_number, sum;
     
@@ -27,7 +25,7 @@ class CPPWindows
   
     return 0;
     ')
-    public static function returnTwoNumbers():Int64
-        return 0;
+	public static function returnTwoNumbers():Int64
+		return 0;
 }
 #end
