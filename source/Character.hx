@@ -544,6 +544,21 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				hpcolor = 0xFF000000;
+			case 'face':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/facedude');
+				frames = tex;
+				quickAnimAdd('idle', 'idle');
+				quickAnimAdd('singUP', 'up');
+				quickAnimAdd('singRIGHT', 'right boymebobspongeboybody');
+				quickAnimAdd('singDOWN', 'down facemebob');
+				quickAnimAdd('singLEFT', 'left tester');
+
+				loadOffsetFile(curCharacter);
+
+				hpcolor = 0xFFA0A0A0;
+
+				playAnim('idle');
 		}
 
 		dance();

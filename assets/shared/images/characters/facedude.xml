@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="facedude.png">
+	<!-- Created with Adobe Animate version 22.0.3.179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="down facemebob0000" x="0" y="0" width="120" height="125" frameX="0" frameY="0" frameWidth="122" frameHeight="125"/>
+	<SubTexture name="down facemebob0001" x="120" y="0" width="121" height="125" frameX="0" frameY="0" frameWidth="122" frameHeight="125"/>
+	<SubTexture name="down facemebob0002" x="241" y="0" width="121" height="125" frameX="0" frameY="0" frameWidth="122" frameHeight="125"/>
+	<SubTexture name="down facemebob0003" x="362" y="0" width="122" height="125"/>
+	<SubTexture name="idle0000" x="484" y="0" width="112" height="130" frameX="0" frameY="0" frameWidth="113" frameHeight="130"/>
+	<SubTexture name="idle0001" x="596" y="0" width="112" height="130" frameX="0" frameY="0" frameWidth="113" frameHeight="130"/>
+	<SubTexture name="idle0002" x="708" y="0" width="112" height="130" frameX="0" frameY="0" frameWidth="113" frameHeight="130"/>
+	<SubTexture name="idle0003" x="820" y="0" width="112" height="130" frameX="0" frameY="0" frameWidth="113" frameHeight="130"/>
+	<SubTexture name="idle0004" x="0" y="130" width="112" height="130" frameX="0" frameY="0" frameWidth="113" frameHeight="130"/>
+	<SubTexture name="idle0005" x="112" y="130" width="113" height="130"/>
+	<SubTexture name="left tester0000" x="225" y="130" width="112" height="130" frameX="-1" frameY="0" frameWidth="115" frameHeight="130"/>
+	<SubTexture name="left tester0001" x="337" y="130" width="112" height="130" frameX="-1" frameY="0" frameWidth="115" frameHeight="130"/>
+	<SubTexture name="left tester0002" x="449" y="130" width="113" height="130" frameX="-1" frameY="0" frameWidth="115" frameHeight="130"/>
+	<SubTexture name="left tester0003" x="562" y="130" width="114" height="130" frameX="-1" frameY="0" frameWidth="115" frameHeight="130"/>
+	<SubTexture name="left tester0004" x="676" y="130" width="113" height="129" frameX="-1" frameY="-1" frameWidth="115" frameHeight="130"/>
+	<SubTexture name="left tester0005" x="789" y="130" width="113" height="128" frameX="0" frameY="-2" frameWidth="115" frameHeight="130"/>
+	<SubTexture name="right boymebobspongeboybody0000" x="902" y="130" width="113" height="136" frameX="0" frameY="-1" frameWidth="119" frameHeight="137"/>
+	<SubTexture name="right boymebobspongeboybody0001" x="0" y="266" width="113" height="136" frameX="0" frameY="-1" frameWidth="119" frameHeight="137"/>
+	<SubTexture name="right boymebobspongeboybody0002" x="113" y="266" width="119" height="137"/>
+	<SubTexture name="up0000" x="232" y="266" width="120" height="129" frameX="0" frameY="0" frameWidth="121" frameHeight="129"/>
+	<SubTexture name="up0001" x="352" y="266" width="121" height="129"/>
+	<SubTexture name="up0002" x="473" y="266" width="120" height="129" frameX="0" frameY="0" frameWidth="121" frameHeight="129"/>
+</TextureAtlas>

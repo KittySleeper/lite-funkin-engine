@@ -173,7 +173,7 @@ class PlayState extends MusicBeatState
 	{
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
-
+		
 		var instPath:String = Paths.inst(SONG.song.toLowerCase());
 		if (OpenFlAssets.exists(instPath, SOUND) || OpenFlAssets.exists(instPath, MUSIC))
 			OpenFlAssets.getSound(instPath, true);
@@ -248,9 +248,9 @@ class PlayState extends MusicBeatState
 		// diffs real
 		storyDifficultyText = CoolUtil.firstLetterUppercase(storyDifficulty);
 
-		switch (SONG.song.toLowerCase())
+		switch (SONG.stage.toLowerCase())
 		{
-			case 'spookeez' | 'monster' | 'south':
+			case 'spooky':
 			{
 				curStage = 'spooky';
 
@@ -266,7 +266,7 @@ class PlayState extends MusicBeatState
 
 				isHalloween = true;
 			}
-			case 'pico' | 'blammed' | 'philly':
+			case 'philly':
 			{
 				curStage = 'philly';
 
@@ -308,7 +308,7 @@ class PlayState extends MusicBeatState
 				var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
 				add(street);
 			}
-			case 'milf' | 'satin-panties' | 'high':
+			case 'limo':
 			{
 				curStage = 'limo';
 				defaultCamZoom = 0.90;
@@ -345,7 +345,7 @@ class PlayState extends MusicBeatState
 
 				fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol'));
 			}
-			case 'cocoa' | 'eggnog':
+			case 'mall':
 			{
 				curStage = 'mall';
 
@@ -401,7 +401,7 @@ class PlayState extends MusicBeatState
 				santa.antialiasing = true;
 				add(santa);
 			}
-			case 'winter-horrorland':
+			case 'mallEvil':
 			{
 				curStage = 'mallEvil';
 				var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG'));
@@ -421,7 +421,7 @@ class PlayState extends MusicBeatState
 				evilSnow.antialiasing = true;
 				add(evilSnow);
 			}
-			case 'senpai' | 'roses':
+			case 'school':
 			{
 				curStage = 'school';
 
@@ -486,7 +486,7 @@ class PlayState extends MusicBeatState
 				bgGirls.updateHitbox();
 				add(bgGirls);
 			}
-			case 'thorns':
+			case 'schoolEvil':
 			{
 				curStage = 'schoolEvil';
 
@@ -504,7 +504,7 @@ class PlayState extends MusicBeatState
 				bg.scale.set(6, 6);
 				add(bg);
 			}
-			case 'guns' | 'stress' | 'ugh':
+			case 'tank':
 			{
 				defaultCamZoom = 0.9;
 
@@ -572,7 +572,7 @@ class PlayState extends MusicBeatState
 				var tankdude3:BGSprite = new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']);
 				foregroundSprites.add(tankdude3);
 			}
-			case '2hot', 'darnell', 'lit-up':
+			case 'alley8':
 			{
 				curStage = 'alley8';
 
@@ -582,7 +582,7 @@ class PlayState extends MusicBeatState
 				bg.scale.set(0.6, 0.6);
 				add(bg);
 			}
-			case 'troll', 'ur mom', 'hehe har har', 'is that leather 128 from friday funk':
+			case 'troll':
 			{
 				defaultCamZoom = 0.7;
 				
@@ -931,7 +931,7 @@ class PlayState extends MusicBeatState
 						});
 					});
 					case 'senpai' | 'roses' | 'thorns':
-						schoolIntro(doof);
+						dialougeIntro(doof);
 						// now it looks like I stole this from Psych
 						if (curSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 				#if web//keep this
@@ -1006,7 +1006,7 @@ class PlayState extends MusicBeatState
 		};
 	}
 
-	function schoolIntro(?dialogueBox:DialogueBox):Void
+	function dialougeIntro(?dialogueBox:DialogueBox):Void
 	{
 		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
