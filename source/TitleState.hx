@@ -1,5 +1,6 @@
 package;
 
+import openfl.display.FPS;
 import ui.JudgePositionState;
 import ui.UnnessesaryMenu;
 import openfl.display.Sprite;
@@ -35,6 +36,7 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
 import openfl.Lib;
+import flixel.addons.display.FlxBackdrop; 
 
 using StringTools;
 
@@ -171,6 +173,7 @@ class TitleState extends MusicBeatState
 		Lib.current.stage.removeChild(overlay);
 	}
 
+	var realbg:FlxBackdrop;
 	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
@@ -202,6 +205,15 @@ class TitleState extends MusicBeatState
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
+
+		realbg = new FlxBackdrop(Paths.image('titlebg'), 1, 1, true, true); 
+		realbg.updateHitbox(); 
+		realbg.scrollFactor.set(0, 0); 
+		realbg.alpha = 1; 
+		realbg.screenCenter(X);
+		realbg.y -= 320;
+		realbg.velocity.x = 20;
+		add(realbg); 
 
 		logoBl = new FlxSprite(-110, 43);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
@@ -359,6 +371,8 @@ class TitleState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.CONTROL)
+			FlxG.switchState(new LatencyState());
 	}
 
 	function createCoolText(textArray:Array<String>)
@@ -403,7 +417,10 @@ class TitleState extends MusicBeatState
 		else
 			gfDance.animation.play('danceLeft');
 
-		FlxG.log.add(curBeat);
+		#if debug
+		trace(curBeat);
+		trace(curStep);
+		#end
 
 		if (curBeat > lastBeat)
 		{

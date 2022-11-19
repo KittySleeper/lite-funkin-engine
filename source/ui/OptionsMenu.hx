@@ -22,9 +22,13 @@ class OptionsMenu extends Page
 		{
 			onSwitch.dispatch(PageName.Controls);
 		});
-		createItem('judgement position', function()
+		createItem('latensy', function()
 		{
 			FlxG.switchState(new ui.JudgePositionState());
+		});
+		createItem('judgement position', function()
+		{
+			FlxG.switchState(new LatencyState());
 		});
 		// uh why the hell is donate code here mabe newgrounds login?
 		if (showDonate)
