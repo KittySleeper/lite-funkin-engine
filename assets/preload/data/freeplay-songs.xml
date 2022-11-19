@@ -25,7 +25,7 @@
     <!-- Week 5 -->
     <song name='Cocoa' icon='parents' week='5' diffs='easy,normal,hard' debug='false' />
     <song name='Eggnog' icon='parents' week='5' diffs='easy,normal,hard' debug='false' />
-    <song name='Winter-Horrorland' icon='parents' week='5' diffs='easy,normal,hard' debug='false' />
+    <song name='Winter-Horrorland' icon='monster' week='5' diffs='easy,normal,hard' debug='false' />
 
     <!-- Week 6 -->
     <song name='Senpai' icon='senpai' week='6' diffs='easy,normal,hard' debug='false' />

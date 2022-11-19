@@ -7,13 +7,13 @@ class BGSprite extends FlxSprite
 	public var idleAnim:String = null;
 
 	override public function new(image:String, x:Float = 0, y:Float = 0, scrollX:Float = 1, scrollY:Float = 1, animations:Array<String> = null,
-			loopAnims:Bool = false)
+			loopAnims:Bool = false, library:String)
 	{
 		super(x, y);
 
 		if (animations != null)
 		{
-			frames = Paths.getSparrowAtlas(image);
+			frames = Paths.getSparrowAtlas(image, library);
 			for (anim in animations)
 			{
 				animation.addByPrefix(anim, anim, 24, loopAnims);
@@ -24,7 +24,7 @@ class BGSprite extends FlxSprite
 		}
 		else
 		{
-			loadGraphic(Paths.image(image));
+			loadGraphic(Paths.image(image, library));
 			active = false;
 		}
 		scrollFactor.set(scrollX, scrollY);
