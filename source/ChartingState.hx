@@ -119,6 +119,7 @@ class ChartingState extends MusicBeatState
 				needsVoices: true,
 				player1: 'bf',
 				player2: 'dad',
+				gf: 'gf',
 				stage: 'stage',
 				speed: 1,
 				validScore: false
@@ -251,6 +252,15 @@ class ChartingState extends MusicBeatState
 
 			stageDropDown.selectedLabel = _song.stage;
 
+		var gfs:Array<String> = CoolUtil.coolTextFile(Paths.txt('gfList'));
+
+		var gfDropDown = new FlxUIDropDownMenu(10, 152, FlxUIDropDownMenu.makeStrIdLabelArray(gfs, true), function(gf:String)
+			{
+				_song.gf = stages[Std.parseInt(gf)];
+			});
+
+			gfDropDown.selectedLabel = _song.gf;
+
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
 		tab_group_song.add(UI_songTitle);
@@ -266,6 +276,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(player1DropDown);
 		tab_group_song.add(player2DropDown);
 		tab_group_song.add(stageDropDown);
+		tab_group_song.add(gfDropDown);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();

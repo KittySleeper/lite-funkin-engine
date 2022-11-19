@@ -5803,7 +5803,7 @@
 				"mustHitSection": true
 			}
 		],
-		"gfVersion": "nene",
+		"gf": "nene",
 		"events": [],
 		"player3": null,
 		"song": "lit-up",

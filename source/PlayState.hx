@@ -155,6 +155,10 @@ class PlayState extends MusicBeatState
 	public static var daPixelZoom:Float = 6;
 
 	var inCutscene:Bool = false;
+	
+	var dadname:String = SONG.player2;
+	var bfname:String = SONG.player1;
+	var gfname:String = SONG.gf;
 
 	#if desktop
 	// Discord RPC variables
@@ -175,6 +179,9 @@ class PlayState extends MusicBeatState
 	{
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
+
+		if (gfname == null)
+			SONG.gf = 'gf';
 		
 		var instPath:String = Paths.inst(SONG.song.toLowerCase());
 		if (OpenFlAssets.exists(instPath, SOUND) || OpenFlAssets.exists(instPath, MUSIC))
@@ -580,7 +587,7 @@ class PlayState extends MusicBeatState
 
 					defaultCamZoom = 0.8;
 
-				var bg:BGSprite = new BGSprite('alley', -1765.6, 538.2, 1, 1, null, false, 'week7');
+				var bg:BGSprite = new BGSprite('alley', -1765.6, 538.2, 1, 1, null, false, 'week8');
 				bg.scale.set(0.6, 0.6);
 				add(bg);
 			}
@@ -622,30 +629,9 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		var gfVersion:String = 'gf';
-
-		switch (curStage)
-		{
-			case 'limo':
-				gfVersion = 'gf-car';
-			case 'mall' | 'mallEvil':
-				gfVersion = 'gf-christmas';
-			case 'school':
-				gfVersion = 'gf-pixel';
-			case 'schoolEvil':
-				gfVersion = 'gf-pixel';
-			case 'tank':
-				gfVersion = 'gf-tankmen';
-			case 'alley8':
-				gfVersion = 'nene';
-		}
-
-		if (SONG.song.toLowerCase() == 'stress')
-			gfVersion = 'pico-speaker';
-
-		gf = new Character(400, 130, gfVersion);
+		gf = new Character(400, 130, SONG.gf);
 		gf.scrollFactor.set(0.95, 0.95);
-		if (gfVersion == 'pico-speaker')
+		if (gf.curCharacter == 'pico-speaker')
 		{
 			gf.x -= 50;
 			gf.y -= 200;
@@ -748,7 +734,7 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 0;
 				dad.y += 60;
 				dad.x -= 80;
-				if (gfVersion != 'pico-speaker')
+				if (gf.curCharacter != 'pico-speaker')
 				{
 					gf.x -= 170;
 					gf.y -= 75;
