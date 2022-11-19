@@ -41,7 +41,7 @@ using StringTools;
  */
 typedef Event =
 {
-	var values:Array<String>;
+	var values:Array<Int>;
 	var name:String;
 }
 
@@ -585,7 +585,7 @@ class PlayState extends MusicBeatState
 			{
 				curStage = 'alley8';
 
-					defaultCamZoom = 0.8;
+				defaultCamZoom = 0.8;
 
 				var bg:BGSprite = new BGSprite('alley', -1765.6, 538.2, 1, 1, null, false, 'week8');
 				bg.scale.set(0.6, 0.6);
@@ -824,15 +824,21 @@ class PlayState extends MusicBeatState
 		timeBarBG.scale.set(0.7, 1);
 		timeBarBG.screenCenter(X);
 		timeBarBG.scrollFactor.set();
+		if (PreferencesMenu.getPref('ui_old'))
 		add(timeBarBG);
 		if (PreferencesMenu.getPref('downscroll'))
 			timeBarBG.y = FlxG.height * 0.975;
 
 		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), FlxG.sound.music,
 			'time', 0, FlxG.sound.music.length != 0 ? FlxG.sound.music.length : 1);
+		if (PreferencesMenu.getPref('kadeengineisreal?') == false)
 		timeBar.scale.set(0.7, 1);
 		timeBar.scrollFactor.set();
+		if (PreferencesMenu.getPref('kadeengineisreal?'))
+		timeBar.createFilledBar(FlxColor.GRAY, FlxColor.LIME);
+		else
 		timeBar.createFilledBar(0xFF000000, 0xFFFFFAFA);
+		if (PreferencesMenu.getPref('ui_old'))
 		add(timeBar);
 
 		iconP1 = new HealthIcon(SONG.player1, true);

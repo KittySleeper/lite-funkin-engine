@@ -85,6 +85,11 @@ class ChartingState extends MusicBeatState
 	{
 		curSection = lastSection;
 
+		var bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg.color = 0xff312f2f;
+		bg.screenCenter();
+		add(bg);
+
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
 

@@ -36,6 +36,7 @@ class PreferencesMenu extends Page
 		createPrefItem('downscroll', 'downscroll', false);
 		createPrefItem('Note Splashes', 'sicksplash', true);
 		createPrefItem('Og ui', 'ui_old', false);
+		createPrefItem('kade ui', 'kadeengineisreal?', false);
 		createPrefItem('watermarks', 'wm', true);
 		createPrefItem('flashing menu', 'flashing-menu', true);
 		createPrefItem('Camera Zooming on Beat', 'camera-zoom', true);
@@ -68,6 +69,7 @@ class PreferencesMenu extends Page
 		preferenceCheck('downscroll', false);
 		preferenceCheck('sicksplash', true);
 		preferenceCheck('ui_old', false);
+		preferenceCheck('kadeengineisreal?', false);
 		preferenceCheck('wm', true);
 		preferenceCheck('flashing-menu', true);
 		preferenceCheck('funnighost', true);
