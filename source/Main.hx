@@ -1,10 +1,8 @@
 package;
 
-import ui.PreferencesMenu;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.FlxG;
-import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -29,7 +27,10 @@ class Main extends Sprite
 
 	public static var fpsCounter:FPS;
 
+	public static var brandonmode:Bool;
+
 	// You can pretty much ignore everything from here on - your code should go in your states.
+	// shut up ninja fard
 
 	public static function main():Void
 	{

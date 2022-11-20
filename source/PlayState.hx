@@ -1904,10 +1904,19 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 			keyShit();
 
-		#if debug
-		if (FlxG.keys.justPressed.ONE)
+		if (FlxG.save.data.gigachadmode = true && FlxG.keys.justPressed.ONE)
 			endSong();
-		#end
+		if (FlxG.save.data.gigachadmode = true && FlxG.keys.justPressed.TWO)
+			CoolUtil.error('test error', 'test');
+		if (FlxG.save.data.gigachadmode = true && FlxG.keys.justPressed.THREE)
+			SONG.validScore = true;
+		if (FlxG.save.data.gigachadmode = true && FlxG.keys.justPressed.FOUR){
+			//hacker mod no caper
+			isHalloween = true;
+			camHUD.alpha = 0;
+			health += 1000;
+			camGame.color = FlxColor.GREEN;
+		}
 	}
 
 	function endSong():Void
