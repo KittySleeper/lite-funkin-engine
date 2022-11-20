@@ -23,11 +23,10 @@ class Note extends FlxSprite
 
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
+	/*** the type of your note*/
 	public static var noteType:String = 'default';
+	/*** the skin of your strumline*/
 	public static var noteSkin:String = 'default';
-	/**
-	 * the type of your note
-	 */
 
 	var colorSwap:ColorSwap;
 
