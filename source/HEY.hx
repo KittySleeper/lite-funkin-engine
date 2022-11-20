@@ -9,10 +9,6 @@ class HEY extends MusicBeatState
 {
 	override function create()
 	{
-		Main.brandonmode = FlxG.save.data.gigachadmode;
-		if (FlxG.save.data.gigachadmode = true){
-			CoolUtil.error('hey you are in debug mode (not realy) you are in develepor mode this mode has features of debug mode but isnt debug mode', 'DEBUG NOTICE');
-		}
 		var bg:FlxSprite = new FlxSprite(null, null, Paths.image('menuDesat'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.17;

@@ -27,8 +27,6 @@ class Main extends Sprite
 
 	public static var fpsCounter:FPS;
 
-	public static var brandonmode:Bool;
-
 	// You can pretty much ignore everything from here on - your code should go in your states.
 	// shut up ninja fard
 
