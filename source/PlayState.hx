@@ -682,16 +682,22 @@ class PlayState extends MusicBeatState
 			case 'senpai':
 				dad.x += 150;
 				dad.y += 360;
+				Note.noteSkin = 'pixel';
+				Note.noteType = 'pixel';
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'senpai-angry':
 				dad.x += 150;
 				dad.y += 360;
+				Note.noteSkin = 'pixel';
+				Note.noteType = 'pixel';
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'spirit':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				add(evilTrail);
 				dad.x -= 150;
 				dad.y += 100;
+				Note.noteSkin = 'pixel';
+				Note.noteType = 'pixel';
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case "tankman":
 				dad.y += 180;
@@ -1375,9 +1381,9 @@ class PlayState extends MusicBeatState
 			babyArrow.shader = colorSwap.shader;
 			colorSwap.update(Note.arrowColors[i]);
 
-			switch (curStage)
+			switch (Note.noteSkin)
 			{
-				case 'school' | 'schoolEvil':
+				case 'pixel':
 					NoteSplash.notesplashskin = 'pixelsplashes'; // toooootaly not just a lower quality image of the normal one
 					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
@@ -1415,7 +1421,7 @@ class PlayState extends MusicBeatState
 				default:
 					NoteSplash.notesplashskin = 'noteSplashes';
 
-					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+					babyArrow.frames = Paths.getSparrowAtlas(Note.noteSkin);
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
@@ -1753,7 +1759,7 @@ class PlayState extends MusicBeatState
 
 				deathCounter++;
 
-				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				openSubState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 				#if desktop
 				// Game Over doesn't get his own variable because it's only used here
@@ -1909,6 +1915,8 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 		deathCounter = 0;
 		canPause = false;
+		Note.noteSkin = 'default';
+		Note.noteType = 'default';
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
 		if (SONG.validScore)
@@ -2321,7 +2329,7 @@ class PlayState extends MusicBeatState
 			if (!holdArray[spr.ID])
 				spr.animation.play('static');
 
-			if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
+			if (spr.animation.curAnim.name == 'confirm' && Note.noteType != 'pixel')
 			{
 				spr.centerOffsets();
 				spr.offset.x -= 13;
