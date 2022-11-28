@@ -20,7 +20,7 @@ class HEY extends MusicBeatState
 		add(bg);
 
 		var warn = new FlxText();
-		warn.text = "hey this engine is in github beta and isnt even 1% complete\nthis is supposed what my formor engine 'dike engine' was supposed to be\nthere will be many bugs and it is likely unstable\nif you understand you can press enter to go to title state.\nbut if you want to see my formor engine press escape";
+		warn.text = "hey this engine is in github beta and isnt even 1% complete\nthis is supposed what my former engine 'dike engine' was supposed to be\nthere will be many bugs and it is likely unstable\nif you understand you can press enter to go to title state.\nbut if you want to see my former engine press escape";
 		warn.alignment = CENTER;
 		warn.scale.set(2.3, 2.3);
 		warn.updateHitbox();
